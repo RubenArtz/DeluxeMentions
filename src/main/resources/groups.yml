@@ -49,9 +49,9 @@ MENTION:
         COLOR_AFTER_MENTION: '&7.'
         USE_TITLES: true
         SEND_TITLE:
-          - '&e♕ &9&lＳＴＮ &f&lＳＴＵＤＩＯＳ&e™ &e♕::&b{Email} &fPlayer {Player} &fmentioned you &b{Email}'
+          - '&e♕ &9&lＳＴＮ &f&lＳＴＵＤＩＯＳ&e™ &e♕::<aqua>{Email}</aqua> <gradient:#ff006a:#82ff5c:#63b1ff>Player {Player} mentioned you</gradient> <aqua>{Email}</aqua>'
         USE_ACTIONBAR_MENTION: true
-        ACTIONBAR_MENTION: '&b{Email} &fPlayer &7{Player} &fmentioned you &b{Email}'
+        ACTIONBAR_MENTION: '<aqua>{Email}</aqua> <gradient:#ff006a:#82ff5c:#63b1ff>Player {Player} mentioned you</gradient> <aqua>{Email}</aqua>'
       VIP:
         PERMISSION: 'DeluxeMentions.Group.VIP'
         TIME_UNIT: 'MINUTES' # SECONDS, MINUTES, HOURS, DAYS, YEARS
@@ -63,9 +63,9 @@ MENTION:
         COLOR_AFTER_MENTION: '&f.'
         USE_TITLES: true
         SEND_TITLE:
-          - '&e♕ &9&lＳＴＮ &f&lＳＴＵＤＩＯＳ&e™ &e♕::&b{Email} &fPlayer {Player} &fmentioned you &b{Email}'
+          - '&e♕ &9&lＳＴＮ &f&lＳＴＵＤＩＯＳ&e™ &e♕::<aqua>{Email}</aqua> <gradient:#ff006a:#82ff5c:#63b1ff>Player {Player} mentioned you</gradient> <aqua>{Email}</aqua>'
         USE_ACTIONBAR_MENTION: true
-        ACTIONBAR_MENTION: '&b{Email} &fPlayer {Player} &fmentioned you &b{Email}'
+        ACTIONBAR_MENTION: '<aqua>{Email}</aqua> <gradient:#ff006a:#82ff5c:#63b1ff>Player {Player} mentioned you</gradient> <aqua>{Email}</aqua>'
       # YOU CAN ADD MORE GROUPS!
       #MVP:
       #  PERMISSION: 'DeluxeMentions.Group.MVP'
