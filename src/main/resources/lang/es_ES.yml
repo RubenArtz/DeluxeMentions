@@ -1,0 +1,165 @@
+#      ___           ___           ___                                     ___           ___           ___
+#     /\  \         /\__\         /\  \                                   /\  \         /\  \         /\__\
+#    |::\  \       /:/ _/_        \:\  \         ___         ___         /::\  \        \:\  \       /:/ _/_
+#    |:|:\  \     /:/ /\__\        \:\  \       /\__\       /\__\       /:/\:\  \        \:\  \     /:/ /\  \
+#  __|:|\:\  \   /:/ /:/ _/_   _____\:\  \     /:/  /      /:/__/      /:/  \:\  \   _____\:\  \   /:/ /::\  \
+# /::::|_\:\__\ /:/_/:/ /\__\ /::::::::\__\   /:/__/      /::\  \     /:/__/ \:\__\ /::::::::\__\ /:/_/:/\:\__\
+# \:\~~\  \/__/ \:\/:/ /:/  / \:\~~\~~\/__/  /::\  \      \/\:\  \__  \:\  \ /:/  / \:\~~\~~\/__/ \:\/:/ /:/  /
+#  \:\  \        \::/_/:/  /   \:\  \       /:/\:\  \      ~~\:\/\__\  \:\  /:/  /   \:\  \        \::/ /:/  /
+#   \:\  \        \:\/:/  /     \:\  \      \/__\:\  \        \::/  /   \:\/:/  /     \:\  \        \/_/:/  /
+#    \:\__\        \::/  /       \:\__\          \:\__\       /:/  /     \::/  /       \:\__\         /:/  /
+#     \/__/         \/__/         \/__/           \/__/       \/__/       \/__/         \/__/         \/__/
+
+# ===================
+# Language: Spanish =
+# By: Ruben_Artz    =
+# ===================
+MESSAGES:
+  MESSAGE_NO_MENTION: "&c¡No puedes mencionarte a ti mismo!"
+  MESSAGE_COOLDOWN: '&cHay que esperar algún tiempo antes de poder mencionar a alguien!'
+  MESSAGE_RELOAD_SUCCESS: '&aLa configuración de reinicio exitoso.'
+  MESSAGES_ARGS: '&cUsa el comando: /mention toggle'
+  MESSAGES_NO_PERMISSIONS: '&cNo tiene permiso para usar este comando.'
+  MESSAGES_ACTIVATED: '&8[&cΩ&8] &aHas activado tus menciones.'
+  MESSAGES_DISABLED: '&8[&cΩ&8] &cHas desactivado tus menciones.'
+  MESSAGE_CHANGE_OF_LANGUAGE: '&aEstablecio el idioma del complemento en {Language}!'
+  MESSAGE_VERSION_USING: '&cEste servidor está usando DeluxeMentions {Version}'
+  MESSAGE_RELOAD: '&7Cargue la configuración del complemento.'
+  MESSAGE_RELOAD_BOX: '&f &8▪ &fCargue la configuración del complemento.'
+  MESSAGE_HELP: '&7Ver los comandos disponibles.'
+  MESSAGE_HELP_BOX: '&f &8▪ &fHaga clic para ver los comandos.'
+  MESSAGE_MENTION: '&7Activar y desactivar la mención.'
+  MESSAGE_MENTION_BOX: '&f &8▪ &fVea el mensaje para ver las funciones.'
+  MESSAGE_LANGUAGE_BOX: '&f &8▪ &fHaga clic aquí para cambiar el idioma del complemento.'
+  MESSAGE_LANGUAGE: '&7¡Cambia el idioma del complemento!'
+  MESSAGES_VERSION_USING_BOX: '&f &8▪ &fHaga clic para ver los comandos.'
+  MESSAGE_TIP: '&9TIP&f, Coloque el cursor en el mensaje y haga clic para seleccionar.'
+  CONFIGURATION:
+    MESSAGE_RELOAD_CONFIGS: '&aEl {File} el archivo fue recargado!'
+    MESSAGE_FILE_NOT_FOUND: '&cEl archivo con nombre {File} no está disponible!'
+  MESSAGE_MENTION_PLAYER: '&7Activar o desactivar la mención del jugador.'
+  MESSAGE_MENTION_PLAYER_BOX: '&f &8▪ &fHaga click aquí para pegar el comando en el chat.'
+  MESSAGE_PLAYER_NOT_FOUND: '&cEste jugador no está conectado.'
+  MESSAGE_NOT_USE_CONSOLE: '&cNo se puede utilizar este comando en la consola.'
+  MESSAGE_DISABLED_MENTION_TARGET: '&bAhora &a{Player} &btiene la siguiente configuración &f| &aActivada'
+  MESSAGE_ENABLED_MENTION_TARGET: '&bAhora &a{Player} &btiene la siguiente configuración &f| &cDesactivada'
+MESSAGE_USING_SQLITE: '&aUso de SQLite para los datos de los jugadores.'
+MESSAGE_SQLITE_ERROR_FOLDER: '&cNo se ha podido crear la carpeta /cache.'
+MESSAGE_SQLITE_ERROR_CREATE: '&cNo se ha podido crear el archivo /cache/database.db.'
+MESSAGE_SQLITE_ERROR_CONNECTION: '&cImposible comunicarse con SQLite...'
+MESSAGES_MYSQL_CONNECTED: '&aLa conexión con MySQL se ha establecido con éxito.'
+MESSAGE_MYSQL_NOT_CONNECTED: '&cNo hemos podido conectarnos a mysql.'
+LANGUAGE:
+  INVENTORY:
+    TITLE: '&8Deluxe Mentions &9Inventory'
+    ENGLISH:
+      NAME: '&aEnglish'
+      VALUE: '4cac9774da1217248532ce147f7831f67a12fdcca1cf0cb4b3848de6bc94b4'
+      SLOT: 10
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    SPANISH:
+      NAME: '&aSpanish'
+      VALUE: '6236b90de8bf16a24a6aace000b5fcbe80438eb54816efa6d54a5250189445e3'
+      SLOT: 12
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    SUOMI:
+      NAME: '&aSuomi'
+      VALUE: '59f2349729a7ec8d4b1478adfe5ca8af96479e983fbad238ccbd81409b4ed'
+      SLOT: 14
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    FRENCH:
+      NAME: '&aFrançais'
+      VALUE: '8b06b49462af409c1985c629fdb8c870ff1d9d9abed3d2fd79a2138906500907'
+      SLOT: 16
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    KOREAN:
+      NAME: '&a한국어'
+      VALUE: '3b5ce74f85054e3513b8908d1e1f6761e7dd17de0939f7e206c15ed583cf5196'
+      SLOT: 19
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    THAI:
+      NAME: '&aไทย'
+      VALUE: '428c892e43ee7d79d08efb9ccdbd571e415215c91a58d8f9ee9ede58a3986d59'
+      SLOT: 28
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    TURKEY:
+      NAME: '&aTürkiye'
+      VALUE: '9852b9aba3482348514c1034d0affe73545c9de679ae4647f99562b5e5f47d09'
+      SLOT: 21
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    VIETNAMESE:
+      NAME: '&aTiếng Việt'
+      VALUE: 'b393b54a80bccefad66f1596ec999539868d016eae4b5477e57da39759411397'
+      SLOT: 30
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    CHINESE:
+      NAME: '&a中文'
+      VALUE: 'bf4fc874baebe80a8bd8e67e5c56e969e512cc05876b75c1fc0df365b2905119'
+      SLOT: 23
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    ITALIAN:
+      NAME: '&aItalian'
+      VALUE: '97eac627244c95d125ca0c0221ab3f0ea06ef4bb7982f17aac7a11bb1c8db7ea'
+      SLOT: 25
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    PORTUGUESE:
+      NAME: '&aPortuguês'
+      VALUE: '9a46475d5dcc815f6c5f2859edbb10611f3e861c0eb14f088161b3c0ccb2b0d9'
+      SLOT: 32
+      LORE:
+        - ''
+        - '&eClique para alterar o idioma!'
+    BOOK:
+      NAME: '&aAyúdanos a traducir STN Studios &8(&6Resources & Plugins&8)'
+      SLOT: 44
+      LORE:
+        - '&7¡Hemos agregado una manera'
+        - '&7con la cual nos puedes ayudar'
+        - '&7a traducir STN Studios en más idiomas!'
+        - ''
+        - '&eHaz click en este icono para'
+        - '&eobtener el link del sitio web.'
+    CLOSE:
+      NAME: '&cCerrar &7(Right click)'
+      SLOT: 40
+      LORE:
+        - '&7En el juego'
+HELP_TO_TRANSLATE:
+  SOUND: 'ZOMBIE_WOODBREAK'
+  MESSAGE:
+    - '&a&m---------------------------------------------------'
+    - '&eHaga clic en el siguiente enlace para descubrir cómo ayudarnos a traducir STN Studios &8(&6Resources & Plugins&8)'
+    - '&6https://discord.io/STN-Studios'
+    - '&a&m----------------------------------------------------'
+
+#      ___           ___
+#     /\__\         /\  \         _____
+#    /:/ _/_        \:\  \       /::\  \
+#   /:/ /\__\        \:\  \     /:/\:\  \
+#  /:/ /:/ _/_   _____\:\  \   /:/  \:\__\
+# /:/_/:/ /\__\ /::::::::\__\ /:/__/ \:|__|
+# \:\/:/ /:/  / \:\~~\~~\/__/ \:\  \ /:/  /
+#  \::/_/:/  /   \:\  \        \:\  /:/  /
+#   \:\/:/  /     \:\  \        \:\/:/  /
+#    \::/  /       \:\__\        \::/  /
+#     \/__/         \/__/         \/__/

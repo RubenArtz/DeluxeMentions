@@ -1,0 +1,164 @@
+#      ___           ___           ___                                     ___           ___           ___
+#     /\  \         /\__\         /\  \                                   /\  \         /\  \         /\__\
+#    |::\  \       /:/ _/_        \:\  \         ___         ___         /::\  \        \:\  \       /:/ _/_
+#    |:|:\  \     /:/ /\__\        \:\  \       /\__\       /\__\       /:/\:\  \        \:\  \     /:/ /\  \
+#  __|:|\:\  \   /:/ /:/ _/_   _____\:\  \     /:/  /      /:/__/      /:/  \:\  \   _____\:\  \   /:/ /::\  \
+# /::::|_\:\__\ /:/_/:/ /\__\ /::::::::\__\   /:/__/      /::\  \     /:/__/ \:\__\ /::::::::\__\ /:/_/:/\:\__\
+# \:\~~\  \/__/ \:\/:/ /:/  / \:\~~\~~\/__/  /::\  \      \/\:\  \__  \:\  \ /:/  / \:\~~\~~\/__/ \:\/:/ /:/  /
+#  \:\  \        \::/_/:/  /   \:\  \       /:/\:\  \      ~~\:\/\__\  \:\  /:/  /   \:\  \        \::/ /:/  /
+#   \:\  \        \:\/:/  /     \:\  \      \/__\:\  \        \::/  /   \:\/:/  /     \:\  \        \/_/:/  /
+#    \:\__\        \::/  /       \:\__\          \:\__\       /:/  /     \::/  /       \:\__\         /:/  /
+#     \/__/         \/__/         \/__/           \/__/       \/__/       \/__/         \/__/         \/__/
+
+# ==================
+# Language: Korean =
+# By: Ruben_Artz   =
+# ==================
+MESSAGES:
+  MESSAGE_NO_MENTION: "&c당신은 당신 자신을 언급할 수 없습니다!"
+  MESSAGE_COOLDOWN: '&c누군가를 언급하려면 시간을 기다려야 합니다!'
+  MESSAGE_RELOAD_SUCCESS: '&a성공적인 재시작 구성.'
+  MESSAGES_ARGS: '&c명령을 사용하십시오: /mention toggle'
+  MESSAGES_NO_PERMISSIONS: '&c이 명령을 사용할 권한이 없습니다.'
+  MESSAGES_ACTIVATED: '&8[&cΩ&8] &a멘션을 활성화했습니다.'
+  MESSAGES_DISABLED: '&8[&cΩ&8] &c언급을 비활성화했습니다.'
+  MESSAGE_CHANGE_OF_LANGUAGE: '&a플러그인 언어를 {Language}!'
+  MESSAGE_VERSION_USING: '&c이 서버는 DeluxeMentions {Version}'
+  MESSAGE_RELOAD: '&7플러그인 구성을로드하십시오.'
+  MESSAGE_RELOAD_BOX: '&f &8▪ &f플러그인 구성을로드하십시오.'
+  MESSAGE_HELP: '&7사용 가능한 명령을 참조하십시오.'
+  MESSAGE_HELP_BOX: '&f &8▪ &f명령을 보려면 클릭하십시오.'
+  MESSAGE_MENTION: '&7멘션을 활성화 및 비활성화합니다.'
+  MESSAGE_MENTION_BOX: '&f &8▪ &f기능을 보려면 메시지를 참조하십시오.'
+  MESSAGE_LANGUAGE_BOX: '&f &8▪ &f플러그인 언어를 변경하려면 여기를 클릭하십시오.'
+  MESSAGE_LANGUAGE: '&7플러그인의 언어를 변경하십시오!.'
+  MESSAGES_VERSION_USING_BOX: '&f &8▪ &f명령을 보려면 클릭하십시오 .o'
+  MESSAGE_TIP: '&9팁&f, 메시지에 커서를 놓고 클릭하여 선택하십시오.'
+  CONFIGURATION:
+    MESSAGE_RELOAD_CONFIGS: '&a그만큼 {File} 파일이 새로 고침되었습니다!'
+    MESSAGE_FILE_NOT_FOUND: '&c이름을 가진 파일 {File} 찾을 수 없습니다!'
+  MESSAGE_MENTION_PLAYER: '&7플레이어 멘션을 활성화하거나 비활성화합니다.'
+  MESSAGE_MENTION_PLAYER_BOX: '&f &8▪ &f채팅에 명령을 붙여넣으려면 여기를 클릭하세요.'
+  MESSAGE_PLAYER_NOT_FOUND: '&c이 플레이어는 온라인 상태가 아닙니다!'
+  MESSAGE_NOT_USE_CONSOLE: '&c콘솔에서는 이 명령을 사용할 수 없습니다!'
+  MESSAGE_DISABLED_MENTION_TARGET: '&b지금 &a{Player} &b다음 구성이 있습니다 &f| &a활성화됨'
+  MESSAGE_ENABLED_MENTION_TARGET: '&b지금 &a{Player} &b다음 구성이 있습니다 &f| &c장애가있는'
+MESSAGE_USING_SQLITE: '&aUsing SQLite for player data.'
+MESSAGE_SQLITE_ERROR_FOLDER: '&cCould not create /cache folder!'
+MESSAGE_SQLITE_ERROR_CREATE: '&cCould not create /cache/database.db file!'
+MESSAGE_SQLITE_ERROR_CONNECTION: '&cImpossible to communicate with SQLite...'
+MESSAGES_MYSQL_CONNECTED: '&aThe connection to MySQL has been established successfully!'
+MESSAGE_MYSQL_NOT_CONNECTED: '&cWe have not been able to connect to mysql.'
+LANGUAGE:
+  INVENTORY:
+    TITLE: '&8Deluxe Mentions &9Inventory'
+    ENGLISH:
+      NAME: '&aEnglish'
+      VALUE: '4cac9774da1217248532ce147f7831f67a12fdcca1cf0cb4b3848de6bc94b4'
+      SLOT: 10
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    SPANISH:
+      NAME: '&aSpanish'
+      VALUE: '6236b90de8bf16a24a6aace000b5fcbe80438eb54816efa6d54a5250189445e3'
+      SLOT: 12
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    SUOMI:
+      NAME: '&aSuomi'
+      VALUE: '59f2349729a7ec8d4b1478adfe5ca8af96479e983fbad238ccbd81409b4ed'
+      SLOT: 14
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    FRENCH:
+      NAME: '&aFrançais'
+      VALUE: '8b06b49462af409c1985c629fdb8c870ff1d9d9abed3d2fd79a2138906500907'
+      SLOT: 16
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    KOREAN:
+      NAME: '&a한국어'
+      VALUE: '3b5ce74f85054e3513b8908d1e1f6761e7dd17de0939f7e206c15ed583cf5196'
+      SLOT: 19
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    THAI:
+      NAME: '&aไทย'
+      VALUE: '428c892e43ee7d79d08efb9ccdbd571e415215c91a58d8f9ee9ede58a3986d59'
+      SLOT: 28
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    TURKEY:
+      NAME: '&aTürkiye'
+      VALUE: '9852b9aba3482348514c1034d0affe73545c9de679ae4647f99562b5e5f47d09'
+      SLOT: 21
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    VIETNAMESE:
+      NAME: '&aTiếng Việt'
+      VALUE: 'b393b54a80bccefad66f1596ec999539868d016eae4b5477e57da39759411397'
+      SLOT: 30
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    CHINESE:
+      NAME: '&a中文'
+      VALUE: 'bf4fc874baebe80a8bd8e67e5c56e969e512cc05876b75c1fc0df365b2905119'
+      SLOT: 23
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    ITALIAN:
+      NAME: '&aItalian'
+      VALUE: '97eac627244c95d125ca0c0221ab3f0ea06ef4bb7982f17aac7a11bb1c8db7ea'
+      SLOT: 25
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    PORTUGUESE:
+      NAME: '&aPortuguês'
+      VALUE: '9a46475d5dcc815f6c5f2859edbb10611f3e861c0eb14f088161b3c0ccb2b0d9'
+      SLOT: 32
+      LORE:
+        - ''
+        - '&eClique para alterar o idioma!'
+    BOOK:
+      NAME: '&aSTN Studio 번역을 도와주세요 &8(&6Resources & Plugins&8)'
+      SLOT: 44
+      LORE:
+        - '&7우리는 방법을 추가했습니다'
+        - '&7STN Studios 번역에 도움을주세요'
+        - '&7더 많은 언어로!'
+        - ''
+        - '&e웹 사이트 링크를 보려면이 아이콘을 클릭하십시오.'
+    CLOSE:
+      NAME: '&c닫기 &7(마우스 오른쪽 버튼으로 클릭)'
+      SLOT: 40
+      LORE:
+        - '&7게임 내'
+HELP_TO_TRANSLATE:
+  SOUND: 'ZOMBIE_WOODBREAK'
+  MESSAGE:
+    - '&a&m---------------------------------------------------'
+    - '&eSTN Studio를 번역하는 데 도움이되는 방법을 알아 보려면 아래 링크를 클릭하십시오. &8(&6Resources & Plugins&8)'
+    - '&6https://discord.io/STN-Studios'
+    - '&a&m----------------------------------------------------'
+
+#      ___           ___
+#     /\__\         /\  \         _____
+#    /:/ _/_        \:\  \       /::\  \
+#   /:/ /\__\        \:\  \     /:/\:\  \
+#  /:/ /:/ _/_   _____\:\  \   /:/  \:\__\
+# /:/_/:/ /\__\ /::::::::\__\ /:/__/ \:|__|
+# \:\/:/ /:/  / \:\~~\~~\/__/ \:\  \ /:/  /
+#  \::/_/:/  /   \:\  \        \:\  /:/  /
+#   \:\/:/  /     \:\  \        \:\/:/  /
+#    \::/  /       \:\__\        \::/  /
+#     \/__/         \/__/         \/__/

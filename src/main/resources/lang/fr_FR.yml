@@ -1,0 +1,164 @@
+#      ___           ___           ___                                     ___           ___           ___
+#     /\  \         /\__\         /\  \                                   /\  \         /\  \         /\__\
+#    |::\  \       /:/ _/_        \:\  \         ___         ___         /::\  \        \:\  \       /:/ _/_
+#    |:|:\  \     /:/ /\__\        \:\  \       /\__\       /\__\       /:/\:\  \        \:\  \     /:/ /\  \
+#  __|:|\:\  \   /:/ /:/ _/_   _____\:\  \     /:/  /      /:/__/      /:/  \:\  \   _____\:\  \   /:/ /::\  \
+# /::::|_\:\__\ /:/_/:/ /\__\ /::::::::\__\   /:/__/      /::\  \     /:/__/ \:\__\ /::::::::\__\ /:/_/:/\:\__\
+# \:\~~\  \/__/ \:\/:/ /:/  / \:\~~\~~\/__/  /::\  \      \/\:\  \__  \:\  \ /:/  / \:\~~\~~\/__/ \:\/:/ /:/  /
+#  \:\  \        \::/_/:/  /   \:\  \       /:/\:\  \      ~~\:\/\__\  \:\  /:/  /   \:\  \        \::/ /:/  /
+#   \:\  \        \:\/:/  /     \:\  \      \/__\:\  \        \::/  /   \:\/:/  /     \:\  \        \/_/:/  /
+#    \:\__\        \::/  /       \:\__\          \:\__\       /:/  /     \::/  /       \:\__\         /:/  /
+#     \/__/         \/__/         \/__/           \/__/       \/__/       \/__/         \/__/         \/__/
+
+# ===================
+# Language: French  =
+# By: Ruben_Artz    =
+# ===================
+MESSAGES:
+  MESSAGE_NO_MENTION: "&cVous ne pouvez pas vous citer !"
+  MESSAGE_COOLDOWN: "&cVous devez attendre un certain temps avant de pouvoir mentionner quelqu'un !"
+  MESSAGE_RELOAD_SUCCESS: '&aLa configuration du redémarrage réussi.'
+  MESSAGES_ARGS: '&cUtilisez la commande: /mention toggle'
+  MESSAGES_NO_PERMISSIONS: "&cVous n'êtes pas autorisé à utiliser cette commande."
+  MESSAGES_ACTIVATED: '&8[&cΩ&8] &aVous avez activé vos mentions.'
+  MESSAGES_DISABLED: '&8[&cΩ&8] &cVous avez désactivé vos mentions.'
+  MESSAGE_CHANGE_OF_LANGUAGE: '&aVous définissez la langue du plugin sur {Language}!'
+  MESSAGE_VERSION_USING: '&cCe serveur utilise DeluxeMentions {Version}'
+  MESSAGE_RELOAD: '&7Chargez la configuration du plugin.'
+  MESSAGE_RELOAD_BOX: '&f &8▪ &fChargez la configuration du plugin.'
+  MESSAGE_HELP: '&7Voir les commandes disponibles.'
+  MESSAGE_HELP_BOX: '&f &8▪ &fCliquez pour voir les commandes.'
+  MESSAGE_MENTION: '&7Activez et désactivez la mention.'
+  MESSAGE_MENTION_BOX: '&f &8▪ &fVoir le message pour voir les fonctions.'
+  MESSAGE_LANGUAGE_BOX: '&f &8▪ &fCliquez ici pour changer la langue du plugin.'
+  MESSAGE_LANGUAGE: '&7Changez la langue du plugin!.'
+  MESSAGES_VERSION_USING_BOX: '&f &8▪ &fCliquez pour voir les commandes.'
+  MESSAGE_TIP: '&9POINTE&f, Placez le curseur dans le message et cliquez pour sélectionner.'
+  CONFIGURATION:
+    MESSAGE_RELOAD_CONFIGS: '&ale {File} le fichier a été rechargé!'
+    MESSAGE_FILE_NOT_FOUND: '&cLe fichier avec nom {File} pas trouvé!'
+  MESSAGE_MENTION_PLAYER: '&7Activez ou désactivez la mention du lecteur.'
+  MESSAGE_MENTION_PLAYER_BOX: '&f &8▪ &fCliquez ici pour coller la commande dans le chat.'
+  MESSAGE_PLAYER_NOT_FOUND: '&cCe joueur n''est pas en ligne !'
+  MESSAGE_NOT_USE_CONSOLE: '&cVous ne pouvez pas utiliser cette commande dans la console !'
+  MESSAGE_DISABLED_MENTION_TARGET: '&bMaintenant &a{Player} &ba la configuration suivante &f| &aActivé'
+  MESSAGE_ENABLED_MENTION_TARGET: '&bMaintenant &a{Player} &ba la configuration suivante &f| &cHandicapés'
+MESSAGE_USING_SQLITE: '&aUsing SQLite for player data.'
+MESSAGE_SQLITE_ERROR_FOLDER: '&cCould not create /cache folder!'
+MESSAGE_SQLITE_ERROR_CREATE: '&cCould not create /cache/database.db file!'
+MESSAGE_SQLITE_ERROR_CONNECTION: '&cImpossible to communicate with SQLite...'
+MESSAGES_MYSQL_CONNECTED: '&aThe connection to MySQL has been established successfully!'
+MESSAGE_MYSQL_NOT_CONNECTED: '&cWe have not been able to connect to mysql.'
+LANGUAGE:
+  INVENTORY:
+    TITLE: '&8Deluxe Mentions &9Inventory'
+    ENGLISH:
+      NAME: '&aEnglish'
+      VALUE: '4cac9774da1217248532ce147f7831f67a12fdcca1cf0cb4b3848de6bc94b4'
+      SLOT: 10
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    SPANISH:
+      NAME: '&aSpanish'
+      VALUE: '6236b90de8bf16a24a6aace000b5fcbe80438eb54816efa6d54a5250189445e3'
+      SLOT: 12
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    SUOMI:
+      NAME: '&aSuomi'
+      VALUE: '59f2349729a7ec8d4b1478adfe5ca8af96479e983fbad238ccbd81409b4ed'
+      SLOT: 14
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    FRENCH:
+      NAME: '&aFrançais'
+      VALUE: '8b06b49462af409c1985c629fdb8c870ff1d9d9abed3d2fd79a2138906500907'
+      SLOT: 16
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    KOREAN:
+      NAME: '&a한국어'
+      VALUE: '3b5ce74f85054e3513b8908d1e1f6761e7dd17de0939f7e206c15ed583cf5196'
+      SLOT: 19
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    THAI:
+      NAME: '&aไทย'
+      VALUE: '428c892e43ee7d79d08efb9ccdbd571e415215c91a58d8f9ee9ede58a3986d59'
+      SLOT: 28
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    TURKEY:
+      NAME: '&aTürkiye'
+      VALUE: '9852b9aba3482348514c1034d0affe73545c9de679ae4647f99562b5e5f47d09'
+      SLOT: 21
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    VIETNAMESE:
+      NAME: '&aTiếng Việt'
+      VALUE: 'b393b54a80bccefad66f1596ec999539868d016eae4b5477e57da39759411397'
+      SLOT: 30
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    CHINESE:
+      NAME: '&a中文'
+      VALUE: 'bf4fc874baebe80a8bd8e67e5c56e969e512cc05876b75c1fc0df365b2905119'
+      SLOT: 23
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    ITALIAN:
+      NAME: '&aItalian'
+      VALUE: '97eac627244c95d125ca0c0221ab3f0ea06ef4bb7982f17aac7a11bb1c8db7ea'
+      SLOT: 25
+      LORE:
+        - ''
+        - '&eClick to change the language!'
+    PORTUGUESE:
+      NAME: '&aPortuguês'
+      VALUE: '9a46475d5dcc815f6c5f2859edbb10611f3e861c0eb14f088161b3c0ccb2b0d9'
+      SLOT: 32
+      LORE:
+        - ''
+        - '&eClique para alterar o idioma!'
+    BOOK:
+      NAME: '&aAidez-nous à traduire STN Studios &8(&6Resources & Plugins&8)'
+      SLOT: 44
+      LORE:
+        - '&7Nous avons ajouté un moyen pour'
+        - '&7vous pour nous aider à traduire STN Studios'
+        - '&7dans encore plus de langues!'
+        - ''
+        - '&eCliquez sur cette icône pour le lien du site Web.'
+    CLOSE:
+      NAME: '&cFermer &7(Clic-droit)'
+      SLOT: 40
+      LORE:
+        - '&7Vers le jeu'
+HELP_TO_TRANSLATE:
+  SOUND: 'ZOMBIE_WOODBREAK'
+  MESSAGE:
+    - '&a&m---------------------------------------------------'
+    - '&eCliquez sur le lien ci-dessous pour découvrir comment nous aider à traduire STN Studios &8(&6Resources & Plugins&8)'
+    - '&6https://discord.io/STN-Studios'
+    - '&a&m----------------------------------------------------'
+
+#      ___           ___
+#     /\__\         /\  \         _____
+#    /:/ _/_        \:\  \       /::\  \
+#   /:/ /\__\        \:\  \     /:/\:\  \
+#  /:/ /:/ _/_   _____\:\  \   /:/  \:\__\
+# /:/_/:/ /\__\ /::::::::\__\ /:/__/ \:|__|
+# \:\/:/ /:/  / \:\~~\~~\/__/ \:\  \ /:/  /
+#  \::/_/:/  /   \:\  \        \:\  /:/  /
+#   \:\/:/  /     \:\  \        \:\/:/  /
+#    \::/  /       \:\__\        \::/  /
+#     \/__/         \/__/         \/__/

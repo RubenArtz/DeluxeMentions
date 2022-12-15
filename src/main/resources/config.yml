@@ -1,0 +1,68 @@
+#      ___           ___           ___                                     ___           ___           ___
+#     /\  \         /\__\         /\  \                                   /\  \         /\  \         /\__\
+#    |::\  \       /:/ _/_        \:\  \         ___         ___         /::\  \        \:\  \       /:/ _/_
+#    |:|:\  \     /:/ /\__\        \:\  \       /\__\       /\__\       /:/\:\  \        \:\  \     /:/ /\  \
+#  __|:|\:\  \   /:/ /:/ _/_   _____\:\  \     /:/  /      /:/__/      /:/  \:\  \   _____\:\  \   /:/ /::\  \
+# /::::|_\:\__\ /:/_/:/ /\__\ /::::::::\__\   /:/__/      /::\  \     /:/__/ \:\__\ /::::::::\__\ /:/_/:/\:\__\
+# \:\~~\  \/__/ \:\/:/ /:/  / \:\~~\~~\/__/  /::\  \      \/\:\  \__  \:\  \ /:/  / \:\~~\~~\/__/ \:\/:/ /:/  /
+#  \:\  \        \::/_/:/  /   \:\  \       /:/\:\  \      ~~\:\/\__\  \:\  /:/  /   \:\  \        \::/ /:/  /
+#   \:\  \        \:\/:/  /     \:\  \      \/__\:\  \        \::/  /   \:\/:/  /     \:\  \        \/_/:/  /
+#    \:\__\        \::/  /       \:\__\          \:\__\       /:/  /     \::/  /       \:\__\         /:/  /
+#     \/__/         \/__/         \/__/           \/__/       \/__/       \/__/         \/__/         \/__/
+
+MENTION:
+  LANGUAGE: 'en_US'
+  CHECK_UPDATE: true
+  COOLDOWN_SOUND: 'VILLAGER_NO'
+  ARGS_SOUND: 'EXPLODE'
+  ACTIVATED_SOUND: 'VILLAGER_YES'
+  DISABLED_SOUND: 'VILLAGER_NO'
+  NO_PERMISSIONS_SOUND: 'ENDERDRAGON_GROWL'
+  OPEN_GUI_SOUND: 'ZOMBIE_WOODBREAK'
+  SETTINGS:
+    SOUND_OTHER_ARGS: 'VILLAGER_YES'
+    RELOAD_SOUND: 'EXPLODE'
+    ON_COMMAND: 'EXPLODE'
+    NO_UPDATE_SOUND: 'ENDERDRAGON_GROWL'
+    FILE_NOT_FOUND: 'VILLAGER_NO'
+  DATABASE:
+    ENABLED: false
+    HOST: 'localhost'
+    USER: 'root'
+    PASSWORD: ''
+    DATABASE: deluxementions
+    USE_SSL: true
+    MIN_CONNECTIONS: 1
+    MAX_CONNECTIONS: 10
+    ALLOW_PUBLIC_KEY_RETRIEVAL: false
+
+PERMS:
+  TITLE: '<exclusive>'
+  SUBTITLE: '&7&o(( You do not have access ))'
+  SD_NO_COMMAND: 'ENDERDRAGON_GROWL'
+  NO_PERMISSIONS:
+    - '&f'
+    - '  &0########&f'
+    - '  &0########&f           &c&lERROR | UNDEFINED'
+    - '  &0#&e######&0#&f'
+    - '  &e#&f#&0#&e##&0#&f#&e#   &c        Only Administrators'
+    - '  &0#&7#&e####&7#&0#'
+    - '  &0########&f'
+    - '  &0###&7##&0###&f   &eCopyright <c> 2020 &f@YouServer'
+    - '  &0########&f'
+    - '&f'
+
+# DO NOT TOUCH!
+version: "1.6"
+
+#      ___           ___
+#     /\__\         /\  \         _____
+#    /:/ _/_        \:\  \       /::\  \
+#   /:/ /\__\        \:\  \     /:/\:\  \
+#  /:/ /:/ _/_   _____\:\  \   /:/  \:\__\
+# /:/_/:/ /\__\ /::::::::\__\ /:/__/ \:|__|
+# \:\/:/ /:/  / \:\~~\~~\/__/ \:\  \ /:/  /
+#  \::/_/:/  /   \:\  \        \:\  /:/  /
+#   \:\/:/  /     \:\  \        \:\/:/  /
+#    \::/  /       \:\__\        \::/  /
+#     \/__/         \/__/         \/__/

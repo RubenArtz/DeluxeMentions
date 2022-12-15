@@ -1,0 +1,142 @@
+package ruben_artz.main.spigot.launcher;
+
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
+import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SingleLineChart;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
+import ruben_artz.main.spigot.DeluxeMentions;
+import ruben_artz.main.spigot.commands.main.RegisterCommand;
+import ruben_artz.main.spigot.database.MySQL;
+import ruben_artz.main.spigot.database.SQLite;
+import ruben_artz.main.spigot.events.mention.everyone;
+import ruben_artz.main.spigot.events.mention.target;
+import ruben_artz.main.spigot.events.playerJoin;
+import ruben_artz.main.spigot.events.playerLeave;
+import ruben_artz.main.spigot.inventory.MSInventory;
+import ruben_artz.main.spigot.other.ProjectUtil;
+import ruben_artz.main.spigot.placeholder.MSPlaceholder;
+import ruben_artz.main.spigot.util.MSUpdater;
+import ruben_artz.main.spigot.util.UtilPlayer;
+import ruben_artz.main.spigot.config.UtilUpdateConfig;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.Objects;
+
+public class MSLauncher implements MSLaunch {
+    private static final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
+    private static MSLauncher instance;
+    public static MSLauncher getInstance() {
+        return instance;
+    }
+
+    public BukkitAudiences audiences;
+
+    @Override
+    public void launch(DeluxeMentions plugin) {
+        instance = this;
+        plugin.LoadAllConfigs();
+        UtilUpdateConfig.updateConfigs();
+        setCommands();
+        registerPlaceholders();
+        setEvents();
+        updateChecker(UPDATER.CONSOLE);
+        plugin.Messages();
+        setMetrics();
+        setConnection();
+    }
+
+    @Override
+    public void shutdown() {
+       if (ProjectUtil.ifIsMysql()) {
+           MySQL.shutdown();
+       } else {
+           SQLite.shutdown();
+       }
+    }
+
+    private void setMetrics() {
+        final Metrics metrics = new Metrics(plugin,5770);
+        metrics.addCustomChart(new SingleLineChart("players", () -> Bukkit.getOnlinePlayers().size()));
+    }
+    private void setConnection() {
+        ProjectUtil.syncRunTask(() -> {
+            if (ProjectUtil.ifIsMysql()) {
+                MySQL reconnect = new MySQL();
+                reconnect.init(plugin);
+            } else {
+                SQLite sqLite = new SQLite();
+                sqLite.init();
+            }
+        });
+    }
+    public void setCommands() {
+        Objects.requireNonNull(plugin.getCommand("deluxementions")).setExecutor(new RegisterCommand());
+        Objects.requireNonNull(plugin.getCommand("mention")).setExecutor(new ruben_artz.main.spigot.commands.other.RegisterCommand());
+    }
+    private void setEvents(){
+        PluginManager event = plugin.getServer().getPluginManager();
+        Arrays.asList(
+                new MSUpdater(),
+                new UtilPlayer(),
+                new MSInventory(),
+                new playerJoin(),
+                new playerLeave(),
+                new target(),
+                new everyone()).forEach(listener -> event.registerEvents(listener, plugin));
+        audiences = BukkitAudiences.create(plugin);
+    }
+    private void registerPlaceholders() {
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            new MSPlaceholder().register();
+        }
+    }
+    public enum UPDATER {
+        JOIN_PLAYER, CONSOLE
+    }
+    public void updateChecker(UPDATER type) {
+        switch (type) {
+            case CONSOLE: {
+                ProjectUtil.syncRunTask(() -> ProjectUtil.syncRepeatingTask("HOURS", 5, () -> {
+                    try {
+                        HttpURLConnection con = (HttpURLConnection)new URL("https://api.spigotmc.org/legacy/update.php?resource=67248").openConnection();
+                        int timed_out = 1250;
+                        con.setConnectTimeout(timed_out);
+                        con.setReadTimeout(timed_out);
+                        plugin.latestversion = new BufferedReader(new InputStreamReader(con.getInputStream())).readLine();
+                        if ((plugin.latestversion.length() <= 7) && (!plugin.version.equals(plugin.latestversion))) {
+                            plugin.sendConsole( "&8--------------------------------------------------------------------------------------");
+                            plugin.sendConsole( ""+plugin.prefix+"&fYou have an old version of the &eDeluxe Mentions &fplugin.");
+                            plugin.sendConsole( ""+plugin.prefix+"&fPlease download the latest &e"+ plugin.getLatestVersion()+" &fversion.");
+                            plugin.sendConsole( "&8--------------------------------------------------------------------------------------");
+                        }
+                    }
+                    catch (Exception ignore) {}
+                }));
+                break;
+            }
+            case JOIN_PLAYER: {
+                try {
+                    HttpURLConnection con = (HttpURLConnection)new URL("https://api.spigotmc.org/legacy/update.php?resource=67248").openConnection();
+                    int timed_out = 1250;
+                    con.setConnectTimeout(timed_out);
+                    con.setReadTimeout(timed_out);
+                    plugin.latestversion = new BufferedReader(new InputStreamReader(con.getInputStream())).readLine();
+                    if ((plugin.latestversion.length() <= 7) && (!plugin.version.equals(plugin.latestversion))) {
+                        plugin.sendConsole( "&8--------------------------------------------------------------------------------------");
+                        plugin.sendConsole( ""+plugin.prefix+"&fYou have an old version of the &eDeluxe Mentions &fplugin.");
+                        plugin.sendConsole( ""+plugin.prefix+"&fPlease download the latest &e"+ plugin.getLatestVersion()+" &fversion.");
+                        plugin.sendConsole( "&8--------------------------------------------------------------------------------------");
+                    }
+                }
+                catch (Exception ignore) {}
+                break;
+            }
+        }
+
+    }
+}
