@@ -43,7 +43,7 @@ public class MySQL {
                     "UUID VARCHAR(45) NOT NULL," +
                     "EXCLUDETIMER VARCHAR(45) NOT NULL," +
                     "MENTION VARCHAR(45) NOT NULL," +
-                    "PRIMARY KEY (USER))";
+                    "PRIMARY KEY (UUID))";
             statement.executeUpdate(prepared);
             plugin.sendConsole(plugin.prefix + plugin.getFileTranslations().getString("MESSAGES_MYSQL_CONNECTED"));
         } catch (SQLException exception) {
