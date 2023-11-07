@@ -6,8 +6,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import ruben_artz.main.spigot.DeluxeMentions;
 import ruben_artz.main.spigot.commands.other.SubCommand;
-import ruben_artz.main.spigot.database.Module;
 import ruben_artz.main.spigot.features.sendActionbar;
+import ruben_artz.main.spigot.launcher.MSLauncher;
 import ruben_artz.main.spigot.other.ProjectUtil;
 import ruben_artz.main.spigot.other.addColor;
 
@@ -26,12 +26,12 @@ public class Toggle extends SubCommand {
                     Player player = (Player) sender;
                     if (plugin.IgnoreMention.contains(player.getUniqueId())) {
                         plugin.getIgnoreMention().remove(player.getUniqueId());
-                        Module.set(player.getUniqueId(), "MENTION", true);
+                        MSLauncher.getInstance().getCache().set(player.getUniqueId(), "MENTION", true);
                         XSound.play(player, this.plugin.getConfig().getString("MENTION.ACTIVATED_SOUND"));
                         sendActionbar.sendActionBar(player, plugin.getFileTranslations().getString("MESSAGES.MESSAGES_ACTIVATED"), 80);
                     } else {
                         plugin.getIgnoreMention().add(player.getUniqueId());
-                        Module.set(player.getUniqueId(), "MENTION", false);
+                        MSLauncher.getInstance().getCache().set(player.getUniqueId(), "MENTION", false);
                         XSound.play(player, this.plugin.getConfig().getString("MENTION.DISABLED_SOUND"));
                         sendActionbar.sendActionBar(player, plugin.getFileTranslations().getString("MESSAGES.MESSAGES_DISABLED"), 80);
                     }
@@ -55,12 +55,12 @@ public class Toggle extends SubCommand {
             ProjectUtil.syncRunTask(() -> {
                 if (plugin.IgnoreMention.contains(target.getUniqueId())) {
                     plugin.getIgnoreMention().remove(target.getUniqueId());
-                    Module.set(target.getUniqueId(), "MENTION", true);
+                    MSLauncher.getInstance().getCache().set(target.getUniqueId(), "MENTION", true);
                     XSound.play(target, this.plugin.getConfig().getString("MENTION.ACTIVATED_SOUND"));
                     sendActionbar.sendActionBar(target, plugin.getFileTranslations().getString("MESSAGES.MESSAGES_ACTIVATED"), 80);
                 } else {
                     plugin.getIgnoreMention().add(target.getUniqueId());
-                    Module.set(target.getUniqueId(), "MENTION", false);
+                    MSLauncher.getInstance().getCache().set(target.getUniqueId(), "MENTION", false);
                     XSound.play(target, this.plugin.getConfig().getString("MENTION.DISABLED_SOUND"));
                     sendActionbar.sendActionBar(target, plugin.getFileTranslations().getString("MESSAGES.MESSAGES_DISABLED"), 80);
                 }

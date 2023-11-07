@@ -1,5 +1,8 @@
 package ruben_artz.main.spigot;
 
+import io.github.slimjar.app.builder.ApplicationBuilder;
+import io.github.slimjar.resolver.data.Repository;
+import lombok.Getter;
 import net.kyori.adventure.audience.Audience;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -12,29 +15,53 @@ import ruben_artz.main.spigot.other.ProjectUtil;
 import ruben_artz.main.spigot.other.addColor;
 import ruben_artz.main.spigot.config.Configurations;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
+
 
 public final class DeluxeMentions extends JavaPlugin {
     public PluginDescriptionFile file = getDescription();
     public String table = file.getName().toLowerCase()+"_1_0";
-    public String version = file.getVersion();
+    @Getter public String version = file.getVersion();
     public String latestversion;
-    public String prefix = "&8[&9Deluxe Mentions&8]&f ";
+    @Getter public String prefix = "&8[&9Deluxe Mentions&8]&f ";
     public List<String> authors = file.getAuthors();
     public String web = file.getWebsite();
     public Configurations fileUtilsSpigot;
     private MSLaunch launch;
-    public Set<UUID> IgnoreMention = new HashSet<>();
+    @Getter public Set<UUID> IgnoreMention = new HashSet<>();
 
+    @Override
+    public void onLoad() {
+        getLogger().info("Verifying the dependencies...");
+
+        try {
+            Path downloadPath = Paths.get(getDataFolder().getPath() + File.separator + "cache");
+            ApplicationBuilder.appending("DeluxeMentions")
+                    .downloadDirectoryPath(downloadPath)
+                    .mirrorSelector((a, b) -> a)
+                    .internalRepositories(Collections.singleton(new Repository(new URL("https://repo1.maven.org/maven2/"))))
+                    .build();
+
+            getLogger().info("Dependencies successfully loaded!");
+        } catch (ReflectiveOperationException | IOException | URISyntaxException | NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @SuppressWarnings("deprecation")
     public void onEnable() {
         try {
             this.launch = Class.forName("ruben_artz.main.spigot.launcher.MSLauncher").asSubclass(MSLaunch.class).newInstance();
             ProjectUtil.syncRunTask(() -> DeluxeMentions.this.launch.launch(DeluxeMentions.this));
         } catch (InstantiationException|IllegalAccessException|ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
     public void onDisable() {
@@ -63,9 +90,7 @@ public final class DeluxeMentions extends JavaPlugin {
     public Audience getAudiences(Player player) {
         return MSLauncher.getInstance().audiences.player(player);
     }
-    public Set<UUID> getIgnoreMention() {
-        return IgnoreMention;
-    }
+
     public Configurations getFileTranslations() {
         return fileUtilsSpigot;
     }
@@ -75,9 +100,7 @@ public final class DeluxeMentions extends JavaPlugin {
     public FileConfiguration getLangVersion() {
         return fileUtilsSpigot.getFile("lang/version.yml");
     }
-    public String getVersion() {
-        return this.version;
-    }
+
     public void LoadAllConfigs(){
         saveDefaultConfig();
         reloadConfig();
@@ -92,16 +115,16 @@ public final class DeluxeMentions extends JavaPlugin {
     }
 
     public void Messages(){
-        sendConsole("" + prefix + "&aSuccessfully enabled &cv" + version + "");
+        sendConsole(prefix + "&aSuccessfully enabled &cv" + version);
         sendConsole("&8--------------------------------------------------------------------------------------");
         sendConsole("&7         Developed by &cRuben_Artz");
-        sendConsole("" + prefix + "§aVersion: §c" + version+" &ais loading...");
-        sendConsole("" + prefix + "&aServer: &c"+Bukkit.getVersion()+"");
-        sendConsole("" + prefix + "&aLoading necessary files...");
+        sendConsole(prefix + "§aVersion: §c" + version+" &ais loading...");
+        sendConsole(prefix + "&aServer: &c"+Bukkit.getVersion());
+        sendConsole(prefix + "&aLoading necessary files...");
         sendConsole("&f");
         sendConsole("&fDeluxe Mentions Starting plugin...");
         sendConsole("&f");
-        sendConsole("" + prefix + "§aSuccessfully loaded files");
+        sendConsole(prefix + "§aSuccessfully loaded files");
         sendConsole("&f");
         sendConsole("&8--------------------------------------------------------------------------------------");
     }

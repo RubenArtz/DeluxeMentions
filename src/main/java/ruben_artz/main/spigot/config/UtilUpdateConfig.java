@@ -19,7 +19,7 @@ public class UtilUpdateConfig {
             /*
             Update config of "config.yml"
              */
-            if (!Objects.equals(plugin.getConfig().getString("version"), "1.6")) {
+            if (!Objects.equals(plugin.getConfig().getString("version"), "1.7")) {
                 try {
                     Files.copy(Paths.get(plugin.getDataFolder() + "/config.yml"), Paths.get(plugin.getDataFolder() + "/old-config-" + plugin.getConfig().getString("version") + ".yml"), StandardCopyOption.REPLACE_EXISTING);
                     File file = new File(plugin.getDataFolder(), "config.yml");
@@ -27,7 +27,7 @@ public class UtilUpdateConfig {
                     plugin.saveDefaultConfig();
                     plugin.sendConsole(plugin.prefix+"&cYour config.yml folder was updated in this version!");
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
             }
             /*
@@ -41,14 +41,14 @@ public class UtilUpdateConfig {
                     plugin.initiate();
                     plugin.sendConsole(plugin.prefix+"&cYour groups.yml folder was updated in this version!");
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
             }
             /*
             Update config of "lang.file"
              */
             ProjectUtil.syncTaskLater(10L, () -> {
-                if (!Objects.requireNonNull(plugin.getLangVersion().getString("version")).contains("1.3")) {
+                if (!Objects.requireNonNull(plugin.getLangVersion().getString("version")).contains("1.4")) {
                     File f = new File(plugin.getDataFolder(), "/lang/");
                     File[] files = f.listFiles();
                     if (files != null) {

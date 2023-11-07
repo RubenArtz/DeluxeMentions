@@ -6,8 +6,8 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import ruben_artz.main.spigot.DeluxeMentions;
-import ruben_artz.main.spigot.database.Module;
 import ruben_artz.main.spigot.events.antibot.preventAttacks;
+import ruben_artz.main.spigot.launcher.MSLauncher;
 import ruben_artz.main.spigot.other.ProjectUtil;
 
 public class playerJoin implements Listener {
@@ -24,25 +24,26 @@ public class playerJoin implements Listener {
              * Add data if the player does not exist!
              */
             try {
-                if (Module.ifNotExists(player.getUniqueId())) {
+                if (MSLauncher.getInstance().getCache().ifNotExists(player.getUniqueId())) {
                     if (preventAttacks.isAttacking()) return;
-                    Module.setData(player.getUniqueId());
+                    MSLauncher.getInstance().getCache().addDatabase(player.getUniqueId());
                 }
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            if (Module.getBool(player.getUniqueId(), "MENTION")) {
+
+            if (MSLauncher.getInstance().getCache().setBool(player.getUniqueId(), "MENTION")) {
                 plugin.getIgnoreMention().remove(player.getUniqueId());
-                Module.set(player.getUniqueId(), "MENTION", true);
+                MSLauncher.getInstance().getCache().set(player.getUniqueId(), "MENTION", true);
             } else {
                 plugin.getIgnoreMention().add(player.getUniqueId());
-                Module.set(player.getUniqueId(), "MENTION", false);
+                MSLauncher.getInstance().getCache().set(player.getUniqueId(), "MENTION", false);
             }
             if (player.hasPermission("DeluxeMentions.BypassCooldown")) {
-                Module.set(player.getUniqueId(), "EXCLUDETIMER", true);
+                MSLauncher.getInstance().getCache().set(player.getUniqueId(), "EXCLUDETIMER", true);
                 return;
             }
-            Module.set(player.getUniqueId(), "EXCLUDETIMER", false);
+            MSLauncher.getInstance().getCache().set(player.getUniqueId(), "EXCLUDETIMER", false);
         });
     }
 }

@@ -6,8 +6,8 @@ import org.bukkit.OfflinePlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ruben_artz.main.spigot.DeluxeMentions;
-import ruben_artz.main.spigot.database.Module;
 import ruben_artz.main.spigot.events.antibot.preventAttacks;
+import ruben_artz.main.spigot.launcher.MSLauncher;
 import ruben_artz.main.spigot.other.addColor;
 
 import java.util.HashMap;
@@ -36,10 +36,10 @@ public class MSPlaceholder extends PlaceholderExpansion implements Configurable 
         switch (params) {
             case "bypass": {
                 if (preventAttacks.isAttacking()) return "Loading...";
-                if (Module.ifNotExists(player.getUniqueId())) {
+                if (MSLauncher.getInstance().getCache().ifNotExists(player.getUniqueId())) {
                     return "N/A";
                 } else {
-                    if (Module.getBool(player.getUniqueId(), "EXCLUDETIMER")) {
+                    if (MSLauncher.getInstance().getCache().setBool(player.getUniqueId(), "EXCLUDETIMER")) {
                         return addColor.addColors(bypass_true);
                     } else {
                         return addColor.addColors(bypass_false);
@@ -48,10 +48,10 @@ public class MSPlaceholder extends PlaceholderExpansion implements Configurable 
             }
             case "status": {
                 if (preventAttacks.isAttacking()) return "Loading...";
-                if (Module.ifNotExists(player.getUniqueId())) {
+                if (MSLauncher.getInstance().getCache().ifNotExists(player.getUniqueId())) {
                     return "N/A";
                 } else {
-                    if (Module.getBool(player.getUniqueId(), "MENTION")) {
+                    if (MSLauncher.getInstance().getCache().setBool(player.getUniqueId(), "MENTION")) {
                         return addColor.addColors(bypass_true);
                     } else {
                         return addColor.addColors(bypass_false);

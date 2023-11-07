@@ -43,12 +43,8 @@ MESSAGES:
   MESSAGE_NOT_USE_CONSOLE: '&cNon puoi usare questo comando nella console!'
   MESSAGE_DISABLED_MENTION_TARGET: '&bOra &a{Player} &bha la seguente configurazione &f| &aAbilitato'
   MESSAGE_ENABLED_MENTION_TARGET: '&bOra &a{Player} &bha la seguente configurazione &f| &cDisabile'
-MESSAGE_USING_SQLITE: '&aUsing SQLite for player data.'
-MESSAGE_SQLITE_ERROR_FOLDER: '&cCould not create /cache folder!'
-MESSAGE_SQLITE_ERROR_CREATE: '&cCould not create /cache/database.db file!'
-MESSAGE_SQLITE_ERROR_CONNECTION: '&cImpossible to communicate with SQLite...'
-MESSAGES_MYSQL_CONNECTED: '&aThe connection to MySQL has been established successfully!'
-MESSAGE_MYSQL_NOT_CONNECTED: '&cWe have not been able to connect to mysql.'
+MESSAGE_DATABASE_CONNECTED: '&aThe {Database} data management has been successfully connected.'
+MESSAGE_DATABASE_NOT_CONNECTED: '&cError connecting to the database.'
 LANGUAGE:
   INVENTORY:
     TITLE: '&8Deluxe Mentions &9Inventory'

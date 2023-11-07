@@ -1,5 +1,6 @@
 package ruben_artz.main.spigot.launcher;
 
+import lombok.Getter;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SingleLineChart;
@@ -7,8 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import ruben_artz.main.spigot.DeluxeMentions;
 import ruben_artz.main.spigot.commands.main.RegisterCommand;
-import ruben_artz.main.spigot.database.MySQL;
-import ruben_artz.main.spigot.database.SQLite;
+import ruben_artz.main.spigot.database.Cache;
 import ruben_artz.main.spigot.events.mention.everyone;
 import ruben_artz.main.spigot.events.mention.target;
 import ruben_artz.main.spigot.events.playerJoin;
@@ -26,13 +26,15 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class MSLauncher implements MSLaunch {
     private static final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
-    private static MSLauncher instance;
-    public static MSLauncher getInstance() {
-        return instance;
-    }
+
+    @Getter private static MSLauncher instance;
+    @Getter private Cache cache;
 
     public BukkitAudiences audiences;
 
@@ -52,28 +54,29 @@ public class MSLauncher implements MSLaunch {
 
     @Override
     public void shutdown() {
-       if (ProjectUtil.ifIsMysql()) {
-           MySQL.shutdown();
-       } else {
-           SQLite.shutdown();
-       }
+        if(getCache() != null) {
+            ExecutorService executorService = Executors.newSingleThreadExecutor();
+            executorService.execute(() -> getCache().getMethod().shutdown());
+
+            executorService.shutdown();
+            try {
+                if (!executorService.awaitTermination(15, TimeUnit.SECONDS)) {
+                    executorService.shutdownNow();
+                    plugin.getLogger().warning("Cache took too long to shut down. Skipping it.");
+                }
+            }catch(InterruptedException ignored){}
+        }
     }
 
     private void setMetrics() {
         final Metrics metrics = new Metrics(plugin,5770);
         metrics.addCustomChart(new SingleLineChart("players", () -> Bukkit.getOnlinePlayers().size()));
     }
+
     private void setConnection() {
-        ProjectUtil.syncRunTask(() -> {
-            if (ProjectUtil.ifIsMysql()) {
-                MySQL reconnect = new MySQL();
-                reconnect.init(plugin);
-            } else {
-                SQLite sqLite = new SQLite();
-                sqLite.init();
-            }
-        });
+        cache = new Cache();
     }
+
     public void setCommands() {
         Objects.requireNonNull(plugin.getCommand("deluxementions")).setExecutor(new RegisterCommand());
         Objects.requireNonNull(plugin.getCommand("mention")).setExecutor(new ruben_artz.main.spigot.commands.other.RegisterCommand());
@@ -110,8 +113,8 @@ public class MSLauncher implements MSLaunch {
                         plugin.latestversion = new BufferedReader(new InputStreamReader(con.getInputStream())).readLine();
                         if ((plugin.latestversion.length() <= 7) && (!plugin.version.equals(plugin.latestversion))) {
                             plugin.sendConsole( "&8--------------------------------------------------------------------------------------");
-                            plugin.sendConsole( ""+plugin.prefix+"&fYou have an old version of the &eDeluxe Mentions &fplugin.");
-                            plugin.sendConsole( ""+plugin.prefix+"&fPlease download the latest &e"+ plugin.getLatestVersion()+" &fversion.");
+                            plugin.sendConsole( plugin.prefix+"&fYou have an old version of the &eDeluxe Mentions &fplugin.");
+                            plugin.sendConsole( plugin.prefix+"&fPlease download the latest &e"+ plugin.getLatestVersion()+" &fversion.");
                             plugin.sendConsole( "&8--------------------------------------------------------------------------------------");
                         }
                     }
@@ -128,8 +131,8 @@ public class MSLauncher implements MSLaunch {
                     plugin.latestversion = new BufferedReader(new InputStreamReader(con.getInputStream())).readLine();
                     if ((plugin.latestversion.length() <= 7) && (!plugin.version.equals(plugin.latestversion))) {
                         plugin.sendConsole( "&8--------------------------------------------------------------------------------------");
-                        plugin.sendConsole( ""+plugin.prefix+"&fYou have an old version of the &eDeluxe Mentions &fplugin.");
-                        plugin.sendConsole( ""+plugin.prefix+"&fPlease download the latest &e"+ plugin.getLatestVersion()+" &fversion.");
+                        plugin.sendConsole( plugin.prefix+"&fYou have an old version of the &eDeluxe Mentions &fplugin.");
+                        plugin.sendConsole( plugin.prefix+"&fPlease download the latest &e"+ plugin.getLatestVersion()+" &fversion.");
                         plugin.sendConsole( "&8--------------------------------------------------------------------------------------");
                     }
                 }
