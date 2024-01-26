@@ -1,11 +1,11 @@
 package ruben_artz.main.spigot.commands.main.SubCommands;
 
-import com.cryptomorin.xseries.XSound;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import ruben_artz.main.spigot.DeluxeMentions;
 import ruben_artz.main.spigot.commands.main.SubCommand;
 import ruben_artz.main.spigot.inventory.MSInventory;
+import ruben_artz.main.spigot.other.ProjectUtil;
 
 public class Language extends SubCommand {
     private final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
@@ -18,7 +18,7 @@ public class Language extends SubCommand {
         if (args.length == 1) {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
-                XSound.play(player, plugin.getFileTranslations().getString("MENTION.OPEN_GUI_SOUND"));
+                ProjectUtil.executeSound(plugin.getFileTranslations().getString("MENTION.OPEN_GUI_SOUND"), player);
                 MSInventory inv = new MSInventory();
                 inv.getInventory(player);
             }

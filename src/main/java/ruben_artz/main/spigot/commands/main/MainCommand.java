@@ -1,6 +1,5 @@
 package ruben_artz.main.spigot.commands.main;
 
-import com.cryptomorin.xseries.XSound;
 import com.google.common.collect.ImmutableList;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -39,7 +38,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, @NotNull Command command, @NotNull String label, String[] array) {
         if (!sender.hasPermission(permission)) {
-            XSound.play((Player) sender, plugin.getConfig().getString("PERMS.SD_NO_COMMAND"));
+            ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("PERMS.SD_NO_COMMAND")), (Player) sender);
             List<String> Lines = plugin.getConfig().getStringList("PERMS.NO_PERMISSIONS");
             for (String s : Lines) {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', s).replaceAll("#", "▉").replaceAll("<c>", "©"));
@@ -61,7 +60,7 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                 for (SubCommand subCommand : subCommands) {
                     if (subCommand.getNames().contains(array[0].toLowerCase())) {
                         if (!sender.hasPermission(subCommand.getPermission()) || !sender.hasPermission(permission)) {
-                            XSound.play((Player) sender, plugin.getConfig().getString("PERMS.SD_NO_COMMAND"));
+                            ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("PERMS.SD_NO_COMMAND")), (Player) sender);
                             List<String> Lines = plugin.getConfig().getStringList("PERMS.NO_PERMISSIONS");
                             for (String s : Lines) {
                                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', s).replaceAll("#", "▉").replaceAll("<c>", "©"));
@@ -136,6 +135,5 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         return completions;
     }
 
-    private void onCommand(CommandSender sender, String[] array) {
-    }
+    private void onCommand(CommandSender sender, String[] array) {}
 }

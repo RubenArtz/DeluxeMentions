@@ -2,6 +2,7 @@ package ruben_artz.main.spigot.other;
 
 import com.cryptomorin.xseries.SkullUtils;
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XSound;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextReplacementConfig;
@@ -18,6 +19,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.metadata.MetadataValue;
 import ruben_artz.main.spigot.DeluxeMentions;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -149,5 +151,21 @@ public class ProjectUtil {
     }
     public static boolean ifIsMysql() {
         return Objects.equals(plugin.getConfig().getString("MENTION.DATABASE.ENABLED"), "true");
+    }
+
+    public static void executeSound(@Nonnull String path, final Player player) {
+        final String string = "ItemsAdder_Sound: ";
+        if (path.startsWith(string)) {
+            if (path.contains(", ")) {
+                final String[] line = path.replace(string, "").split(", ");
+                player.playSound(player.getLocation(), line[0], Float.parseFloat(line[1]), Float.parseFloat(line[2]));
+                return;
+            }
+            final String line = path.replace(string, "");
+
+            player.playSound(player.getLocation(), line, 1.0f, 1.0f);
+        } else {
+            XSound.play(path, soundPlayer -> soundPlayer.forPlayers(player));
+        }
     }
 }

@@ -1,6 +1,5 @@
 package ruben_artz.main.spigot.events.mention;
 
-import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -42,7 +41,7 @@ public class everyone implements Listener {
                  * Send Features
                  */
                 if (plugin.getGroups().getBoolean("MENTION.GROUPS.EVERYONE.USE_SOUND_NOTIFICATION")) {
-                    XSound.play(mention, plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.SOUND_NOTIFICATION"));
+                    ProjectUtil.executeSound(Objects.requireNonNull(plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.SOUND_NOTIFICATION")), mention);
                 }
                 if (plugin.getGroups().getBoolean("MENTION.GROUPS.EVERYONE.USE_TITLES")) {
                     for (String listTitle : plugin.getGroups().getStringList("MENTION.GROUPS.EVERYONE.SEND_TITLE")) {

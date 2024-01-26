@@ -1,6 +1,5 @@
 package ruben_artz.main.spigot.commands.other.SubCommands;
 
-import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -10,6 +9,8 @@ import ruben_artz.main.spigot.features.sendActionbar;
 import ruben_artz.main.spigot.launcher.MSLauncher;
 import ruben_artz.main.spigot.other.ProjectUtil;
 import ruben_artz.main.spigot.other.addColor;
+
+import java.util.Objects;
 
 public class Toggle extends SubCommand {
     private final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
@@ -27,12 +28,12 @@ public class Toggle extends SubCommand {
                     if (plugin.IgnoreMention.contains(player.getUniqueId())) {
                         plugin.getIgnoreMention().remove(player.getUniqueId());
                         MSLauncher.getInstance().getCache().set(player.getUniqueId(), "MENTION", true);
-                        XSound.play(player, this.plugin.getConfig().getString("MENTION.ACTIVATED_SOUND"));
+                        ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.ACTIVATED_SOUND")), player);
                         sendActionbar.sendActionBar(player, plugin.getFileTranslations().getString("MESSAGES.MESSAGES_ACTIVATED"), 80);
                     } else {
                         plugin.getIgnoreMention().add(player.getUniqueId());
                         MSLauncher.getInstance().getCache().set(player.getUniqueId(), "MENTION", false);
-                        XSound.play(player, this.plugin.getConfig().getString("MENTION.DISABLED_SOUND"));
+                        ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.DISABLED_SOUND")), player);
                         sendActionbar.sendActionBar(player, plugin.getFileTranslations().getString("MESSAGES.MESSAGES_DISABLED"), 80);
                     }
                 } else {
@@ -43,7 +44,7 @@ public class Toggle extends SubCommand {
         }
         if (args.length >= 2) {
             if (!sender.hasPermission("DeluxeMentions.Admin")) {
-                XSound.play((Player) sender, this.plugin.getConfig().getString("MENTION.NO_PERMISSIONS_SOUND"));
+                ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.NO_PERMISSIONS_SOUND")), (Player) sender);
                 sender.sendMessage(addColor.addColors(ProjectUtil.setPlaceholders((Player) sender, this.plugin.getFileTranslations().getString("MESSAGES.MESSAGES_NO_PERMISSIONS"))));
                 return;
             }
@@ -56,12 +57,12 @@ public class Toggle extends SubCommand {
                 if (plugin.IgnoreMention.contains(target.getUniqueId())) {
                     plugin.getIgnoreMention().remove(target.getUniqueId());
                     MSLauncher.getInstance().getCache().set(target.getUniqueId(), "MENTION", true);
-                    XSound.play(target, this.plugin.getConfig().getString("MENTION.ACTIVATED_SOUND"));
+                    ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.ACTIVATED_SOUND")), target);
                     sendActionbar.sendActionBar(target, plugin.getFileTranslations().getString("MESSAGES.MESSAGES_ACTIVATED"), 80);
                 } else {
                     plugin.getIgnoreMention().add(target.getUniqueId());
                     MSLauncher.getInstance().getCache().set(target.getUniqueId(), "MENTION", false);
-                    XSound.play(target, this.plugin.getConfig().getString("MENTION.DISABLED_SOUND"));
+                    ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.DISABLED_SOUND")), target);
                     sendActionbar.sendActionBar(target, plugin.getFileTranslations().getString("MESSAGES.MESSAGES_DISABLED"), 80);
                 }
             });

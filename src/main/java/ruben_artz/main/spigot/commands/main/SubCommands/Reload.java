@@ -1,12 +1,13 @@
 package ruben_artz.main.spigot.commands.main.SubCommands;
 
-import com.cryptomorin.xseries.XSound;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import ruben_artz.main.spigot.DeluxeMentions;
 import ruben_artz.main.spigot.commands.main.SubCommand;
 import ruben_artz.main.spigot.other.ProjectUtil;
 import ruben_artz.main.spigot.other.addColor;
+
+import java.util.Objects;
 
 public class Reload extends SubCommand {
     private final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
@@ -18,7 +19,7 @@ public class Reload extends SubCommand {
     public void onCommand(CommandSender sender, String[] args) {
         if (args.length == 1) {
             if (sender instanceof Player) {
-                XSound.play((Player) sender, plugin.getConfig().getString("MENTION.SETTINGS.RELOAD_SOUND"));
+                ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.SETTINGS.RELOAD_SOUND")), (Player) sender);
             }
             ProjectUtil.LoadConfigCommand();
             sender.sendMessage(addColor.addColors(plugin.getFileTranslations().getString("MESSAGES.MESSAGE_RELOAD_SUCCESS")));
@@ -40,7 +41,7 @@ public class Reload extends SubCommand {
                     return;
                 }
                 if (sender instanceof Player) {
-                    XSound.play((Player) sender, plugin.getConfig().getString("MENTION.SETTINGS.FILE_NOT_FOUND"));
+                    ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.SETTINGS.FILE_NOT_FOUND")), (Player) sender);
                 }
                 sender.sendMessage(addColor.addColors(plugin.getFileTranslations().getString("MESSAGES.CONFIGURATION.MESSAGE_FILE_NOT_FOUND").replace("{File}", args[1] + ".yml")));
             }

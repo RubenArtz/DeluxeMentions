@@ -1,6 +1,5 @@
 package ruben_artz.main.spigot.events.mention;
 
-import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -40,7 +39,7 @@ public class target implements Listener {
                              * Send Features
                              */
                             sendActionbar.sendActionBar(player, plugin.getFileTranslations().getString("MESSAGES.MESSAGE_COOLDOWN"), 100);
-                            XSound.play(player, plugin.getGroups().getString("MENTION.COOLDOWN_SOUND"));
+                            ProjectUtil.executeSound(Objects.requireNonNull(plugin.getGroups().getString("MENTION.COOLDOWN_SOUND")), player);
                             return;
                         }
                         /*
@@ -76,7 +75,7 @@ public class target implements Listener {
                          * Send Features
                          */
                         if (plugin.getGroups().getBoolean("MENTION.GROUPS.ADMINISTRATOR.USE_SOUND_NOTIFICATION")) {
-                            XSound.play(mention, this.plugin.getGroups().getString("MENTION.GROUPS.ADMINISTRATOR.SOUND_NOTIFICATION"));
+                            ProjectUtil.executeSound(Objects.requireNonNull(plugin.getGroups().getString("MENTION.GROUPS.ADMINISTRATOR.SOUND_NOTIFICATION")), mention);
                         }
                         if (plugin.getGroups().getBoolean("MENTION.GROUPS.ADMINISTRATOR.USE_TITLES")) {
                             for (String listTitle : plugin.getGroups().getStringList("MENTION.GROUPS.ADMINISTRATOR.SEND_TITLE")) {
@@ -109,7 +108,7 @@ public class target implements Listener {
                              * Send Features
                              */
                             sendActionbar.sendActionBar(player, plugin.getFileTranslations().getString("MESSAGES.MESSAGE_COOLDOWN"), 100);
-                            XSound.play(player, plugin.getGroups().getString("MENTION.COOLDOWN_SOUND"));
+                            ProjectUtil.executeSound(Objects.requireNonNull(plugin.getGroups().getString("MENTION.COOLDOWN_SOUND")), player);
                             return;
                         }
                         /*
@@ -145,7 +144,7 @@ public class target implements Listener {
                          * Send Features
                          */
                         if (plugin.getGroups().getBoolean("MENTION.GROUPS.PLAYERS." + key + ".USE_SOUND_NOTIFICATION")) {
-                            XSound.play(mention, this.plugin.getGroups().getString("MENTION.GROUPS.PLAYERS." + key + ".SOUND_NOTIFICATION"));
+                            ProjectUtil.executeSound(Objects.requireNonNull(plugin.getGroups().getString("MENTION.GROUPS.PLAYERS." + key + ".SOUND_NOTIFICATION")), mention);
                         }
                         if (plugin.getGroups().getBoolean("MENTION.GROUPS.PLAYERS." + key + ".USE_TITLES")) {
                             for (String listTitle : plugin.getGroups().getStringList("MENTION.GROUPS.PLAYERS." + key + ".SEND_TITLE")) {

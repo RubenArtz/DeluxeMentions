@@ -1,6 +1,5 @@
 package ruben_artz.main.spigot.commands.other;
 
-import com.cryptomorin.xseries.XSound;
 import com.google.common.collect.ImmutableList;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -16,6 +15,7 @@ import ruben_artz.main.spigot.other.addColor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class MainPlayer implements CommandExecutor, TabCompleter {
     private final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
@@ -35,7 +35,7 @@ public class MainPlayer implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] array) {
         if (!sender.hasPermission(permission)) {
-            XSound.play((Player) sender, this.plugin.getConfig().getString("MENTION.NO_PERMISSIONS_SOUND"));
+            ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.NO_PERMISSIONS_SOUND")), (Player) sender);
             sender.sendMessage(addColor.addColors(ProjectUtil.setPlaceholders((Player) sender, this.plugin.getFileTranslations().getString("MESSAGES.MESSAGES_NO_PERMISSIONS"))));
             return false;
         }
@@ -48,7 +48,7 @@ public class MainPlayer implements CommandExecutor, TabCompleter {
                 for (SubCommand subCommand : subCommands) {
                     if (subCommand.getNames().contains(array[0].toLowerCase())) {
                         if (!sender.hasPermission(subCommand.getPermission()) || !sender.hasPermission(permission)) {
-                            XSound.play((Player) sender, this.plugin.getConfig().getString("MENTION.NO_PERMISSIONS_SOUND"));
+                            ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.NO_PERMISSIONS_SOUND")), (Player) sender);
                             sender.sendMessage(addColor.addColors(ProjectUtil.setPlaceholders((Player) sender, this.plugin.getFileTranslations().getString("MESSAGES.MESSAGES_NO_PERMISSIONS"))));
                             return false;
                         }
@@ -58,7 +58,7 @@ public class MainPlayer implements CommandExecutor, TabCompleter {
                 }
                 if (sender instanceof Player) {
                     Player player = (Player) sender;
-                    XSound.play(player, this.plugin.getConfig().getString("MENTION.ARGS_SOUND"));
+                    ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.ARGS_SOUND")), player);
                     player.sendMessage(addColor.addColors(plugin.getFileTranslations().getString("MESSAGES.MESSAGES_ARGS")));
                 } else {
                     sender.sendMessage(addColor.addColors(plugin.getFileTranslations().getString("MESSAGES.MESSAGES_ARGS")));
@@ -70,7 +70,7 @@ public class MainPlayer implements CommandExecutor, TabCompleter {
         }
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            XSound.play(player, this.plugin.getConfig().getString("MENTION.ARGS_SOUND"));
+            ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.ARGS_SOUND")), player);
             player.sendMessage(addColor.addColors(ProjectUtil.setPlaceholders((Player) sender, this.plugin.getFileTranslations().getString("MESSAGES.MESSAGES_ARGS"))));
         } else {
             sender.sendMessage(addColor.addColors(plugin.getFileTranslations().getString("MESSAGES.MESSAGES_ARGS")));
@@ -110,6 +110,5 @@ public class MainPlayer implements CommandExecutor, TabCompleter {
         return completions;
     }
 
-    private void onCommand(CommandSender sender, String[] array) {
-    }
+    private void onCommand(CommandSender sender, String[] array) {}
 }

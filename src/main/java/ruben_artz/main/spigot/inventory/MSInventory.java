@@ -1,7 +1,6 @@
 package ruben_artz.main.spigot.inventory;
 
 import com.cryptomorin.xseries.XMaterial;
-import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -12,6 +11,8 @@ import org.bukkit.inventory.Inventory;
 import ruben_artz.main.spigot.DeluxeMentions;
 import ruben_artz.main.spigot.other.ProjectUtil;
 import ruben_artz.main.spigot.other.addColor;
+
+import java.util.Objects;
 
 public class MSInventory implements Listener {
     private final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
@@ -62,7 +63,7 @@ public class MSInventory implements Listener {
                     for (String args : plugin.getFileTranslations().getStringList("HELP_TO_TRANSLATE.MESSAGE")) {
                         player.sendMessage(addColor.addColors(args));
                     }
-                    XSound.play(player, plugin.getFileTranslations().getString("HELP_TO_TRANSLATE.SOUND"));
+                    ProjectUtil.executeSound(plugin.getFileTranslations().getString("HELP_TO_TRANSLATE.SOUND"), player);
                 } else if (event.getSlot() == plugin.getFileTranslations().getInt("LANGUAGE.INVENTORY.CLOSE.SLOT")) {
                     player.closeInventory();
                 } else if (event.getSlot() == plugin.getFileTranslations().getInt("LANGUAGE.INVENTORY.ENGLISH.SLOT")) {
@@ -100,7 +101,7 @@ public class MSInventory implements Listener {
         plugin.getConfig().set("MENTION.LANGUAGE", language);
         plugin.saveConfig();
         plugin.initiate();
-        XSound.play(player, plugin.getConfig().getString("MENTION.SETTINGS.RELOAD_SOUND"));
+        ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.SETTINGS.RELOAD_SOUND")), player);
         player.sendMessage(addColor.addColors(plugin.getFileTranslations().getString("MESSAGES.MESSAGE_CHANGE_OF_LANGUAGE").replace("{Language}", language)));
     }
 }
