@@ -1,7 +1,7 @@
 package ruben_artz.main.spigot.other;
 
-import com.cryptomorin.xseries.SkullUtils;
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XSkull;
 import com.cryptomorin.xseries.XSound;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.kyori.adventure.text.Component;
@@ -18,6 +18,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.metadata.MetadataValue;
 import ruben_artz.main.spigot.DeluxeMentions;
+import ruben_artz.main.spigot.launcher.MSLauncher;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -26,7 +27,6 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
-@SuppressWarnings("deprecation")
 public class ProjectUtil {
 
     private static final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
@@ -39,6 +39,7 @@ public class ProjectUtil {
         }
         return text;
     }
+
     public static Component setPlaceholders(Player player, Component component) {
         if (!isPluginEnabled("PlaceholderAPI")) return component;
 
@@ -51,14 +52,17 @@ public class ProjectUtil {
                 }).build();
         return component.replaceText(textReplacementConfig);
     }
+
     public static void LoadConfigCommand(){
         plugin.reloadConfig();
         plugin.saveDefaultConfig();
         plugin.initiate();
     }
+
     public static boolean isPluginEnabled(String args) {
         return Bukkit.getPluginManager().getPlugin(args) != null && Objects.requireNonNull(Bukkit.getPluginManager().getPlugin(args)).isEnabled();
     }
+
     public static void addItems(Inventory inventory, XMaterial material, String name, String lore, int slot) {
         ItemStack itemStack = new ItemStack(Objects.requireNonNull(material.parseItem()));
         ItemMeta itemMeta = itemStack.getItemMeta();
@@ -67,15 +71,21 @@ public class ProjectUtil {
         itemStack.setItemMeta(itemMeta);
         inventory.setItem(slot, itemStack);
     }
+
     public static void addItemSkull(Inventory inventory, String name, String lore, String texture, int slot) {
         ItemStack itemStack = new ItemStack(Objects.requireNonNull(XMaterial.PLAYER_HEAD.parseItem()));
         SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();
+
         if (skullMeta != null) skullMeta.setDisplayName(addColor.addColors(plugin.getFileTranslations().getString(name)));
+
         if (skullMeta != null) skullMeta.setLore(addColor.addColors(plugin.getFileTranslations().getStringList(lore)));
-        if (skullMeta != null) SkullUtils.applySkin(skullMeta, plugin.getFileTranslations().getString(texture));
+
+        if (skullMeta != null) XSkull.of(skullMeta).profile(XSkull.SkullInputType.TEXTURE_HASH, texture).apply();
+
         itemStack.setItemMeta(skullMeta);
         inventory.setItem(slot, itemStack);
     }
+
     public static void addItemGlass(Inventory inventory, int slot) {
         ItemStack itemStack = new ItemStack(Objects.requireNonNull(XMaterial.BLACK_STAINED_GLASS_PANE.parseItem()));
         ItemMeta itemMeta = itemStack.getItemMeta();
@@ -83,6 +93,7 @@ public class ProjectUtil {
         itemStack.setItemMeta(itemMeta);
         inventory.setItem(slot, itemStack);
     }
+
     /*
      * Send Json Message
      */
@@ -95,21 +106,27 @@ public class ProjectUtil {
         message.setHoverEvent(new HoverEvent(hoverEvent, new ComponentBuilder(addColor.addColors(hoverValue)).create()));
         player.spigot().sendMessage(message);
     }
+
     public static void syncRunTask(Runnable runnable) {
-        Bukkit.getScheduler().runTask(plugin, runnable);
+        MSLauncher.getScheduler().runTask(runnable);
     }
+
     public static void syncTaskLater(long delay, Runnable runnable) {
-        Bukkit.getScheduler().runTaskLater(plugin, runnable, delay);
+        MSLauncher.getScheduler().runTaskLater(runnable, delay);
     }
+
     public static void syncTaskLater(String timeunit, long delay, Runnable runnable) {
-        Bukkit.getScheduler().runTaskLater(plugin, runnable, getMath(timeunit) * delay);
+        MSLauncher.getScheduler().runTaskLater(runnable, getMath(timeunit) * delay);
     }
+
     public static void synTaskAsynchronously(Runnable runnable) {
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, runnable);
+        MSLauncher.getScheduler().runTaskAsynchronously(runnable);
     }
+
     public static void syncRepeatingTask(String timeunit, long time, Runnable runnable) {
-        Bukkit.getScheduler().scheduleAsyncRepeatingTask(plugin, runnable, 0L, getMath(timeunit) * time);
+        MSLauncher.getScheduler().runTaskTimer(runnable, 0L, getMath(timeunit) * time);
     }
+
     /*
      * set Time
      */
@@ -128,6 +145,7 @@ public class ProjectUtil {
             return 1200;
         }
     }
+
     public static boolean containsIgnoreCase(final String string, final String search) {
         if (string == null || search == null) {
             return false;
@@ -143,12 +161,14 @@ public class ProjectUtil {
         }
         return false;
     }
+
     public static boolean isVanished(Player player) {
         for (MetadataValue meta : player.getMetadata("vanished")) {
             if (meta.asBoolean()) return true;
         }
         return false;
     }
+
     public static boolean ifIsMysql() {
         return Objects.equals(plugin.getConfig().getString("MENTION.DATABASE.ENABLED"), "true");
     }

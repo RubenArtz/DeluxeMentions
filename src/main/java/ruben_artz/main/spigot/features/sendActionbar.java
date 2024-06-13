@@ -1,14 +1,15 @@
 package ruben_artz.main.spigot.features;
 
+import com.github.Anon8281.universalScheduler.bukkitScheduler.BukkitScheduler;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 import ruben_artz.main.spigot.DeluxeMentions;
 import ruben_artz.main.spigot.other.ProjectUtil;
 import ruben_artz.main.spigot.other.addColor;
 
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class sendActionbar {
     private static final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
@@ -22,20 +23,20 @@ public class sendActionbar {
                 .replace("{Uuid}", player.getUniqueId().toString());
         Component text = addColor.setColor(player, message);
 
-        ProjectUtil.synTaskAsynchronously(() -> audience.sendActionBar(text));
+        ProjectUtil.syncRunTask(() -> audience.sendActionBar(text));
     }
 
     public static void sendActionBar(Player player, String message, long duration) {
+        BukkitScheduler bukkitScheduler = new BukkitScheduler(plugin);
 
-        new BukkitRunnable() {
-            long repeater = duration;
+        AtomicLong repeater = new AtomicLong(duration);
 
-            @Override
-            public void run() {
-                sendActionBar(player, message);
-                repeater -= 40L;
-                if (repeater - 40 < -20L) cancel();
-            }
-        }.runTaskTimerAsynchronously(plugin, 0L, 40L);
+        bukkitScheduler.runTaskTimer(() -> {
+
+            sendActionBar(player, message);
+            repeater.addAndGet(-40L);
+            if (repeater.get() < 0L) bukkitScheduler.cancelTasks();
+
+        }, 0L, 40L);
     }
 }

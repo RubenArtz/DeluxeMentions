@@ -1,5 +1,7 @@
 package ruben_artz.main.spigot.launcher;
 
+import com.github.Anon8281.universalScheduler.UniversalScheduler;
+import com.github.Anon8281.universalScheduler.scheduling.schedulers.TaskScheduler;
 import lombok.Getter;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bstats.bukkit.Metrics;
@@ -36,11 +38,17 @@ public class MSLauncher implements MSLaunch {
     @Getter private static MSLauncher instance;
     @Getter private Cache cache;
 
+    @Getter private static TaskScheduler scheduler;
+
     public BukkitAudiences audiences;
 
     @Override
     public void launch(DeluxeMentions plugin) {
         instance = this;
+
+        scheduler = UniversalScheduler.getScheduler(plugin);
+
+
         plugin.LoadAllConfigs();
         UtilUpdateConfig.updateConfigs();
         setCommands();
