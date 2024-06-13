@@ -11,9 +11,9 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 import ruben_artz.main.spigot.launcher.MSLaunch;
 import ruben_artz.main.spigot.launcher.MSLauncher;
-import ruben_artz.main.spigot.other.ProjectUtil;
 import ruben_artz.main.spigot.other.addColor;
 import ruben_artz.main.spigot.config.Configurations;
+import ruben_artz.main.spigot.util.SlimJarLogger;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,13 +28,14 @@ import java.util.*;
 public final class DeluxeMentions extends JavaPlugin {
     public PluginDescriptionFile file = getDescription();
     public String table = file.getName().toLowerCase()+"_1_0";
-    @Getter public String version = file.getVersion();
     public String latestversion;
-    @Getter public String prefix = "&8[&9Deluxe Mentions&8]&f ";
     public List<String> authors = file.getAuthors();
     public String web = file.getWebsite();
     public Configurations fileUtilsSpigot;
     private MSLaunch launch;
+
+    @Getter public String version = file.getVersion();
+    @Getter public String prefix = "&8[&9Deluxe Mentions&8]&f ";
     @Getter public Set<UUID> IgnoreMention = new HashSet<>();
 
     @Override
@@ -44,6 +45,7 @@ public final class DeluxeMentions extends JavaPlugin {
         try {
             Path downloadPath = Paths.get(getDataFolder().getPath() + File.separator + "cache");
             ApplicationBuilder.appending("DeluxeMentions")
+                    .logger(new SlimJarLogger(this))
                     .downloadDirectoryPath(downloadPath)
                     .mirrorSelector((a, b) -> a)
                     .internalRepositories(Collections.singleton(new Repository(new URL("https://repo1.maven.org/maven2/"))))
@@ -55,21 +57,23 @@ public final class DeluxeMentions extends JavaPlugin {
         }
     }
 
-    @SuppressWarnings("deprecation")
     public void onEnable() {
         try {
             this.launch = Class.forName("ruben_artz.main.spigot.launcher.MSLauncher").asSubclass(MSLaunch.class).newInstance();
-            ProjectUtil.syncRunTask(() -> DeluxeMentions.this.launch.launch(DeluxeMentions.this));
+
+            DeluxeMentions.this.launch.launch(DeluxeMentions.this);
         } catch (InstantiationException|IllegalAccessException|ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
+
     public void onDisable() {
         if (this.launch != null) {
             this.launch.shutdown();
             this.launch = null;
         }
     }
+
     public void initiate() {
         fileUtilsSpigot = new Configurations().initiate(this,
                         "lang/en_US.yml",
@@ -87,6 +91,7 @@ public final class DeluxeMentions extends JavaPlugin {
                         "groups.yml")
                 .setLanguageFile("lang/"+getConfig().getString("MENTION.LANGUAGE")+".yml");
     }
+
     public Audience getAudiences(Player player) {
         return MSLauncher.getInstance().audiences.player(player);
     }
@@ -106,9 +111,11 @@ public final class DeluxeMentions extends JavaPlugin {
         reloadConfig();
         initiate();
     }
+
     public void sendConsole(String msg){
         Bukkit.getConsoleSender().sendMessage(addColor.addColors(msg));
     }
+
     public String getLatestVersion()
     {
         return this.latestversion;
