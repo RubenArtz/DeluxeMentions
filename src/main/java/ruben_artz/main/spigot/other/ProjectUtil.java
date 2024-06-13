@@ -73,17 +73,16 @@ public class ProjectUtil {
     }
 
     public static void addItemSkull(Inventory inventory, String name, String lore, String texture, int slot) {
-        ItemStack itemStack = new ItemStack(Objects.requireNonNull(XMaterial.PLAYER_HEAD.parseItem()));
-        SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();
+        ItemStack item = XMaterial.PLAYER_HEAD.parseItem();
+        SkullMeta skullMeta = (SkullMeta) (item != null ? item.getItemMeta() : null);
 
         if (skullMeta != null) skullMeta.setDisplayName(addColor.addColors(plugin.getFileTranslations().getString(name)));
 
         if (skullMeta != null) skullMeta.setLore(addColor.addColors(plugin.getFileTranslations().getStringList(lore)));
 
-        if (skullMeta != null) XSkull.of(skullMeta).profile(XSkull.SkullInputType.TEXTURE_HASH, texture).apply();
+        if (item != null && skullMeta != null) item.setItemMeta(XSkull.of(skullMeta).profile(XSkull.SkullInputType.TEXTURE_HASH, plugin.getFileTranslations().getString(texture)).apply());
 
-        itemStack.setItemMeta(skullMeta);
-        inventory.setItem(slot, itemStack);
+        inventory.setItem(slot, item);
     }
 
     public static void addItemGlass(Inventory inventory, int slot) {
