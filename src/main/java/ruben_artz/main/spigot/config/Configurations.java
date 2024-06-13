@@ -47,35 +47,43 @@ public class Configurations {
         }
         return this;
     }
+
     public void reloadFiles() {
         initiate(plugin);
     }
+
     public YamlConfiguration getFile(String path) {
         return files.get(path);
     }
+
     public File getFileData(String path) {
         return filesData.get(path);
     }
+
     public Configurations setLanguageFile(String path) {
         langFile = files.get(path);
         return this;
     }
+
     public String getString(String path) {
         return langFile.contains(path) ? langFile.getString(path) : "The specified path (lang/../"+path+") could not be found.";
     }
+
     public List<String> getStringList(final String path) {
         final List<String> lore = Lists.newArrayList();
         lore.addAll(langFile.getStringList(path));
         return lore;
     }
+
     public int getInt(final String path) {
         return langFile.getInt(path);
     }
+
     public void saveFile(String path) {
         try {
             getFile(path).save(getFileData(path));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 }
