@@ -39,7 +39,7 @@ public class target implements Listener {
                              * Send Features
                              */
                             sendActionbar.sendActionBar(player, plugin.getFileTranslations().getString("MESSAGES.MESSAGE_COOLDOWN"), 100);
-                            ProjectUtil.executeSound(Objects.requireNonNull(plugin.getGroups().getString("MENTION.COOLDOWN_SOUND")), player);
+                            ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.COOLDOWN_SOUND")), player);
                             return;
                         }
                         /*
@@ -108,7 +108,7 @@ public class target implements Listener {
                              * Send Features
                              */
                             sendActionbar.sendActionBar(player, plugin.getFileTranslations().getString("MESSAGES.MESSAGE_COOLDOWN"), 100);
-                            ProjectUtil.executeSound(Objects.requireNonNull(plugin.getGroups().getString("MENTION.COOLDOWN_SOUND")), player);
+                            ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.COOLDOWN_SOUND")), player);
                             return;
                         }
                         /*
