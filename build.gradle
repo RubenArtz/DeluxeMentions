@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'ruben_artz.main'
-version = '6.0.20'
+version = '6.1.21'
 
 repositories {
     mavenCentral()
@@ -52,7 +52,7 @@ dependencies {
     Keep up to date
     Url: https://github.com/CryptoMorin/XSeries/releases
      */
-    slim 'com.github.cryptomorin:XSeries:11.0.0'
+    slim 'com.github.cryptomorin:XSeries:11.2.0'
     slim 'org.slf4j:slf4j-simple:1.7.36'
     slim 'com.zaxxer:HikariCP:4.0.3'
     slim 'com.h2database:h2:2.1.214'
