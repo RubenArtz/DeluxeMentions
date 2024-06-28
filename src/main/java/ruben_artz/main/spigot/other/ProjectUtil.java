@@ -1,8 +1,11 @@
 package ruben_artz.main.spigot.other;
 
 import com.cryptomorin.xseries.XMaterial;
-import com.cryptomorin.xseries.XSkull;
 import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.profiles.builder.XSkull;
+import com.cryptomorin.xseries.profiles.objects.ProfileInputType;
+import com.cryptomorin.xseries.profiles.objects.Profileable;
+import lombok.Getter;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextReplacementConfig;
@@ -21,17 +24,14 @@ import ruben_artz.main.spigot.DeluxeMentions;
 import ruben_artz.main.spigot.launcher.MSLauncher;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class ProjectUtil {
 
     private static final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
-    public static List<UUID> cooldownAdmin = new ArrayList<>();
-    public static List<UUID> cooldownGroups = new ArrayList<>();
+    @Getter static public HashMap<UUID, Integer> delayMention;
+    @Getter static public HashMap<UUID, Integer> delayMentionAdmin;
 
     public static String setPlaceholders(Player p, String text) {
         if (isPluginEnabled("PlaceholderAPI")) {
@@ -80,7 +80,7 @@ public class ProjectUtil {
 
         if (skullMeta != null) skullMeta.setLore(addColor.addColors(plugin.getFileTranslations().getStringList(lore)));
 
-        if (item != null && skullMeta != null) item.setItemMeta(XSkull.of(skullMeta).profile(XSkull.SkullInputType.TEXTURE_HASH, plugin.getFileTranslations().getString(texture)).apply());
+        if (item != null && skullMeta != null) item.setItemMeta(XSkull.of(skullMeta).profile(Profileable.of(ProfileInputType.TEXTURE_HASH, plugin.getFileTranslations().getString(texture))).apply());
 
         inventory.setItem(slot, item);
     }
@@ -106,24 +106,24 @@ public class ProjectUtil {
         player.spigot().sendMessage(message);
     }
 
-    public static void syncRunTask(Runnable runnable) {
+    public static void runTask(Runnable runnable) {
         MSLauncher.getScheduler().runTask(runnable);
     }
 
-    public static void syncTaskLater(long delay, Runnable runnable) {
+    public static void runTaskLater(long delay, Runnable runnable) {
         MSLauncher.getScheduler().runTaskLater(runnable, delay);
     }
 
-    public static void syncTaskLater(String timeunit, long delay, Runnable runnable) {
-        MSLauncher.getScheduler().runTaskLater(runnable, getMath(timeunit) * delay);
-    }
-
-    public static void synTaskAsynchronously(Runnable runnable) {
+    public static void runTaskAsynchronously(Runnable runnable) {
         MSLauncher.getScheduler().runTaskAsynchronously(runnable);
     }
 
-    public static void syncRepeatingTask(String timeunit, long time, Runnable runnable) {
+    public static void runTaskTimer(String timeunit, long time, Runnable runnable) {
         MSLauncher.getScheduler().runTaskTimer(runnable, 0L, getMath(timeunit) * time);
+    }
+
+    public static void runTaskTimer(long time, Runnable runnable) {
+        MSLauncher.getScheduler().runTaskTimer(runnable, 0L, time);
     }
 
     /*
@@ -142,6 +142,39 @@ public class ProjectUtil {
             return 630720000;
         } else {
             return 1200;
+        }
+    }
+
+    public static int convertToSeconds(String timeUnit, int time) {
+        switch (timeUnit.toUpperCase()) {
+            case "SECONDS":
+                return time;
+            case "MINUTES":
+                return time * 60;
+            case "HOURS":
+                return time * 60 * 60;
+            case "DAYS":
+                return time * 60 * 60 * 24;
+            case "YEARS":
+                return time * 60 * 60 * 24 * 365;
+            default:
+                throw new IllegalArgumentException("Invalid time unit: " + timeUnit);
+        }
+    }
+
+    public static String convertSecondsToHMS(int seconds) {
+        int hours = seconds / 3600;
+        int minutes = (seconds % 3600) / 60;
+        int remainingSeconds = seconds % 60;
+
+        String[] type = plugin.getFileTranslations().getString("MESSAGE_TYPE_TIME").split(";;");
+
+        if (hours > 0) {
+            return String.format("%02d:%02d:%02d " + type[0], hours, minutes, remainingSeconds);
+        } else if (minutes > 0) {
+            return String.format("%02d:%02d " + type[1], minutes, remainingSeconds);
+        } else {
+            return String.format("%02d " + type[2], remainingSeconds);
         }
     }
 

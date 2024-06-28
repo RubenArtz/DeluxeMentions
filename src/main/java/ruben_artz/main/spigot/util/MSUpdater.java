@@ -20,7 +20,7 @@ public class MSUpdater implements Listener {
     public void Updates(PlayerJoinEvent event) {
         if (this.plugin.getConfig().getBoolean("MENTION.CHECK_UPDATE")) {
             Player player = event.getPlayer();
-            ProjectUtil.synTaskAsynchronously(() -> {
+            ProjectUtil.runTaskAsynchronously(() -> {
                 MSLauncher.getInstance().updateChecker(MSLauncher.UPDATER.JOIN_PLAYER);
                 if ((player.isOp()) && (!this.plugin.getVersion().equals(this.plugin.getLatestVersion()))) {
                     try {

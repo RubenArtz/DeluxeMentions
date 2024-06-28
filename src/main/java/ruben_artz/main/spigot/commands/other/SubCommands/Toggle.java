@@ -22,7 +22,7 @@ public class Toggle extends SubCommand {
     @Override
     public void onCommand(CommandSender sender, String[] args) {
         if (args.length == 1) {
-            ProjectUtil.syncRunTask(() -> {
+            ProjectUtil.runTask(() -> {
                 if (sender instanceof Player) {
                     Player player = (Player) sender;
                     if (plugin.IgnoreMention.contains(player.getUniqueId())) {
@@ -53,7 +53,7 @@ public class Toggle extends SubCommand {
                 sender.sendMessage(addColor.addColors(plugin.getFileTranslations().getString("MESSAGES.MESSAGE_PLAYER_NOT_FOUND")));
                 return;
             }
-            ProjectUtil.syncRunTask(() -> {
+            ProjectUtil.runTask(() -> {
                 if (plugin.IgnoreMention.contains(target.getUniqueId())) {
                     plugin.getIgnoreMention().remove(target.getUniqueId());
                     MSLauncher.getInstance().getCache().set(target.getUniqueId(), "MENTION", true);
@@ -66,7 +66,7 @@ public class Toggle extends SubCommand {
                     sendActionbar.sendActionBar(target, plugin.getFileTranslations().getString("MESSAGES.MESSAGES_DISABLED"), 80);
                 }
             });
-            ProjectUtil.syncTaskLater(10, () -> {
+            ProjectUtil.runTaskLater(10, () -> {
                 if (plugin.IgnoreMention.contains(target.getUniqueId())) {
                     if (sender instanceof Player) {
                         Player player = (Player) sender;

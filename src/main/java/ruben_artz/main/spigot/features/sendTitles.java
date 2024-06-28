@@ -28,7 +28,7 @@ public class sendTitles {
         Component text_title = addColor.setColor(player, title);
         Component text_subTitle = addColor.setColor(player, subTitle);
 
-        ProjectUtil.syncRunTask(() -> {
+        ProjectUtil.runTask(() -> {
             Title createTitle = Title.title(text_title, text_subTitle, Title.Times.times(Duration.ofSeconds(fadeIn), Duration.ofSeconds(stay), Duration.ofMillis(fadeOut)));
 
             audience.showTitle(createTitle);

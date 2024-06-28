@@ -15,7 +15,7 @@ public class UtilUpdateConfig {
     private final static DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
 
     public static void updateConfigs() {
-        ProjectUtil.synTaskAsynchronously(() -> {
+        ProjectUtil.runTaskAsynchronously(() -> {
             /*
             Update config of "config.yml"
              */
@@ -47,8 +47,8 @@ public class UtilUpdateConfig {
             /*
             Update config of "lang.file"
              */
-            ProjectUtil.syncTaskLater(10L, () -> {
-                if (!Objects.requireNonNull(plugin.getLangVersion().getString("version")).contains("1.4")) {
+            ProjectUtil.runTaskLater(10L, () -> {
+                if (!Objects.requireNonNull(plugin.getLangVersion().getString("version")).contains("1.5")) {
                     File f = new File(plugin.getDataFolder(), "/lang/");
                     File[] files = f.listFiles();
                     if (files != null) {

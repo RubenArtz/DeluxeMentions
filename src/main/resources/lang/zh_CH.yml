@@ -16,7 +16,7 @@
 # ===================
 MESSAGES:
   MESSAGE_NO_MENTION: "&c你不能提到你自己！"
-  MESSAGE_COOLDOWN: '&c你必须等上一段时间才能提到某人!'
+  MESSAGE_COOLDOWN: '&cYou must wait {timeToWait} to mention again.'
   MESSAGE_RELOAD_SUCCESS: '&a重启配置文件成功。'
   MESSAGES_ARGS: '&c使用该命令: /mention toggle'
   MESSAGES_NO_PERMISSIONS: '&c您没有权限权使用此命令。'
@@ -144,9 +144,10 @@ HELP_TO_TRANSLATE:
   SOUND: 'ZOMBIE_WOODBREAK'
   MESSAGE:
     - '&a&m---------------------------------------------------'
-    - '&e点击下面的连接，以了解如何帮助我们翻译STN Studios &8(&6Resources & Plugins&8)'
-    - '&6https://discord.io/STN-Studios'
+    - '&eClick the link below to find out how to help us translate STN Studios &8(&6Resources & Plugins&8)'
+    - '&6https://stn-studios.dev/discord'
     - '&a&m----------------------------------------------------'
+MESSAGE_TYPE_TIME: 'hours;;minutes;;seconds'
 
 #      ___           ___
 #     /\__\         /\  \         _____

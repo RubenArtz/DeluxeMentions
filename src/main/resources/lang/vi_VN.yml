@@ -16,7 +16,7 @@
 # ======================
 MESSAGES:
   MESSAGE_NO_MENTION: "&cBạn không thể đề cập đến chính mình!"
-  MESSAGE_COOLDOWN: '&cBạn phải đợi một thời gian trước khi bạn có thể đề cập đến ai đó!'
+  MESSAGE_COOLDOWN: '&cYou must wait {timeToWait} to mention again.'
   MESSAGE_RELOAD_SUCCESS: '&aConfig đã được reload.'
   MESSAGES_ARGS: '&cDùng lệnh: /mention toggle'
   MESSAGES_NO_PERMISSIONS: '&cBạn không có quyền.'
@@ -143,9 +143,10 @@ HELP_TO_TRANSLATE:
   SOUND: 'ZOMBIE_WOODBREAK'
   MESSAGE:
     - '&a&m---------------------------------------------------'
-    - '&eNhấp vào liên kết bên dưới để tìm hiểu cách giúp chúng tôi dịch STN Studios &8(&6Resources & Plugins&8)'
-    - '&6https://discord.io/STN-Studios'
+    - '&eClick the link below to find out how to help us translate STN Studios &8(&6Resources & Plugins&8)'
+    - '&6https://stn-studios.dev/discord'
     - '&a&m----------------------------------------------------'
+MESSAGE_TYPE_TIME: 'hours;;minutes;;seconds'
 
 #      ___           ___
 #     /\__\         /\  \         _____

@@ -16,7 +16,7 @@
 # ===================
 MESSAGES:
   MESSAGE_NO_MENTION: "&cYou can't mention yourself!"
-  MESSAGE_COOLDOWN: '&cYou must wait some time before you can mention someone!'
+  MESSAGE_COOLDOWN: '&cYou must wait {timeToWait} to mention again.'
   MESSAGE_RELOAD_SUCCESS: '&aThe configuration of successful restart.'
   MESSAGES_ARGS: '&cUse the command: /mention toggle'
   MESSAGES_NO_PERMISSIONS: '&cYou do not have permission to use this command.'
@@ -144,8 +144,9 @@ HELP_TO_TRANSLATE:
   MESSAGE:
     - '&a&m---------------------------------------------------'
     - '&eClick the link below to find out how to help us translate STN Studios &8(&6Resources & Plugins&8)'
-    - '&6https://discord.io/STN-Studios'
+    - '&6https://stn-studios.dev/discord'
     - '&a&m----------------------------------------------------'
+MESSAGE_TYPE_TIME: 'hours;;minutes;;seconds'
 
 #      ___           ___
 #     /\__\         /\  \         _____

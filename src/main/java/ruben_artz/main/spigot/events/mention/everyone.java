@@ -36,7 +36,7 @@ public class everyone implements Listener {
                    API
                 */
                 MentionEvent mentionEvent = new MentionEvent(mention, player);
-                ProjectUtil.syncRunTask(() -> Bukkit.getServer().getPluginManager().callEvent(mentionEvent));
+                ProjectUtil.runTask(() -> Bukkit.getServer().getPluginManager().callEvent(mentionEvent));
                 /*
                  * Send Features
                  */

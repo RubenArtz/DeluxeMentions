@@ -19,7 +19,7 @@ public class playerJoin implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void setMention(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        ProjectUtil.syncRunTask(() -> {
+        ProjectUtil.runTask(() -> {
             /*
              * Add data if the player does not exist!
              */

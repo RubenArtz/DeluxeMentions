@@ -16,7 +16,7 @@
 # ===================
 MESSAGES:
   MESSAGE_NO_MENTION: "&cKendinden söz edemezsin!"
-  MESSAGE_COOLDOWN: '&cBirinden bahsetmeden önce biraz beklemelisin!'
+  MESSAGE_COOLDOWN: '&cYou must wait {timeToWait} to mention again.'
   MESSAGE_RELOAD_SUCCESS: '&aBaşarılı bir yeniden başlatma yapılandırması.'
   MESSAGES_ARGS: '&cKomutu kullan: /mention toggle'
   MESSAGES_NO_PERMISSIONS: '&cBu komutu kullanma izniniz yok.'
@@ -143,9 +143,10 @@ HELP_TO_TRANSLATE:
   SOUND: 'ZOMBIE_WOODBREAK'
   MESSAGE:
     - '&a&m---------------------------------------------------'
-    - '&eSTN Stüdyolarını çevirmemize nasıl yardımcı olabileceğimizi öğrenmek için aşağıdaki bağlantıyı tıklayın &8(&6Resources & Plugins&8)'
-    - '&6https://discord.io/STN-Studios'
+    - '&eClick the link below to find out how to help us translate STN Studios &8(&6Resources & Plugins&8)'
+    - '&6https://stn-studios.dev/discord'
     - '&a&m----------------------------------------------------'
+MESSAGE_TYPE_TIME: 'hours;;minutes;;seconds'
 
 #      ___           ___
 #     /\__\         /\  \         _____

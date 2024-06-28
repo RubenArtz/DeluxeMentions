@@ -27,7 +27,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -58,6 +60,8 @@ public class MSLauncher implements MSLaunch {
         plugin.Messages();
         setMetrics();
         setConnection();
+        checkBypass();
+        checkBypassAdmin();
     }
 
     @Override
@@ -72,7 +76,7 @@ public class MSLauncher implements MSLaunch {
                     executorService.shutdownNow();
                     plugin.getLogger().warning("Cache took too long to shut down. Skipping it.");
                 }
-            }catch(InterruptedException ignored){}
+            }catch(InterruptedException ignored) {}
         }
     }
 
@@ -101,18 +105,55 @@ public class MSLauncher implements MSLaunch {
                 new everyone()).forEach(listener -> event.registerEvents(listener, plugin));
         audiences = BukkitAudiences.create(plugin);
     }
+
     private void registerPlaceholders() {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new MSPlaceholder().register();
         }
     }
+
     public enum UPDATER {
         JOIN_PLAYER, CONSOLE
     }
+
+    private void checkBypass() {
+        ProjectUtil.delayMention = new HashMap<>();
+
+        ProjectUtil.runTaskTimer(20, () -> {
+            HashMap<UUID, Integer> tempPlayers = new HashMap<>();
+            for (UUID uuid : ProjectUtil.getDelayMention().keySet()) {
+                Integer newVal = ProjectUtil.getDelayMention().get(uuid);
+                newVal--;
+
+                if (newVal > 0) {
+                    tempPlayers.put(uuid, newVal);
+                }
+            }
+            ProjectUtil.delayMention = tempPlayers;
+        });
+    }
+
+    private void checkBypassAdmin() {
+        ProjectUtil.delayMentionAdmin = new HashMap<>();
+
+        ProjectUtil.runTaskTimer(20, () -> {
+            HashMap<UUID, Integer> tempPlayers = new HashMap<>();
+            for (UUID uuid : ProjectUtil.getDelayMentionAdmin().keySet()) {
+                Integer newVal = ProjectUtil.getDelayMentionAdmin().get(uuid);
+                newVal--;
+
+                if (newVal > 0) {
+                    tempPlayers.put(uuid, newVal);
+                }
+            }
+            ProjectUtil.delayMentionAdmin = tempPlayers;
+        });
+    }
+
     public void updateChecker(UPDATER type) {
         switch (type) {
             case CONSOLE: {
-                ProjectUtil.syncRunTask(() -> ProjectUtil.syncRepeatingTask("HOURS", 5, () -> {
+                ProjectUtil.runTask(() -> ProjectUtil.runTaskTimer("HOURS", 5, () -> {
                     try {
                         HttpURLConnection con = (HttpURLConnection)new URL("https://api.spigotmc.org/legacy/update.php?resource=67248").openConnection();
                         int timed_out = 1250;

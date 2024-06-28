@@ -23,7 +23,7 @@ public class sendActionbar {
                 .replace("{Uuid}", player.getUniqueId().toString());
         Component text = addColor.setColor(player, message);
 
-        ProjectUtil.syncRunTask(() -> audience.sendActionBar(text));
+        ProjectUtil.runTask(() -> audience.sendActionBar(text));
     }
 
     public static void sendActionBar(Player player, String message, long duration) {
