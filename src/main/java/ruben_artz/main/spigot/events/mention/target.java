@@ -31,15 +31,16 @@ public class target implements Listener {
                         if (ProjectUtil.getDelayMentionAdmin().containsKey(player.getUniqueId())) {
                             if (!player.hasPermission("DeluxeMentions.BypassCooldown")) {
                                 event.setCancelled(true);
+                                Integer delay = ProjectUtil.getDelayMentionAdmin().get(player.getUniqueId());
+
                                 /*
                                  * API
                                  */
-                                MentionCooldownEvent mentionCooldownEvent = new MentionCooldownEvent(player, mention);
+                                MentionCooldownEvent mentionCooldownEvent = new MentionCooldownEvent(player, mention, delay, ProjectUtil.convertSecondsToHMS(delay));
                                 ProjectUtil.runTask(() -> Bukkit.getServer().getPluginManager().callEvent(mentionCooldownEvent));
                                 /*
                                  * Send Features
                                  */
-                                Integer delay = ProjectUtil.getDelayMentionAdmin().get(player.getUniqueId());
                                 sendActionbar.sendActionBar(player, plugin.getFileTranslations().getString("MESSAGES.MESSAGE_COOLDOWN")
                                         .replace("{timeToWait}", ProjectUtil.convertSecondsToHMS(delay)), 100);
                                 ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.COOLDOWN_SOUND")), player);
@@ -110,16 +111,17 @@ public class target implements Listener {
                         if (ProjectUtil.getDelayMention().containsKey(player.getUniqueId())) {
                             if (!player.hasPermission("DeluxeMentions.BypassCooldown")) {
                                 event.setCancelled(true);
+                                Integer delay = ProjectUtil.getDelayMention().get(player.getUniqueId());
+
                                 /*
                                  * API
                                  */
-                                MentionCooldownEvent mentionCooldownEvent = new MentionCooldownEvent(mention, player);
+                                MentionCooldownEvent mentionCooldownEvent = new MentionCooldownEvent(player, mention, delay, ProjectUtil.convertSecondsToHMS(delay));
                                 ProjectUtil.runTask(() -> Bukkit.getServer().getPluginManager().callEvent(mentionCooldownEvent));
                                 /*
                                  * Send Features
                                  */
 
-                                Integer delay = ProjectUtil.getDelayMention().get(player.getUniqueId());
                                 sendActionbar.sendActionBar(player, plugin.getFileTranslations().getString("MESSAGES.MESSAGE_COOLDOWN")
                                         .replace("{timeToWait}", ProjectUtil.convertSecondsToHMS(delay)), 120);
                                 ProjectUtil.executeSound(Objects.requireNonNull(plugin.getConfig().getString("MENTION.COOLDOWN_SOUND")), player);

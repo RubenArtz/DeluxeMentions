@@ -15,15 +15,16 @@ public class MentionCooldownEvent extends Event implements Cancellable {
     @Getter @Setter
     private boolean cancelled;
 
-    @Getter
-    private final Player player;
+    @Getter private final Player player;
+    @Getter private final Player mentioned;
+    @Getter private Integer delayInSeconds;
+    @Getter private String formatDelay;
 
-    @Getter
-    private final Player mentioned;
-
-    public MentionCooldownEvent(Player who, Player mentioned) {
+    public MentionCooldownEvent(Player who, Player mentioned, Integer delayInSeconds, String formatDelay) {
         this.player = who;
         this.mentioned = mentioned;
+        this.delayInSeconds = delayInSeconds;
+        this.formatDelay = formatDelay;
     }
 
     public @NotNull HandlerList getHandlers() {
