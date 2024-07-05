@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 import ruben_artz.main.spigot.DeluxeMentions;
 import ruben_artz.main.spigot.events.antibot.preventAttacks;
 import ruben_artz.main.spigot.launcher.MSLauncher;
+import ruben_artz.main.spigot.other.ProjectUtil;
 import ruben_artz.main.spigot.other.addColor;
 
 import java.util.HashMap;
@@ -56,6 +57,28 @@ public class MSPlaceholder extends PlaceholderExpansion implements Configurable 
                     } else {
                         return addColor.addColors(bypass_false);
                     }
+                }
+            }
+            case "delayInSeconds": {
+                if (preventAttacks.isAttacking()) return "Loading...";
+
+                if (ProjectUtil.getDelayMentionAdmin().containsKey(player.getUniqueId())) {
+                    return String.valueOf(ProjectUtil.getDelayMentionAdmin().get(player.getUniqueId()));
+                } else if (ProjectUtil.getDelayMention().containsKey(player.getUniqueId())) {
+                    return String.valueOf(ProjectUtil.getDelayMention().get(player.getUniqueId()));
+                } else {
+                    return "0";
+                }
+            }
+            case "delayInFormat": {
+                if (preventAttacks.isAttacking()) return "Loading...";
+                
+                if (ProjectUtil.getDelayMentionAdmin().containsKey(player.getUniqueId())) {
+                    return ProjectUtil.convertSecondsToHMS(ProjectUtil.getDelayMentionAdmin().get(player.getUniqueId()));
+                } else if (ProjectUtil.getDelayMention().containsKey(player.getUniqueId())) {
+                    return ProjectUtil.convertSecondsToHMS(ProjectUtil.getDelayMention().get(player.getUniqueId()));
+                } else {
+                    return "0";
                 }
             }
         }
