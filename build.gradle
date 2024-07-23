@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'ruben_artz.main'
-version = '6.3.21'
+version = '6.4.21'
 
 repositories {
     mavenCentral()

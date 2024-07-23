@@ -37,6 +37,8 @@ public class MysqlMethod implements CacheMethod {
         hikariConfig.setPassword(password);
         hikariConfig.setMaximumPoolSize(maxCount);
         hikariConfig.setMinimumIdle(minCount);
+        hikariConfig.setMaxLifetime(60000);
+        hikariConfig.setIdleTimeout(30000);
 
         ds = new HikariDataSource(hikariConfig);
         ds.setLeakDetectionThreshold(60 * 1000);
