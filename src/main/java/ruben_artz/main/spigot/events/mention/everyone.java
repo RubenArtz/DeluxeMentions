@@ -1,5 +1,6 @@
 package ruben_artz.main.spigot.events.mention;
 
+import net.kyori.adventure.audience.Audience;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,6 +13,7 @@ import ruben_artz.main.spigot.features.sendTitles;
 import ruben_artz.main.spigot.other.ProjectUtil;
 import ruben_artz.main.spigot.other.addColor;
 
+import java.util.List;
 import java.util.Objects;
 
 public class everyone implements Listener {
@@ -21,41 +23,58 @@ public class everyone implements Listener {
     public void getMention(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         String message = event.getMessage();
-        for (Player mention : Bukkit.getOnlinePlayers()) {
-            if (player.hasPermission("DeluxeMentions.Everyone") && ProjectUtil.containsIgnoreCase(message, plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.PREFIX"))) {
-                /*
-                 * Not to mention the one who wrote everyone
-                 */
-                if (mention.equals(player)) {
-                    continue;
-                }
+
+        if (player.hasPermission("DeluxeMentions.Everyone") && ProjectUtil.containsIgnoreCase(message, plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.PREFIX"))) {
+            for (Player mention : Bukkit.getOnlinePlayers()) {
                 final String prefix = plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.COLOR_OF_THE_PLAYER_MENTIONED");
                 final String suffix = plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.COLOR_AFTER_MENTION");
                 final String chat = addColor.setColors(mention, message.replace(Objects.requireNonNull(plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.PREFIX")), prefix + plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.PREFIX") + suffix));
+
                 /*
                    API
                 */
                 MentionEvent mentionEvent = new MentionEvent(mention, player);
                 ProjectUtil.runTask(() -> Bukkit.getServer().getPluginManager().callEvent(mentionEvent));
+
                 /*
                  * Send Features
                  */
                 if (plugin.getGroups().getBoolean("MENTION.GROUPS.EVERYONE.USE_SOUND_NOTIFICATION")) {
                     ProjectUtil.executeSound(Objects.requireNonNull(plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.SOUND_NOTIFICATION")), mention);
                 }
+
                 if (plugin.getGroups().getBoolean("MENTION.GROUPS.EVERYONE.USE_TITLES")) {
                     for (String listTitle : plugin.getGroups().getStringList("MENTION.GROUPS.EVERYONE.SEND_TITLE")) {
-                        listTitle = listTitle.replace("{Player}", player.getName()).replace("{Email}", "☚✉☛").replace("{Warning}", "≺⚠≻");
+                        listTitle = listTitle
+                                .replace("{Player}", player.getName())
+                                .replace("{Email}", "☚✉☛")
+                                .replace("{Warning}", "≺⚠≻");
 
                         String[] title = listTitle.split("::");
                         sendTitles.sendTitle(mention, 1, 10, 1234, title[0], title[1]);
                     }
                 }
+
                 if (plugin.getGroups().getBoolean("MENTION.GROUPS.EVERYONE.USE_ACTIONBAR_MENTION")) {
                     sendActionbar.sendActionBar(mention, Objects.requireNonNull(plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.ACTIONBAR_MENTION"))
                             .replace("{Player}", player.getName())
                             .replace("{Email}", "☚✉☛")
-                            .replace("{Warning}", "≺⚠≻"), 100);
+                            .replace("{Warning}", "≺⚠≻"), 200);
+                }
+
+                if (plugin.getGroups().getBoolean("MENTION.GROUPS.EVERYONE.USE_MESSAGE_IN_THE_CHAT")) {
+                    Audience audience = plugin.getAudiences(mention);
+                    List<String> stringList = plugin.getGroups().getStringList("MENTION.GROUPS.EVERYONE.SEND_MESSAGE_IN_CHAT");
+
+                    stringList.replaceAll(s -> s
+                            .replace("{Player}", player.getName())
+                            .replace("{Email}", "☚✉☛")
+                            .replace("{Warning}", "≺⚠≻"));
+
+                    for (String messages : stringList) {
+
+                        audience.sendMessage(addColor.setColor(mention, messages));
+                    }
                 }
 
                 event.setMessage(chat);

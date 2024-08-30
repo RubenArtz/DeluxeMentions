@@ -33,7 +33,7 @@ public class UtilUpdateConfig {
             /*
             Update config of "groups.yml"
              */
-            if (!Objects.equals(plugin.getGroups().getString("version"), "1.2")) {
+            if (!Objects.equals(plugin.getGroups().getString("version"), "1.3")) {
                 try {
                     Files.copy(Paths.get(plugin.getDataFolder() + "/groups.yml"), Paths.get(plugin.getDataFolder() + "/old-groups-" + plugin.getGroups().getString("version") + ".yml"), StandardCopyOption.REPLACE_EXISTING);
                     File file = new File(plugin.getDataFolder(), "groups.yml");
