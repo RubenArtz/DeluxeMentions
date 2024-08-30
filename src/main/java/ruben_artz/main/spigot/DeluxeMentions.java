@@ -141,13 +141,13 @@ public final class DeluxeMentions extends JavaPlugin {
         sendConsole(prefix + "&aSuccessfully enabled &cv" + version);
         sendConsole("&8--------------------------------------------------------------------------------------");
         sendConsole("&7         Developed by &cRuben_Artz");
-        sendConsole(prefix + "§aVersion: §c" + version+" &ais loading...");
+        sendConsole(prefix + "&aVersion: &c" + version+" &ais loading...");
         sendConsole(prefix + "&aServer: &c"+Bukkit.getVersion());
         sendConsole(prefix + "&aLoading necessary files...");
         sendConsole("&f");
         sendConsole("&fDeluxe Mentions Starting plugin...");
         sendConsole("&f");
-        sendConsole(prefix + "§aSuccessfully loaded files");
+        sendConsole(prefix + "&aSuccessfully loaded files");
         sendConsole("&f");
         sendConsole("&8--------------------------------------------------------------------------------------");
     }
