@@ -55,7 +55,7 @@ dependencies {
     Keep up to date
     Url: https://github.com/CryptoMorin/XSeries/releases
      */
-    slim 'com.github.cryptomorin:XSeries:11.2.0'
+    slim 'com.github.cryptomorin:XSeries:11.2.1'
     slim 'org.slf4j:slf4j-simple:1.7.36'
     slim 'com.zaxxer:HikariCP:4.0.3'
     slim 'com.h2database:h2:2.1.214'
@@ -70,16 +70,16 @@ java {
 shadowJar {
     archiveFileName.set("Deluxe Mentions.jar")
 
-    relocate("io.github.slimjar", "ruben_artz.main.spigot.libs.slimjar")
-    relocate("net.kyori", "ruben_artz.main.spigot.libs.kyori")
-    relocate("org.bstats", "ruben_artz.main.spigot.libs.bstats")
+    relocate("io.github.slimjar", "ruben_artz.libs.slimjar")
+    relocate("net.kyori", "ruben_artz.libs.kyori")
+    relocate("org.bstats", "ruben_artz.libs.bstats")
 }
 
 slimJar {
-    relocate("com.cryptomorin.xseries", "ruben_artz.main.spigot.libs.xseries")
-    relocate("com.zaxxer.hikari", "ruben_artz.main.spigot.libs.hikari")
-    relocate("org.h2", "ruben_artz.main.spigot.libs.h2")
-    relocate("com.github.Anon8281.universalScheduler", "ruben_artz.main.spigot.libs.universalScheduler")
+    relocate("com.cryptomorin.xseries", "ruben_artz.libs.xseries")
+    relocate("com.zaxxer.hikari", "ruben_artz.libs.hikari")
+    relocate("org.h2", "ruben_artz.libs.h2")
+    relocate("com.github.Anon8281.universalScheduler", "ruben_artz.libs.universalScheduler")
 }
 
 tasks.withType(JavaCompile).configureEach {
