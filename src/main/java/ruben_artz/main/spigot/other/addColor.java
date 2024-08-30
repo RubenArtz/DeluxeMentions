@@ -19,6 +19,9 @@ public class addColor {
     public static @NotNull Component setColor(Player player, String input) {
         return ProjectUtil.setPlaceholders(player, MiniMessage.miniMessage().deserialize(color(input)));
     }
+    public static @NotNull Component setColor(String input) {
+        return MiniMessage.miniMessage().deserialize(color(input));
+    }
 
     public static String setColors(Player player, String input) {
         return ChatColor.translateAlternateColorCodes('&', ProjectUtil.setPlaceholders(player, input));

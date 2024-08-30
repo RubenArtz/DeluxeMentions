@@ -48,8 +48,9 @@ public class MSLauncher implements MSLaunch {
     public void launch(DeluxeMentions plugin) {
         instance = this;
 
-        scheduler = UniversalScheduler.getScheduler(plugin);
+        audiences = BukkitAudiences.create(plugin);
 
+        scheduler = UniversalScheduler.getScheduler(plugin);
 
         plugin.LoadAllConfigs();
         UtilUpdateConfig.updateConfigs();
@@ -103,7 +104,6 @@ public class MSLauncher implements MSLaunch {
                 new playerLeave(),
                 new target(),
                 new everyone()).forEach(listener -> event.registerEvents(listener, plugin));
-        audiences = BukkitAudiences.create(plugin);
     }
 
     private void registerPlaceholders() {

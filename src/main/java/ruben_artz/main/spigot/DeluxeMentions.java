@@ -93,7 +93,21 @@ public final class DeluxeMentions extends JavaPlugin {
     }
 
     public Audience getAudiences(Player player) {
+        if (MSLauncher.getInstance().audiences == null) {
+
+            throw new IllegalStateException("Tried to access Adventure when the plugin was disabled!");
+        }
+
         return MSLauncher.getInstance().audiences.player(player);
+    }
+
+    public Audience getAudiences() {
+        if (MSLauncher.getInstance().audiences == null) {
+
+            throw new IllegalStateException("Tried to access Adventure when the plugin was disabled!");
+        }
+
+        return MSLauncher.getInstance().audiences.console();
     }
 
     public Configurations getFileTranslations() {
@@ -113,7 +127,9 @@ public final class DeluxeMentions extends JavaPlugin {
     }
 
     public void sendConsole(String msg){
-        Bukkit.getConsoleSender().sendMessage(addColor.addColors(msg));
+        Audience audience = getAudiences();
+
+        audience.sendMessage(addColor.setColor(msg));
     }
 
     public String getLatestVersion()
