@@ -24,7 +24,6 @@ import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
-
 public final class DeluxeMentions extends JavaPlugin {
     public PluginDescriptionFile file = getDescription();
     public String table = file.getName().toLowerCase()+"_1_0";
@@ -43,7 +42,8 @@ public final class DeluxeMentions extends JavaPlugin {
         getLogger().info("Verifying the dependencies...");
 
         try {
-            Path downloadPath = Paths.get(getDataFolder().getPath() + File.separator + "cache");
+            Path downloadPath = Paths.get(Bukkit.getWorldContainer().getPath() + File.separator + "plugins" + File.separator + "STN Studios" + File.separator + "Deluxe Mentions");
+
             ApplicationBuilder.appending("DeluxeMentions")
                     .logger(new SlimJarLogger(this))
                     .downloadDirectoryPath(downloadPath)
