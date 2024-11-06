@@ -39,7 +39,7 @@ dependencies {
     Keep up to date
     Url: https://www.spigotmc.org/resources/6245/
      */
-    compileOnly 'me.clip:placeholderapi:2.11.4'
+    compileOnly 'me.clip:placeholderapi:2.11.6'
     compileOnly 'com.mojang:authlib:1.5.21'
     compileOnly 'org.jetbrains:annotations:23.0.0'
 
