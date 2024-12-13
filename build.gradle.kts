@@ -5,9 +5,9 @@ plugins {
 }
 
 group = "ruben_artz.main"
-version = "6.7.21"
+version = "6.8.21"
 
-registerOutputTask("Ruben_Artz", "D:\\Ruben_Artz\\STN Studios\\Development\\plugins")
+registerOutputTask("Ruben_Artz", "D:/Ruben_Artz/STN Studios/Development/plugins")
 
 
 repositories {
@@ -30,7 +30,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly ("org.spigotmc:spigot-api:1.21.3-R0.1-SNAPSHOT")
+    compileOnly ("org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT")
+
     compileOnly ("org.projectlombok:lombok:1.18.30")
     /*
     Keep up to date
