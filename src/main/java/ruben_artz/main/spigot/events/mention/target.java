@@ -76,7 +76,7 @@ public class target implements Listener {
 
                         final String prefix = plugin.getGroups().getString("MENTION.GROUPS.ADMINISTRATOR.COLOR_OF_THE_PLAYER_MENTIONED");
                         final String suffix = plugin.getGroups().getString("MENTION.GROUPS.ADMINISTRATOR.COLOR_AFTER_MENTION");
-                        final String chat = addColor.setColors(mention, message.replace(mention.getName(), prefix + mention.getName() + suffix));
+                        final String chat = addColor.toLegacyString(mention, message.replace(mention.getName(), prefix + mention.getName() + suffix));
                             /*
                             API
                              */
@@ -176,7 +176,7 @@ public class target implements Listener {
 
                         final String prefix = plugin.getGroups().getString("MENTION.GROUPS.PLAYERS." + key + ".COLOR_OF_THE_PLAYER_MENTIONED");
                         final String suffix = plugin.getGroups().getString("MENTION.GROUPS.PLAYERS." + key + ".COLOR_AFTER_MENTION");
-                        final String chat = addColor.setColors(mention, message.replace(mention.getName(), prefix + mention.getName() + suffix));
+                        final String chat = addColor.toLegacyString(mention, message.replace(mention.getName(), prefix + mention.getName() + suffix));
                         /*
                           API
                          */

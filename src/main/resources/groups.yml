@@ -20,8 +20,8 @@ MENTION:
       COOLDOWN_TIME: 5
       USE_SOUND_NOTIFICATION: true
       SOUND_NOTIFICATION: 'ZOMBIE_WOODBREAK'
-      COLOR_OF_THE_PLAYER_MENTIONED: '&c@'
-      COLOR_AFTER_MENTION: '&f.'
+      COLOR_OF_THE_PLAYER_MENTIONED: '<rainbow>@'
+      COLOR_AFTER_MENTION: '&f,'
       USE_TITLES: true
       SEND_TITLE:
         - '&e♕ &9&lＳＴＮ &f&lＳＴＵＤＩＯＳ&e™ &e♕::&b{Email} &fPlayer {Player} &fmentioned you &b{Email}'
@@ -39,9 +39,9 @@ MENTION:
       PREFIX: '@everyone'
       USE_SOUND_NOTIFICATION: true
       SOUND_NOTIFICATION: 'ZOMBIE_WOODBREAK'
-      COLOR_OF_THE_PLAYER_MENTIONED: '&b'
+      COLOR_OF_THE_PLAYER_MENTIONED: '<gradient:#54daf4:#545eb6:#3035BD:#2D52D3>'
       # Do not remove the dot or else the color will not work.
-      COLOR_AFTER_MENTION: '&f.'
+      COLOR_AFTER_MENTION: '<reset>,'
       USE_TITLES: true
       # - 'fade In;;stay;;fade Out;;Title;;Subtitle'
       SEND_TITLE:
@@ -64,7 +64,7 @@ MENTION:
         SOUND_NOTIFICATION: 'ZOMBIE_WOODBREAK'
         COLOR_OF_THE_PLAYER_MENTIONED: '&7@'
         # Do not remove the dot or else the color will not work.
-        COLOR_AFTER_MENTION: '&7.'
+        COLOR_AFTER_MENTION: '&7,'
         USE_TITLES: true
         SEND_TITLE:
           - '&e♕ &9&lＳＴＮ &f&lＳＴＵＤＩＯＳ&e™ &e♕::<aqua>{Email}</aqua> <gradient:#ff006a:#82ff5c:#63b1ff>Player {Player} mentioned you</gradient> <aqua>{Email}</aqua>'
@@ -85,7 +85,7 @@ MENTION:
         SOUND_NOTIFICATION: 'ZOMBIE_WOODBREAK'
         COLOR_OF_THE_PLAYER_MENTIONED: '&a@'
         # Do not remove the dot or else the color will not work.
-        COLOR_AFTER_MENTION: '&f.'
+        COLOR_AFTER_MENTION: '&f,'
         USE_TITLES: true
         SEND_TITLE:
           - '&e♕ &9&lＳＴＮ &f&lＳＴＵＤＩＯＳ&e™ &e♕::<aqua>{Email}</aqua> <gradient:#ff006a:#82ff5c:#63b1ff>Player {Player} mentioned you</gradient> <aqua>{Email}</aqua>'

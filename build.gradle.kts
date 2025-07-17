@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "ruben_artz.main"
-version = "6.8.21"
+version = "6.9.21"
 
 registerOutputTask("Ruben_Artz", "D:/Ruben_Artz/STN Studios/Development/plugins")
 
@@ -42,8 +42,8 @@ dependencies {
     compileOnly ("org.jetbrains:annotations:23.0.0")
 
     implementation ("io.github.slimjar:slimjar:1.2.7")
-    implementation ("net.kyori:adventure-text-minimessage:4.17.0")
-    implementation ("net.kyori:adventure-platform-bukkit:4.3.4")
+    implementation ("net.kyori:adventure-text-minimessage:4.23.0")
+    implementation ("net.kyori:adventure-platform-bukkit:4.4.0")
     implementation ("org.bstats:bstats-bukkit:3.0.0")
 
     annotationProcessor ("org.projectlombok:lombok:1.18.30")
@@ -53,7 +53,7 @@ dependencies {
     Keep up to date
     Url: https://github.com/CryptoMorin/XSeries/releases
      */
-    slim ("com.github.cryptomorin:XSeries:12.0.0")
+    slim ("com.github.cryptomorin:XSeries:13.3.3")
     slim ("org.slf4j:slf4j-simple:1.7.36")
     slim ("com.zaxxer:HikariCP:4.0.3")
     slim ("com.h2database:h2:2.1.214")

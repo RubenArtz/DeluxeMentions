@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableMap;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,20 +15,25 @@ import java.util.stream.Collectors;
 public class addColor {
     private static final LegacyComponentSerializer unusualHexSerializer = LegacyComponentSerializer.builder().hexColors().useUnusualXRepeatedCharacterHexFormat().build();
 
+    private static MiniMessage miniMessage;
+
+    public static MiniMessage getMiniMessage() {
+        if (miniMessage == null) {
+            miniMessage = MiniMessage.miniMessage();
+        }
+
+        return miniMessage;
+    }
+
     public static @NotNull Component setColor(Player player, String input) {
-        return ProjectUtil.setPlaceholders(player, MiniMessage.miniMessage().deserialize(color(input)));
+        return ProjectUtil.setPlaceholders(player, getMiniMessage().deserialize(color(input)));
     }
     public static @NotNull Component setColor(String input) {
-        return MiniMessage.miniMessage().deserialize(color(input));
+        return getMiniMessage().deserialize(color(input));
     }
 
-    public static String setColors(Player player, String input) {
-        return ChatColor.translateAlternateColorCodes('&', ProjectUtil.setPlaceholders(player, input));
-    }
-
-    public static String addColors(Player player, String input) {
-        if ((input == null) || input.isEmpty()) return input;
-        return unusualHexSerializer.serialize(ProjectUtil.setPlaceholders(player, MiniMessage.miniMessage().deserialize(color(input))));
+    public static String toLegacyString(Player player, String input) {
+        return unusualHexSerializer.serialize(ProjectUtil.setPlaceholders(player, getMiniMessage().deserialize(color(input), ProjectUtil.papiResolver(player))));
     }
 
     public static String addColors(String input) {

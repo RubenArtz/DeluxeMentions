@@ -31,6 +31,14 @@ public class MSPlaceholder extends PlaceholderExpansion implements Configurable 
     public @NotNull String getVersion(){
         return plugin.getDescription().getVersion();
     }
+    @Override
+    public boolean persist() {
+        return true;
+    }
+    @Override
+    public boolean canRegister() {
+        return true;
+    }
 
     @Override
     public @Nullable String onRequest(OfflinePlayer player, @NotNull String params) {

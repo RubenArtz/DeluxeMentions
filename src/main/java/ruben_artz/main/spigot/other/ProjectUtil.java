@@ -9,6 +9,9 @@ import lombok.Getter;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextReplacementConfig;
+import net.kyori.adventure.text.minimessage.tag.Tag;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -51,6 +54,18 @@ public class ProjectUtil {
                     return Component.text(addColor.addColors(replaced));
                 }).build();
         return component.replaceText(textReplacementConfig);
+    }
+
+    public static TagResolver papiResolver(Player player) {
+        return TagResolver.resolver("papi", (argumentQueue, context) -> {
+            final String papiPlaceholder = argumentQueue.popOr("papi tag requires an argument").value();
+
+            final String parsedPlaceholder = PlaceholderAPI.setPlaceholders(player, '%' + papiPlaceholder + '%');
+
+            final Component componentPlaceholder = LegacyComponentSerializer.legacyAmpersand().deserialize(parsedPlaceholder);
+
+            return Tag.selfClosingInserting(componentPlaceholder);
+        });
     }
 
     public static void LoadConfigCommand(){

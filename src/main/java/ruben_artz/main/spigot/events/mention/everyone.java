@@ -28,7 +28,7 @@ public class everyone implements Listener {
             for (Player mention : Bukkit.getOnlinePlayers()) {
                 final String prefix = plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.COLOR_OF_THE_PLAYER_MENTIONED");
                 final String suffix = plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.COLOR_AFTER_MENTION");
-                final String chat = addColor.setColors(mention, message.replace(Objects.requireNonNull(plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.PREFIX")), prefix + plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.PREFIX") + suffix));
+                final String chat = addColor.toLegacyString(mention, message.replace(Objects.requireNonNull(plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.PREFIX")), prefix + plugin.getGroups().getString("MENTION.GROUPS.EVERYONE.PREFIX") + suffix));
 
                 /*
                    API
