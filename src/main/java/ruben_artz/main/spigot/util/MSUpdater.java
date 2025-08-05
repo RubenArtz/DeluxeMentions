@@ -29,8 +29,9 @@ public class MSUpdater implements Listener {
                         player.sendMessage(addColor.addColors(this.plugin.prefix + OLD));
                         player.sendMessage(addColor.addColors("&fusing &e" + plugin.version + "&f, available version &e" + plugin.getLatestVersion() + "&f, &9https://www.spigotmc.org/resources/67248/"));
                         player.sendTitle(addColor.addColors("&8[&9Deluxe Mentions&8]"), addColor.addColors("&fOld version &e" + plugin.version + " &fNew version &e" + plugin.getLatestVersion()));
-                        sendActionbar.sendActionBar(player, "&cDownload the latest version &e"+plugin.getLatestVersion(), 120);
-                    } catch (Exception ignored) {}
+                        sendActionbar.sendActionBar(player, "&cDownload the latest version &e" + plugin.getLatestVersion(), 120);
+                    } catch (Exception ignored) {
+                    }
                 }
             });
         }

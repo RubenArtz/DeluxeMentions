@@ -1,6 +1,6 @@
 package ruben_artz.main.spigot.commands.other;
 
-import ruben_artz.main.spigot.commands.other.SubCommands.*;
+import ruben_artz.main.spigot.commands.other.SubCommands.Toggle;
 
 public class RegisterCommand extends MainPlayer {
 

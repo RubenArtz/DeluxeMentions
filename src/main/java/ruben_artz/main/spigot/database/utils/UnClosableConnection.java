@@ -43,13 +43,13 @@ public class UnClosableConnection implements Connection {
     }
 
     @Override
-    public void setAutoCommit(boolean autoCommit) throws SQLException {
-        handle.setAutoCommit(autoCommit);
+    public boolean getAutoCommit() throws SQLException {
+        return handle.getAutoCommit();
     }
 
     @Override
-    public boolean getAutoCommit() throws SQLException {
-        return handle.getAutoCommit();
+    public void setAutoCommit(boolean autoCommit) throws SQLException {
+        handle.setAutoCommit(autoCommit);
     }
 
     @Override
@@ -73,18 +73,13 @@ public class UnClosableConnection implements Connection {
     }
 
     @Override
-    public void setReadOnly(boolean readOnly) throws SQLException {
-        handle.setReadOnly(readOnly);
-    }
-
-    @Override
     public boolean isReadOnly() throws SQLException {
         return handle.isReadOnly();
     }
 
     @Override
-    public void setCatalog(String catalog) throws SQLException {
-        handle.setCatalog(catalog);
+    public void setReadOnly(boolean readOnly) throws SQLException {
+        handle.setReadOnly(readOnly);
     }
 
     @Override
@@ -93,13 +88,18 @@ public class UnClosableConnection implements Connection {
     }
 
     @Override
-    public void setTransactionIsolation(int level) throws SQLException {
-        handle.setTransactionIsolation(level);
+    public void setCatalog(String catalog) throws SQLException {
+        handle.setCatalog(catalog);
     }
 
     @Override
     public int getTransactionIsolation() throws SQLException {
         return handle.getTransactionIsolation();
+    }
+
+    @Override
+    public void setTransactionIsolation(int level) throws SQLException {
+        handle.setTransactionIsolation(level);
     }
 
     @Override
@@ -138,13 +138,13 @@ public class UnClosableConnection implements Connection {
     }
 
     @Override
-    public void setHoldability(int holdability) throws SQLException {
-        handle.setHoldability(holdability);
+    public int getHoldability() throws SQLException {
+        return handle.getHoldability();
     }
 
     @Override
-    public int getHoldability() throws SQLException {
-        return handle.getHoldability();
+    public void setHoldability(int holdability) throws SQLException {
+        handle.setHoldability(holdability);
     }
 
     @Override
@@ -229,11 +229,6 @@ public class UnClosableConnection implements Connection {
     }
 
     @Override
-    public void setClientInfo(Properties properties) throws SQLClientInfoException {
-        handle.setClientInfo(properties);
-    }
-
-    @Override
     public String getClientInfo(String name) throws SQLException {
         return handle.getClientInfo(name);
     }
@@ -241,6 +236,11 @@ public class UnClosableConnection implements Connection {
     @Override
     public Properties getClientInfo() throws SQLException {
         return handle.getClientInfo();
+    }
+
+    @Override
+    public void setClientInfo(Properties properties) throws SQLClientInfoException {
+        handle.setClientInfo(properties);
     }
 
     @Override
@@ -254,13 +254,13 @@ public class UnClosableConnection implements Connection {
     }
 
     @Override
-    public void setSchema(String schema) throws SQLException {
-        handle.setSchema(schema);
+    public String getSchema() throws SQLException {
+        return getSchema();
     }
 
     @Override
-    public String getSchema() throws SQLException {
-        return getSchema();
+    public void setSchema(String schema) throws SQLException {
+        handle.setSchema(schema);
     }
 
     @Override

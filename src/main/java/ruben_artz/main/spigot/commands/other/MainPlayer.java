@@ -110,5 +110,6 @@ public class MainPlayer implements CommandExecutor, TabCompleter {
         return completions;
     }
 
-    private void onCommand(CommandSender sender, String[] array) {}
+    private void onCommand(CommandSender sender, String[] array) {
+    }
 }

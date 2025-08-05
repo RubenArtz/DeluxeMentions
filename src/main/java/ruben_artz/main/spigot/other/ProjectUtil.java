@@ -27,14 +27,18 @@ import ruben_artz.main.spigot.DeluxeMentions;
 import ruben_artz.main.spigot.launcher.MSLauncher;
 
 import javax.annotation.Nonnull;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Objects;
+import java.util.UUID;
 import java.util.regex.Pattern;
 
 public class ProjectUtil {
 
     private static final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
-    @Getter static public HashMap<UUID, Integer> delayMention;
-    @Getter static public HashMap<UUID, Integer> delayMentionAdmin;
+    @Getter
+    static public HashMap<UUID, Integer> delayMention;
+    @Getter
+    static public HashMap<UUID, Integer> delayMentionAdmin;
 
     public static String setPlaceholders(Player p, String text) {
         if (isPluginEnabled("PlaceholderAPI")) {
@@ -68,7 +72,7 @@ public class ProjectUtil {
         });
     }
 
-    public static void LoadConfigCommand(){
+    public static void LoadConfigCommand() {
         plugin.reloadConfig();
         plugin.saveDefaultConfig();
         plugin.initiate();
@@ -91,11 +95,13 @@ public class ProjectUtil {
         ItemStack item = XMaterial.PLAYER_HEAD.parseItem();
         SkullMeta skullMeta = (SkullMeta) (item != null ? item.getItemMeta() : null);
 
-        if (skullMeta != null) skullMeta.setDisplayName(addColor.addColors(plugin.getFileTranslations().getString(name)));
+        if (skullMeta != null)
+            skullMeta.setDisplayName(addColor.addColors(plugin.getFileTranslations().getString(name)));
 
         if (skullMeta != null) skullMeta.setLore(addColor.addColors(plugin.getFileTranslations().getStringList(lore)));
 
-        if (item != null && skullMeta != null) item.setItemMeta(XSkull.of(skullMeta).profile(Profileable.of(ProfileInputType.TEXTURE_HASH, plugin.getFileTranslations().getString(texture))).apply());
+        if (item != null && skullMeta != null)
+            item.setItemMeta(XSkull.of(skullMeta).profile(Profileable.of(ProfileInputType.TEXTURE_HASH, plugin.getFileTranslations().getString(texture))).apply());
 
         inventory.setItem(slot, item);
     }

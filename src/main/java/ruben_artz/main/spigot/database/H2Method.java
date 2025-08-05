@@ -22,7 +22,7 @@ public class H2Method implements CacheMethod {
     @Override
     public Connection getConnection() {
         try {
-            if(conn.isClosed()) {
+            if (conn.isClosed()) {
                 plugin.getLogger().warning("H2 connection is dead, making a new one");
                 init(plugin, cacheInstance);
             }
@@ -49,13 +49,13 @@ public class H2Method implements CacheMethod {
         }
 
         File file = new File(plugin.getDataFolder(), "cache.trace.db");
-        if(file.exists()) {
+        if (file.exists()) {
             plugin.getLogger().info("Deleting junk trace file");
             try {
-                if(!file.delete()) {
+                if (!file.delete()) {
                     plugin.getLogger().warning("Failed to delete junk trace file!");
                 }
-            } catch(SecurityException e) {
+            } catch (SecurityException e) {
                 plugin.getLogger().log(Level.WARNING, "Failed to delete junk trace file: ", e);
             }
         }
@@ -65,9 +65,9 @@ public class H2Method implements CacheMethod {
             //conn = DriverManager.getConnection(url);
             conn = new JdbcConnection(url, new Properties(), null, null, false);
 
-            plugin.sendConsole(plugin.getPrefix()+plugin.getFileTranslations().getString("MESSAGE_DATABASE_CONNECTED").replace("{Database}", "H2"));
+            plugin.sendConsole(plugin.getPrefix() + plugin.getFileTranslations().getString("MESSAGE_DATABASE_CONNECTED").replace("{Database}", "H2"));
         } catch (SQLException e) {
-            plugin.sendConsole(plugin.getPrefix()+plugin.getFileTranslations().getString("MESSAGE_DATABASE_NOT_CONNECTED"));
+            plugin.sendConsole(plugin.getPrefix() + plugin.getFileTranslations().getString("MESSAGE_DATABASE_NOT_CONNECTED"));
         }
     }
 

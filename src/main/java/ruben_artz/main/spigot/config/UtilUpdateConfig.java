@@ -25,7 +25,7 @@ public class UtilUpdateConfig {
                     File file = new File(plugin.getDataFolder(), "config.yml");
                     file.delete();
                     plugin.saveDefaultConfig();
-                    plugin.sendConsole(plugin.prefix+"&cYour config.yml folder was updated in this version!");
+                    plugin.sendConsole(plugin.prefix + "&cYour config.yml folder was updated in this version!");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -39,7 +39,7 @@ public class UtilUpdateConfig {
                     File file = new File(plugin.getDataFolder(), "groups.yml");
                     file.delete();
                     plugin.initiate();
-                    plugin.sendConsole(plugin.prefix+"&cYour groups.yml folder was updated in this version!");
+                    plugin.sendConsole(plugin.prefix + "&cYour groups.yml folder was updated in this version!");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -57,7 +57,7 @@ public class UtilUpdateConfig {
                         }
                     }
                     plugin.initiate();
-                    plugin.sendConsole(plugin.prefix+"&cYour lang folder was updated in this version!");
+                    plugin.sendConsole(plugin.prefix + "&cYour lang folder was updated in this version!");
                 }
             });
         });

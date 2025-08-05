@@ -9,6 +9,7 @@ import ruben_artz.main.spigot.other.ProjectUtil;
 
 public class Language extends SubCommand {
     private final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
+
     public Language() {
         super("language:lang", "DeluxeMentions.Admin");
     }

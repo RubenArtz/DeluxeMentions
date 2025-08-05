@@ -14,11 +14,14 @@ public abstract class SubCommand {
         this.names = name.split(":");
         this.permission = permission;
     }
+
     public final List<String> getNames() {
         return Arrays.asList(names);
     }
+
     public final String getPermission() {
         return this.permission;
     }
+
     public abstract void onCommand(final CommandSender sender, final String[] args);
 }

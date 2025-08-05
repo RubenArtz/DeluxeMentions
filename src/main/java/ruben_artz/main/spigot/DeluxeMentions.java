@@ -9,10 +9,10 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
+import ruben_artz.main.spigot.config.Configurations;
 import ruben_artz.main.spigot.launcher.MSLaunch;
 import ruben_artz.main.spigot.launcher.MSLauncher;
 import ruben_artz.main.spigot.other.addColor;
-import ruben_artz.main.spigot.config.Configurations;
 import ruben_artz.main.spigot.util.SlimJarLogger;
 
 import java.io.File;
@@ -26,16 +26,18 @@ import java.util.*;
 
 public final class DeluxeMentions extends JavaPlugin {
     public PluginDescriptionFile file = getDescription();
-    public String table = file.getName().toLowerCase()+"_1_0";
+    public String table = file.getName().toLowerCase() + "_1_0";
     public String latestversion;
     public List<String> authors = file.getAuthors();
     public String web = file.getWebsite();
     public Configurations fileUtilsSpigot;
+    @Getter
+    public String version = file.getVersion();
+    @Getter
+    public String prefix = "&8[&9Deluxe Mentions&8]&f ";
+    @Getter
+    public Set<UUID> IgnoreMention = new HashSet<>();
     private MSLaunch launch;
-
-    @Getter public String version = file.getVersion();
-    @Getter public String prefix = "&8[&9Deluxe Mentions&8]&f ";
-    @Getter public Set<UUID> IgnoreMention = new HashSet<>();
 
     @Override
     public void onLoad() {
@@ -62,7 +64,7 @@ public final class DeluxeMentions extends JavaPlugin {
             this.launch = Class.forName("ruben_artz.main.spigot.launcher.MSLauncher").asSubclass(MSLaunch.class).newInstance();
 
             DeluxeMentions.this.launch.launch(DeluxeMentions.this);
-        } catch (InstantiationException|IllegalAccessException|ClassNotFoundException e) {
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -89,7 +91,7 @@ public final class DeluxeMentions extends JavaPlugin {
                         "lang/version.yml",
                         "lang/pt_BR.yml",
                         "groups.yml")
-                .setLanguageFile("lang/"+getConfig().getString("MENTION.LANGUAGE")+".yml");
+                .setLanguageFile("lang/" + getConfig().getString("MENTION.LANGUAGE") + ".yml");
     }
 
     public Audience getAudiences(Player player) {
@@ -113,36 +115,37 @@ public final class DeluxeMentions extends JavaPlugin {
     public Configurations getFileTranslations() {
         return fileUtilsSpigot;
     }
+
     public FileConfiguration getGroups() {
         return fileUtilsSpigot.getFile("groups.yml");
     }
+
     public FileConfiguration getLangVersion() {
         return fileUtilsSpigot.getFile("lang/version.yml");
     }
 
-    public void LoadAllConfigs(){
+    public void LoadAllConfigs() {
         saveDefaultConfig();
         reloadConfig();
         initiate();
     }
 
-    public void sendConsole(String msg){
+    public void sendConsole(String msg) {
         Audience audience = getAudiences();
 
         audience.sendMessage(addColor.setColor(msg));
     }
 
-    public String getLatestVersion()
-    {
+    public String getLatestVersion() {
         return this.latestversion;
     }
 
-    public void Messages(){
+    public void Messages() {
         sendConsole(prefix + "&aSuccessfully enabled &cv" + version);
         sendConsole("&8--------------------------------------------------------------------------------------");
         sendConsole("&7         Developed by &cRuben_Artz");
-        sendConsole(prefix + "&aVersion: &c" + version+" &ais loading...");
-        sendConsole(prefix + "&aServer: &c"+Bukkit.getVersion());
+        sendConsole(prefix + "&aVersion: &c" + version + " &ais loading...");
+        sendConsole(prefix + "&aServer: &c" + Bukkit.getVersion());
         sendConsole(prefix + "&aLoading necessary files...");
         sendConsole("&f");
         sendConsole("&fDeluxe Mentions Starting plugin...");

@@ -43,10 +43,10 @@ public class MainCommand implements CommandExecutor, TabCompleter {
             for (String s : Lines) {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', s).replaceAll("#", "▉").replaceAll("<c>", "©"));
                 ((Player) sender).sendTitle(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("PERMS.TITLE"))
-                        .replace("{PLAYER}", sender.getName())
-                        .replaceAll("<exclusive>", "&c&l(╯°□°）╯&f&l︵&7&l ┻━┻")),
+                                .replace("{PLAYER}", sender.getName())
+                                .replaceAll("<exclusive>", "&c&l(╯°□°）╯&f&l︵&7&l ┻━┻")),
                         ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("PERMS.SUBTITLE"))
-                                .replace("!Version", plugin.getVersion()).replaceAll("<exclusive>", "&c&l(╯°□°）╯&f&l︵&7&l ┻━┻"))
+                                        .replace("!Version", plugin.getVersion()).replaceAll("<exclusive>", "&c&l(╯°□°）╯&f&l︵&7&l ┻━┻"))
                                 .replaceAll("<c>", "©"));
             }
             return false;
@@ -65,10 +65,10 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                             for (String s : Lines) {
                                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', s).replaceAll("#", "▉").replaceAll("<c>", "©"));
                                 ((Player) sender).sendTitle(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("PERMS.TITLE"))
-                                        .replace("{PLAYER}", sender.getName())
-                                        .replace("<exclusive>", "&c&l(╯°□°）╯&f&l︵&7&l ┻━┻")),
+                                                .replace("{PLAYER}", sender.getName())
+                                                .replace("<exclusive>", "&c&l(╯°□°）╯&f&l︵&7&l ┻━┻")),
                                         ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(plugin.getConfig().getString("PERMS.SUBTITLE"))
-                                                .replace("!Version", plugin.getVersion()).replaceAll("<exclusive>", "&c&l(╯°□°）╯&f&l︵&7&l ┻━┻"))
+                                                        .replace("!Version", plugin.getVersion()).replaceAll("<exclusive>", "&c&l(╯°□°）╯&f&l︵&7&l ┻━┻"))
                                                 .replace("<c>", "©"));
                             }
                             return false;
@@ -135,5 +135,6 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         return completions;
     }
 
-    private void onCommand(CommandSender sender, String[] array) {}
+    private void onCommand(CommandSender sender, String[] array) {
+    }
 }

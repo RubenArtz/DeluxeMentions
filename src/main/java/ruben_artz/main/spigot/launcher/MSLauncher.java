@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import ruben_artz.main.spigot.DeluxeMentions;
 import ruben_artz.main.spigot.commands.main.RegisterCommand;
+import ruben_artz.main.spigot.config.UtilUpdateConfig;
 import ruben_artz.main.spigot.database.Cache;
 import ruben_artz.main.spigot.events.mention.everyone;
 import ruben_artz.main.spigot.events.mention.target;
@@ -20,7 +21,6 @@ import ruben_artz.main.spigot.other.ProjectUtil;
 import ruben_artz.main.spigot.placeholder.MSPlaceholder;
 import ruben_artz.main.spigot.util.MSUpdater;
 import ruben_artz.main.spigot.util.UtilPlayer;
-import ruben_artz.main.spigot.config.UtilUpdateConfig;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -37,12 +37,13 @@ import java.util.concurrent.TimeUnit;
 public class MSLauncher implements MSLaunch {
     private static final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
 
-    @Getter private static MSLauncher instance;
-    @Getter private Cache cache;
-
-    @Getter private static TaskScheduler scheduler;
-
+    @Getter
+    private static MSLauncher instance;
+    @Getter
+    private static TaskScheduler scheduler;
     public BukkitAudiences audiences;
+    @Getter
+    private Cache cache;
 
     @Override
     public void launch(DeluxeMentions plugin) {
@@ -67,7 +68,7 @@ public class MSLauncher implements MSLaunch {
 
     @Override
     public void shutdown() {
-        if(getCache() != null) {
+        if (getCache() != null) {
             ExecutorService executorService = Executors.newSingleThreadExecutor();
             executorService.execute(() -> getCache().getMethod().shutdown());
 
@@ -77,12 +78,13 @@ public class MSLauncher implements MSLaunch {
                     executorService.shutdownNow();
                     plugin.getLogger().warning("Cache took too long to shut down. Skipping it.");
                 }
-            }catch(InterruptedException ignored) {}
+            } catch (InterruptedException ignored) {
+            }
         }
     }
 
     private void setMetrics() {
-        final Metrics metrics = new Metrics(plugin,5770);
+        final Metrics metrics = new Metrics(plugin, 5770);
         metrics.addCustomChart(new SingleLineChart("players", () -> Bukkit.getOnlinePlayers().size()));
     }
 
@@ -94,7 +96,8 @@ public class MSLauncher implements MSLaunch {
         Objects.requireNonNull(plugin.getCommand("deluxementions")).setExecutor(new RegisterCommand());
         Objects.requireNonNull(plugin.getCommand("mention")).setExecutor(new ruben_artz.main.spigot.commands.other.RegisterCommand());
     }
-    private void setEvents(){
+
+    private void setEvents() {
         PluginManager event = plugin.getServer().getPluginManager();
         Arrays.asList(
                 new MSUpdater(),
@@ -110,10 +113,6 @@ public class MSLauncher implements MSLaunch {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new MSPlaceholder().register();
         }
-    }
-
-    public enum UPDATER {
-        JOIN_PLAYER, CONSOLE
     }
 
     private void checkBypass() {
@@ -155,40 +154,44 @@ public class MSLauncher implements MSLaunch {
             case CONSOLE: {
                 ProjectUtil.runTask(() -> ProjectUtil.runTaskTimer("HOURS", 5, () -> {
                     try {
-                        HttpURLConnection con = (HttpURLConnection)new URL("https://api.spigotmc.org/legacy/update.php?resource=67248").openConnection();
+                        HttpURLConnection con = (HttpURLConnection) new URL("https://api.spigotmc.org/legacy/update.php?resource=67248").openConnection();
                         int timed_out = 1250;
                         con.setConnectTimeout(timed_out);
                         con.setReadTimeout(timed_out);
                         plugin.latestversion = new BufferedReader(new InputStreamReader(con.getInputStream())).readLine();
                         if ((plugin.latestversion.length() <= 7) && (!plugin.version.equals(plugin.latestversion))) {
-                            plugin.sendConsole( "&8--------------------------------------------------------------------------------------");
-                            plugin.sendConsole( plugin.prefix+"&fYou have an old version of the &eDeluxe Mentions &fplugin.");
-                            plugin.sendConsole( plugin.prefix+"&fPlease download the latest &e"+ plugin.getLatestVersion()+" &fversion.");
-                            plugin.sendConsole( "&8--------------------------------------------------------------------------------------");
+                            plugin.sendConsole("&8--------------------------------------------------------------------------------------");
+                            plugin.sendConsole(plugin.prefix + "&fYou have an old version of the &eDeluxe Mentions &fplugin.");
+                            plugin.sendConsole(plugin.prefix + "&fPlease download the latest &e" + plugin.getLatestVersion() + " &fversion.");
+                            plugin.sendConsole("&8--------------------------------------------------------------------------------------");
                         }
+                    } catch (Exception ignore) {
                     }
-                    catch (Exception ignore) {}
                 }));
                 break;
             }
             case JOIN_PLAYER: {
                 try {
-                    HttpURLConnection con = (HttpURLConnection)new URL("https://api.spigotmc.org/legacy/update.php?resource=67248").openConnection();
+                    HttpURLConnection con = (HttpURLConnection) new URL("https://api.spigotmc.org/legacy/update.php?resource=67248").openConnection();
                     int timed_out = 1250;
                     con.setConnectTimeout(timed_out);
                     con.setReadTimeout(timed_out);
                     plugin.latestversion = new BufferedReader(new InputStreamReader(con.getInputStream())).readLine();
                     if ((plugin.latestversion.length() <= 7) && (!plugin.version.equals(plugin.latestversion))) {
-                        plugin.sendConsole( "&8--------------------------------------------------------------------------------------");
-                        plugin.sendConsole( plugin.prefix+"&fYou have an old version of the &eDeluxe Mentions &fplugin.");
-                        plugin.sendConsole( plugin.prefix+"&fPlease download the latest &e"+ plugin.getLatestVersion()+" &fversion.");
-                        plugin.sendConsole( "&8--------------------------------------------------------------------------------------");
+                        plugin.sendConsole("&8--------------------------------------------------------------------------------------");
+                        plugin.sendConsole(plugin.prefix + "&fYou have an old version of the &eDeluxe Mentions &fplugin.");
+                        plugin.sendConsole(plugin.prefix + "&fPlease download the latest &e" + plugin.getLatestVersion() + " &fversion.");
+                        plugin.sendConsole("&8--------------------------------------------------------------------------------------");
                     }
+                } catch (Exception ignore) {
                 }
-                catch (Exception ignore) {}
                 break;
             }
         }
 
+    }
+
+    public enum UPDATER {
+        JOIN_PLAYER, CONSOLE
     }
 }

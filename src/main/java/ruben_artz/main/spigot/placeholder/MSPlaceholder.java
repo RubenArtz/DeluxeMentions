@@ -20,21 +20,25 @@ public class MSPlaceholder extends PlaceholderExpansion implements Configurable 
     String bypass_false = getString("bypass.false", "&c✖");
 
     @Override
-    public @NotNull String getAuthor(){
+    public @NotNull String getAuthor() {
         return plugin.getDescription().getAuthors().toString();
     }
+
     @Override
-    public @NotNull String getIdentifier(){
+    public @NotNull String getIdentifier() {
         return "mentions";
     }
+
     @Override
-    public @NotNull String getVersion(){
+    public @NotNull String getVersion() {
         return plugin.getDescription().getVersion();
     }
+
     @Override
     public boolean persist() {
         return true;
     }
+
     @Override
     public boolean canRegister() {
         return true;
@@ -80,7 +84,7 @@ public class MSPlaceholder extends PlaceholderExpansion implements Configurable 
             }
             case "delayInFormat": {
                 if (preventAttacks.isAttacking()) return "Loading...";
-                
+
                 if (ProjectUtil.getDelayMentionAdmin().containsKey(player.getUniqueId())) {
                     return ProjectUtil.convertSecondsToHMS(ProjectUtil.getDelayMentionAdmin().get(player.getUniqueId()));
                 } else if (ProjectUtil.getDelayMention().containsKey(player.getUniqueId())) {

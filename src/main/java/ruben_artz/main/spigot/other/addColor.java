@@ -14,39 +14,6 @@ import java.util.stream.Collectors;
 
 public class addColor {
     private static final LegacyComponentSerializer unusualHexSerializer = LegacyComponentSerializer.builder().hexColors().useUnusualXRepeatedCharacterHexFormat().build();
-
-    private static MiniMessage miniMessage;
-
-    public static MiniMessage getMiniMessage() {
-        if (miniMessage == null) {
-            miniMessage = MiniMessage.miniMessage();
-        }
-
-        return miniMessage;
-    }
-
-    public static @NotNull Component setColor(Player player, String input) {
-        return ProjectUtil.setPlaceholders(player, getMiniMessage().deserialize(color(input)));
-    }
-    public static @NotNull Component setColor(String input) {
-        return getMiniMessage().deserialize(color(input));
-    }
-
-    public static String toLegacyString(Player player, String input) {
-        return unusualHexSerializer.serialize(ProjectUtil.setPlaceholders(player, getMiniMessage().deserialize(color(input), ProjectUtil.papiResolver(player))));
-    }
-
-    public static String addColors(String input) {
-        if ((input == null) || (input.isEmpty())) return input;
-        final Component component = LegacyComponentSerializer.legacyAmpersand().deserialize(input);
-        return unusualHexSerializer.serialize(component);
-    }
-
-    public static List<String> addColors(List<String> input) {
-        if ((input == null) || (input.isEmpty())) return input;
-        return input.stream().map(addColor::addColors).collect(Collectors.toList());
-    }
-
     private static final ImmutableMap<String, String> colorReplacements = new ImmutableMap.Builder<String, String>()
             .put("0", "<black>")
             .put("1", "<dark_blue>")
@@ -71,13 +38,45 @@ public class addColor {
             .put("o", "<italic>")
             .put("r", "<reset>")
             .build();
+    private static MiniMessage miniMessage;
+
+    public static MiniMessage getMiniMessage() {
+        if (miniMessage == null) {
+            miniMessage = MiniMessage.miniMessage();
+        }
+
+        return miniMessage;
+    }
+
+    public static @NotNull Component setColor(Player player, String input) {
+        return ProjectUtil.setPlaceholders(player, getMiniMessage().deserialize(color(input)));
+    }
+
+    public static @NotNull Component setColor(String input) {
+        return getMiniMessage().deserialize(color(input));
+    }
+
+    public static String toLegacyString(Player player, String input) {
+        return unusualHexSerializer.serialize(ProjectUtil.setPlaceholders(player, getMiniMessage().deserialize(color(input), ProjectUtil.papiResolver(player))));
+    }
+
+    public static String addColors(String input) {
+        if ((input == null) || (input.isEmpty())) return input;
+        final Component component = LegacyComponentSerializer.legacyAmpersand().deserialize(input);
+        return unusualHexSerializer.serialize(component);
+    }
+
+    public static List<String> addColors(List<String> input) {
+        if ((input == null) || (input.isEmpty())) return input;
+        return input.stream().map(addColor::addColors).collect(Collectors.toList());
+    }
 
     private static String color(String msg) {
-        for(Map.Entry<String, String> entry : colorReplacements.entrySet()) {
+        for (Map.Entry<String, String> entry : colorReplacements.entrySet()) {
             String legacy = entry.getKey();
             String mini = entry.getValue();
-            msg = msg.replaceAll(Matcher.quoteReplacement("&"+legacy), Matcher.quoteReplacement(mini));
-            msg = msg.replaceAll(Matcher.quoteReplacement(((char)0x00b7)+legacy), Matcher.quoteReplacement(mini));
+            msg = msg.replaceAll(Matcher.quoteReplacement("&" + legacy), Matcher.quoteReplacement(mini));
+            msg = msg.replaceAll(Matcher.quoteReplacement(((char) 0x00b7) + legacy), Matcher.quoteReplacement(mini));
         }
         return msg;
     }

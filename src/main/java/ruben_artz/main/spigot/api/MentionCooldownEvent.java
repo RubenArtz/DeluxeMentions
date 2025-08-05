@@ -11,14 +11,17 @@ import org.jetbrains.annotations.NotNull;
 public class MentionCooldownEvent extends Event implements Cancellable {
     @Getter
     private static final HandlerList handlerList = new HandlerList();
-
-    @Getter @Setter
+    @Getter
+    private final Player player;
+    @Getter
+    private final Player mentioned;
+    @Getter
+    @Setter
     private boolean cancelled;
-
-    @Getter private final Player player;
-    @Getter private final Player mentioned;
-    @Getter private Integer delayInSeconds;
-    @Getter private String formatDelay;
+    @Getter
+    private Integer delayInSeconds;
+    @Getter
+    private String formatDelay;
 
     public MentionCooldownEvent(Player who, Player mentioned, Integer delayInSeconds, String formatDelay) {
         this.player = who;

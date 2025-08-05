@@ -11,14 +11,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class MysqlMethod implements CacheMethod {
+    private static HikariDataSource ds;
+    private final HikariConfig hikariConfig = new HikariConfig();
+
     @Override
     public Connection getConnection() throws SQLException {
         if (ds == null) return null;
         return ds.getConnection();
     }
-
-    private static HikariDataSource ds;
-    private final HikariConfig hikariConfig = new HikariConfig();
 
     @Override
     public void init(DeluxeMentions plugin, Cache cacheInstance) {
@@ -46,10 +46,10 @@ public class MysqlMethod implements CacheMethod {
         try (Connection conn = getConnection()) {
 
             if (conn.isValid(5000)) {
-                plugin.sendConsole(plugin.getPrefix()+plugin.getFileTranslations().getString("MESSAGE_DATABASE_CONNECTED").replace("{Database}", "Mysql"));
+                plugin.sendConsole(plugin.getPrefix() + plugin.getFileTranslations().getString("MESSAGE_DATABASE_CONNECTED").replace("{Database}", "Mysql"));
             }
         } catch (SQLException e) {
-            plugin.sendConsole(plugin.getPrefix()+plugin.getFileTranslations().getString("MESSAGE_MYSQL_NOT_CONNECTED"));
+            plugin.sendConsole(plugin.getPrefix() + plugin.getFileTranslations().getString("MESSAGE_MYSQL_NOT_CONNECTED"));
             Bukkit.getPluginManager().disablePlugin(plugin);
         }
     }

@@ -5,15 +5,15 @@
 name: 'DeluxeMentions'
 version: '${version}'
 main: 'ruben_artz.main.spigot.DeluxeMentions'
-authors: ['Ruben_Artz', 'STN Studios']
+authors: [ 'Ruben_Artz', 'STN Studios' ]
 description: 'Amazing resource to mention your players.'
 website: 'https://www.spigotmc.org/resources/67248/'
 api-version: '1.16'
-softdepend: ['SuperVanish', 'PremiumVanish', 'PlaceholderAPI', 'BotSentry']
+softdepend: [ 'SuperVanish', 'PremiumVanish', 'PlaceholderAPI', 'BotSentry' ]
 
 commands:
   deluxementions:
     description: 'Mentions main command. Type ''/ms help'' for more information.'
-    aliases: ['ms']
+    aliases: [ 'ms' ]
   mention:
     description: 'Disable your mentions or active!'

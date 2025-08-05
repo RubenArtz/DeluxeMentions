@@ -13,10 +13,7 @@ import java.util.UUID;
 
 public class Cache {
     private final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
-
-    @Getter CacheMethod method;
-
-    private final String CREATE_TABLE_H2 = "CREATE TABLE IF NOT EXISTS "+plugin.table+" (" +
+    private final String CREATE_TABLE_H2 = "CREATE TABLE IF NOT EXISTS " + plugin.table + " (" +
             "UUID VARCHAR(200), " +
             "EXCLUDETIMER VARCHAR(200), " +
             "MENTION VARCHAR(200))";
@@ -25,10 +22,11 @@ public class Cache {
             "EXCLUDETIMER VARCHAR(45) NOT NULL," +
             "MENTION VARCHAR(45) NOT NULL," +
             "PRIMARY KEY (UUID))";
-
-    private final String ADD_INFORMATION = "INSERT INTO "+plugin.table+" (UUID, EXCLUDETIMER, MENTION) VALUES (?, ?, ?)";
-    private final String SELECT_BOOL = "SELECT * FROM "+plugin.table+" WHERE (UUID=?)";
-    private final String SET_BOOL = "UPDATE "+ plugin.table +" SET %0=? WHERE (UUID=?)";
+    private final String ADD_INFORMATION = "INSERT INTO " + plugin.table + " (UUID, EXCLUDETIMER, MENTION) VALUES (?, ?, ?)";
+    private final String SELECT_BOOL = "SELECT * FROM " + plugin.table + " WHERE (UUID=?)";
+    private final String SET_BOOL = "UPDATE " + plugin.table + " SET %0=? WHERE (UUID=?)";
+    @Getter
+    CacheMethod method;
 
 
     public Cache() {
@@ -44,48 +42,34 @@ public class Cache {
     }
 
     private void createTable() {
-        Connection connection = null;
-        PreparedStatement ps = null;
 
-        try {
-            connection = method.getConnection();
-            ps = connection.prepareStatement(ProjectUtil.ifIsMysql() ? CREATE_TABLE_MYSQL : CREATE_TABLE_H2);
-
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            plugin.sendConsole(plugin.getPrefix() + plugin.getFileTranslations().getString("MESSAGE_DATABASE_NOT_CONNECTED"));
-        } finally {
+        try (Connection connection = method.getConnection(); PreparedStatement ps = connection.prepareStatement(ProjectUtil.ifIsMysql() ? CREATE_TABLE_MYSQL : CREATE_TABLE_H2)) {
             try {
-                if (ps != null) ps.close();
-                if (connection != null) connection.close();
+
+                ps.executeUpdate();
             } catch (SQLException e) {
                 plugin.sendConsole(plugin.getPrefix() + plugin.getFileTranslations().getString("MESSAGE_DATABASE_NOT_CONNECTED"));
             }
+        } catch (SQLException e) {
+            plugin.sendConsole(plugin.getPrefix() + plugin.getFileTranslations().getString("MESSAGE_DATABASE_NOT_CONNECTED"));
         }
     }
 
     public void addDatabase(UUID uuid) {
-        Connection connection = null;
-        PreparedStatement ps = null;
 
-        try {
-            connection = method.getConnection();
-            ps = connection.prepareStatement(ADD_INFORMATION);
-
-            ps.setString(1, uuid.toString());
-            ps.setString(2, String.valueOf(false));
-            ps.setString(3, String.valueOf(true));
-
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            plugin.sendConsole(plugin.getPrefix() + plugin.getFileTranslations().getString("MESSAGE_DATABASE_NOT_CONNECTED"));
-        } finally {
+        try (Connection connection = method.getConnection(); PreparedStatement ps = connection.prepareStatement(ADD_INFORMATION)) {
             try {
-                if (ps != null) ps.close();
-                if (connection != null) connection.close();
+
+                ps.setString(1, uuid.toString());
+                ps.setString(2, String.valueOf(false));
+                ps.setString(3, String.valueOf(true));
+
+                ps.executeUpdate();
             } catch (SQLException e) {
                 plugin.sendConsole(plugin.getPrefix() + plugin.getFileTranslations().getString("MESSAGE_DATABASE_NOT_CONNECTED"));
             }
+        } catch (SQLException e) {
+            plugin.sendConsole(plugin.getPrefix() + plugin.getFileTranslations().getString("MESSAGE_DATABASE_NOT_CONNECTED"));
         }
     }
 
@@ -120,26 +104,19 @@ public class Cache {
     }
 
     public void set(UUID uuid, String column, boolean boolValue) {
-        Connection connection = null;
-        PreparedStatement ps = null;
 
-        try {
-            connection = method.getConnection();
-            ps = connection.prepareStatement(SET_BOOL.replace("%0", column));
-
-            ps.setString(1, String.valueOf(boolValue));
-            ps.setString(2, uuid.toString());
-
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            plugin.sendConsole(plugin.getPrefix() + plugin.getFileTranslations().getString("MESSAGE_DATABASE_NOT_CONNECTED"));
-        } finally {
+        try (Connection connection = method.getConnection(); PreparedStatement ps = connection.prepareStatement(SET_BOOL.replace("%0", column))) {
             try {
-                if (ps != null) ps.close();
-                if (connection != null) connection.close();
+
+                ps.setString(1, String.valueOf(boolValue));
+                ps.setString(2, uuid.toString());
+
+                ps.executeUpdate();
             } catch (SQLException e) {
                 plugin.sendConsole(plugin.getPrefix() + plugin.getFileTranslations().getString("MESSAGE_DATABASE_NOT_CONNECTED"));
             }
+        } catch (SQLException e) {
+            plugin.sendConsole(plugin.getPrefix() + plugin.getFileTranslations().getString("MESSAGE_DATABASE_NOT_CONNECTED"));
         }
     }
 

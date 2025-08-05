@@ -9,10 +9,9 @@ import org.bukkit.event.HandlerList;
 public class MentionMyselfEvent extends Event implements Cancellable {
     @Getter
     private static final HandlerList handlerList = new HandlerList();
-
-    private boolean cancelled;
     @Getter
     private final Player player;
+    private boolean cancelled;
 
     public MentionMyselfEvent(Player who) {
         this.player = who;

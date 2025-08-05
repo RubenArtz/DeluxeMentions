@@ -66,7 +66,7 @@ public class Configurations {
     }
 
     public String getString(String path) {
-        return langFile.contains(path) ? langFile.getString(path) : "The specified path (lang/../"+path+") could not be found.";
+        return langFile.contains(path) ? langFile.getString(path) : "The specified path (lang/../" + path + ") could not be found.";
     }
 
     public List<String> getStringList(final String path) {

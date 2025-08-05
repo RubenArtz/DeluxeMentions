@@ -13,6 +13,7 @@ import java.util.Objects;
 
 public class Help extends SubCommand {
     private final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
+
     public Help() {
         super("help:h", "DeluxeMentions.Admin");
     }

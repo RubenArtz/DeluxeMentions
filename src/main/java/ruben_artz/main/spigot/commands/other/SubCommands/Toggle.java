@@ -80,7 +80,7 @@ public class Toggle extends SubCommand {
                     if (sender instanceof Player) {
                         Player player = (Player) sender;
                         sendActionbar.sendActionBar(player, plugin.getFileTranslations().getString("MESSAGES.MESSAGE_DISABLED_MENTION_TARGET")
-                                .replace("{Player}", target.getName()),120);
+                                .replace("{Player}", target.getName()), 120);
                     } else {
                         sender.sendMessage(addColor.addColors(plugin.getFileTranslations().getString("MESSAGES.MESSAGE_DISABLED_MENTION_TARGET")
                                 .replace("{Player}", target.getName())));

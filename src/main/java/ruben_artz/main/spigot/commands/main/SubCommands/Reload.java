@@ -11,6 +11,7 @@ import java.util.Objects;
 
 public class Reload extends SubCommand {
     private final DeluxeMentions plugin = DeluxeMentions.getPlugin(DeluxeMentions.class);
+
     public Reload() {
         super("reload:rl", "DeluxeMentions.Admin");
     }
