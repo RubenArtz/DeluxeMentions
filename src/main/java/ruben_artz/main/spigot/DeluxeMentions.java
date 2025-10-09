@@ -1,7 +1,6 @@
 package ruben_artz.main.spigot;
 
 import io.github.slimjar.app.builder.ApplicationBuilder;
-import io.github.slimjar.resolver.data.Repository;
 import lombok.Getter;
 import net.kyori.adventure.audience.Audience;
 import org.bukkit.Bukkit;
@@ -18,7 +17,6 @@ import ruben_artz.main.spigot.util.SlimJarLogger;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
@@ -50,7 +48,6 @@ public final class DeluxeMentions extends JavaPlugin {
                     .logger(new SlimJarLogger(this))
                     .downloadDirectoryPath(downloadPath)
                     .mirrorSelector((a, b) -> a)
-                    .internalRepositories(Collections.singleton(new Repository(new URL("https://repo1.maven.org/maven2/"))))
                     .build();
 
             getLogger().info("Dependencies successfully loaded!");

@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "ruben_artz.main"
-version = "6.9.21"
+version = "7.0.21"
 
 registerOutputTask("Ruben_Artz", "D:/Ruben_Artz/STN Studios/Development/plugins")
 
@@ -24,7 +24,11 @@ repositories {
         name = ("minecraft-repo")
         url = uri("https://libraries.minecraft.net/")
     }
-    maven { url = uri("https://repo.alessiodp.com/releases/") }
+    maven {
+        name = "rubenmatiasReleases"
+        url = uri("https://repo.stn-studios.dev/releases")
+    }
+
     maven { url = uri("https://jitpack.io") }
     maven { url = uri("https://repo.extendedclip.com/content/repositories/placeholderapi/") }
 }
@@ -32,7 +36,7 @@ repositories {
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT")
 
-    compileOnly("org.projectlombok:lombok:1.18.30")
+    compileOnly("org.projectlombok:lombok:1.18.42")
     /*
     Keep up to date
     Url: https://www.spigotmc.org/resources/6245/
@@ -41,19 +45,19 @@ dependencies {
     compileOnly("com.mojang:authlib:1.5.21")
     compileOnly("org.jetbrains:annotations:23.0.0")
 
-    implementation("io.github.slimjar:slimjar:1.2.7")
-    implementation("net.kyori:adventure-text-minimessage:4.23.0")
-    implementation("net.kyori:adventure-platform-bukkit:4.4.0")
+    implementation("io.github.slimjar:slimjar:1.0.0")
+    implementation("net.kyori:adventure-text-minimessage:4.25.0")
+    implementation("net.kyori:adventure-platform-bukkit:4.4.1")
     implementation("org.bstats:bstats-bukkit:3.0.0")
 
-    annotationProcessor("org.projectlombok:lombok:1.18.30")
+    annotationProcessor("org.projectlombok:lombok:1.18.42")
     compileOnly(fileTree(mapOf("dir" to "libs", "includes" to listOf("*.jar"))))
 
     /*
     Keep up to date
     Url: https://github.com/CryptoMorin/XSeries/releases
      */
-    slim("com.github.cryptomorin:XSeries:13.3.3")
+    slim("com.github.cryptomorin:XSeries:13.5.1")
     slim("org.slf4j:slf4j-simple:1.7.36")
     slim("com.zaxxer:HikariCP:4.0.3")
     slim("com.h2database:h2:2.1.214")
