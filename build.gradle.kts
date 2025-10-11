@@ -4,11 +4,13 @@ plugins {
     id("io.github.slimjar") version "1.3.0"
 }
 
-group = "ruben_artz.main"
-version = "7.0.21"
+group = "ruben_artz.mention"
+version = "7.1.21"
+
+val slimJarBase = "ruben_artz.mention.slimjar."
+val libsBase = "ruben_artz.mention.relocated."
 
 registerOutputTask("Ruben_Artz", "D:/Ruben_Artz/STN Studios/Development/plugins")
-
 
 repositories {
     mavenCentral()
@@ -42,8 +44,8 @@ dependencies {
     Url: https://www.spigotmc.org/resources/6245/
      */
     compileOnly("me.clip:placeholderapi:2.11.6")
-    compileOnly("com.mojang:authlib:1.5.21")
     compileOnly("org.jetbrains:annotations:23.0.0")
+    compileOnly("com.mojang:authlib:1.5.21")
 
     implementation("io.github.slimjar:slimjar:1.0.0")
     implementation("net.kyori:adventure-text-minimessage:4.25.0")
@@ -62,21 +64,23 @@ dependencies {
     slim("com.zaxxer:HikariCP:4.0.3")
     slim("com.h2database:h2:2.1.214")
     slim("com.github.Anon8281:UniversalScheduler:0.1.6")
+    slim("com.squareup.okhttp3:okhttp:4.12.0")
 }
 
 tasks.shadowJar {
     archiveFileName.set("Deluxe Mentions.jar")
 
-    relocate("io.github.slimjar", "ruben_artz.libs.slimjar")
-    relocate("net.kyori", "ruben_artz.libs.kyori")
-    relocate("org.bstats", "ruben_artz.libs.bstats")
+    relocate("io.github.slimjar", "${libsBase}slimjar")
+    relocate("net.kyori", "${libsBase}kyori")
+    relocate("org.bstats", "${libsBase}libs.bstats")
 }
 
 tasks.slimJar {
-    relocate("com.cryptomorin.xseries", "ruben_artz.libs.xseries")
-    relocate("com.zaxxer.hikari", "ruben_artz.libs.hikari")
-    relocate("org.h2", "ruben_artz.libs.h2")
-    relocate("com.github.Anon8281.universalScheduler", "ruben_artz.libs.universalScheduler")
+    relocate("com.cryptomorin.xseries", "${slimJarBase}xseries")
+    relocate("com.zaxxer.hikari", "${slimJarBase}hikari")
+    relocate("org.h2", "${slimJarBase}h2")
+    relocate("com.github.Anon8281.universalScheduler", "${slimJarBase}universalScheduler")
+    relocate("okhttp3", "${slimJarBase}okhttp3")
 }
 
 java {
