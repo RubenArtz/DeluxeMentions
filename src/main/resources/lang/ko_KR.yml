@@ -15,6 +15,8 @@
 # By: Ruben_Artz   =
 # ==================
 MESSAGES:
+  MESSAGE_IGNORE: '&7Manage your ignored players list.'
+  MESSAGE_IGNORE_BOX: '&f &8▪ &fClick to manage ignored players.'
   MESSAGE_NO_MENTION: "&c당신은 당신 자신을 언급할 수 없습니다!"
   MESSAGE_COOLDOWN: '&cYou must wait {timeToWait} to mention again.'
   MESSAGE_RELOAD_SUCCESS: '&a성공적인 재시작 구성.'
@@ -43,6 +45,19 @@ MESSAGES:
   MESSAGE_NOT_USE_CONSOLE: '&c콘솔에서는 이 명령을 사용할 수 없습니다!'
   MESSAGE_DISABLED_MENTION_TARGET: '&b지금 &a{Player} &b다음 구성이 있습니다 &f| &a활성화됨'
   MESSAGE_ENABLED_MENTION_TARGET: '&b지금 &a{Player} &b다음 구성이 있습니다 &f| &c장애가있는'
+  IGNORE:
+    USAGE: '&cUsage: /mention ignore <add/remove/list> [player]'
+    LIST_EMPTY: '&eYou are not ignoring anyone.'
+    LIST_FORMAT: '&aIgnored players ({Current}/{Max}): &f{List}'
+    CANNOT_IGNORE_SELF: "&cYou can't ignore yourself."
+    LIMIT_REACHED: '&cYou have reached the limit of ignored players (&e{Limit}&c).'
+    UPGRADE_RANK: '&7Purchase a higher rank to ignore more people!'
+    ALREADY_IGNORED: '&cYou are already ignoring {Player}.'
+    ADDED: '&aYou are now ignoring mentions from &e{Player}.'
+    NOT_IGNORED: '&cYou are not ignoring {Player}.'
+    REMOVED: '&aYou are no longer ignoring &e{Player}.'
+    UNKNOWN_SUBCOMMAND: '&cUnknown subcommand. Use: add, remove, list'
+    INFINITE: 'Infinite'
 MESSAGE_DATABASE_CONNECTED: '&aThe {Database} data management has been successfully connected.'
 MESSAGE_DATABASE_NOT_CONNECTED: '&cError connecting to the database.'
 LANGUAGE:
@@ -144,9 +159,12 @@ HELP_TO_TRANSLATE:
   MESSAGE:
     - '&a&m---------------------------------------------------'
     - '&eClick the link below to find out how to help us translate STN Studios &8(&6Resources & Plugins&8)'
-    - '&6https://stn-studios.dev/discord'
+    - '&6https://artzstudio.dev/discord'
     - '&a&m----------------------------------------------------'
 MESSAGE_TYPE_TIME: 'hours;;minutes;;seconds'
+
+# DO NOT TOUCH!
+version: "2"
 
 #      ___           ___
 #     /\__\         /\  \         _____

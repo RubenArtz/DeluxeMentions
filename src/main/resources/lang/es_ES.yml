@@ -15,6 +15,8 @@
 # By: Ruben_Artz    =
 # ===================
 MESSAGES:
+  MESSAGE_IGNORE: '&7Gestiona tu lista de jugadores ignorados.'
+  MESSAGE_IGNORE_BOX: '&f &8▪ &fHaga click para gestionar los jugadores ignorados.'
   MESSAGE_NO_MENTION: "&c¡No puedes mencionarte a ti mismo!"
   MESSAGE_COOLDOWN: '&cDebe esperar {timeToWait} para volver a mencionar.'
   MESSAGE_RELOAD_SUCCESS: '&aLa configuración de reinicio exitoso.'
@@ -43,6 +45,19 @@ MESSAGES:
   MESSAGE_NOT_USE_CONSOLE: '&cNo se puede utilizar este comando en la consola.'
   MESSAGE_DISABLED_MENTION_TARGET: '&bAhora &a{Player} &btiene la siguiente configuración &f| &aActivada'
   MESSAGE_ENABLED_MENTION_TARGET: '&bAhora &a{Player} &btiene la siguiente configuración &f| &cDesactivada'
+  IGNORE:
+    USAGE: '&cUsa: /mention ignore <add/remove/list> [jugador]'
+    LIST_EMPTY: '&eNo estás ignorando a nadie.'
+    LIST_FORMAT: '&aJugadores ignorados ({Current}/{Max}): &f{List}'
+    CANNOT_IGNORE_SELF: "&cNo puedes ignorarte a ti mismo."
+    LIMIT_REACHED: '&cHas alcanzado el límite de jugadores ignorados. (&e{Limit}&c).'
+    UPGRADE_RANK: '&7¡Compra un rango superior para ignorar a más personas!'
+    ALREADY_IGNORED: '&cYa estás ignorando a {Player}.'
+    ADDED: '&aAhora estás ignorando las menciones de &e{Player}.'
+    NOT_IGNORED: '&cNo estás ignorando a {Player}.'
+    REMOVED: '&aYa no estás ignorando a &e{Player}.'
+    UNKNOWN_SUBCOMMAND: '&cSubcomando desconocido. Uso: add, remove, list'
+    INFINITE: 'Infinito'
 MESSAGE_DATABASE_CONNECTED: '&aLa gestión de datos {Database} se ha conectado correctamente.'
 MESSAGE_DATABASE_NOT_CONNECTED: '&cError al conectar con la base de datos.'
 LANGUAGE:
@@ -145,9 +160,12 @@ HELP_TO_TRANSLATE:
   MESSAGE:
     - '&a&m---------------------------------------------------'
     - '&eHaga clic en el siguiente enlace para descubrir cómo ayudarnos a traducir STN Studios &8(&6Resources & Plugins&8)'
-    - '&6https://discord.io/STN-Studios'
+    - '&6https://artzstudio.dev/discord'
     - '&a&m----------------------------------------------------'
 MESSAGE_TYPE_TIME: 'horas;;minutos;;segundos'
+
+# DO NOT TOUCH!
+version: "2"
 
 #      ___           ___
 #     /\__\         /\  \         _____

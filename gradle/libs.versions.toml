@@ -1,0 +1,49 @@
+[versions]
+## Plugins
+shadow = "9.0.0-rc1" # https://plugins.gradle.org/plugin/com.gradleup.shadow
+slimjar = "1.0.0" # https://repository.rubenmatias.com/releases
+
+## Main Software
+spigotmc = "1.20.4-R0.1-SNAPSHOT"
+
+## Global
+lombok = "1.18.42" # https://projectlombok.org/download
+placeholderapi = "2.11.7" # https://github.com/PlaceholderAPI/PlaceholderAPI/releases
+authlib = "1.5.25"
+minimessage = "4.26.1" # https://github.com/PaperMC/adventure/releases
+adventurePlatformBukkit = "4.4.1" # https://docs.papermc.io/adventure/platform/bukkit/
+bstats = "3.1.0" # https://bstats.org/add-plugin
+xseries = "13.6.0" # https://github.com/CryptoMorin/XSeries
+hikarycp = "7.0.1" # https://github.com/brettwooldridge/HikariCP
+h2 = "2.1.214" # https://github.com/h2database/h2database
+universalScheduler = "0.1.7" # https://github.com/Anon8281/UniversalScheduler/releases
+okhttps = "5.3.0" # https://square.github.io/okhttp/
+boostedYaml = "1.3.6" # https://github.com/dejvokep/boosted-yaml
+gson = "2.13.1" # https://github.com/google/gson
+
+[libraries]
+## Main Software
+spigotmc = { module = "org.spigotmc:spigot-api", version.ref = "spigotmc" }
+
+## Global
+slimjarRuntime = { module = "artzstudio.dev.slimjar:runtime", version.ref = "slimjar" }
+slimjarHelperSpigot = { module = "artzstudio.dev.slimjar.helper:spigot", version.ref = "slimjar" }
+
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
+placeholderapi = { module = "me.clip:placeholderapi", version.ref = "placeholderapi" }
+authlib = { module = "com.mojang:authlib", version.ref = "authlib" }
+minimessage = { module = "net.kyori:adventure-text-minimessage", version.ref = "minimessage" }
+adventurePlatformBukkit = { module = "net.kyori:adventure-platform-bukkit", version.ref = "adventurePlatformBukkit" }
+bstats-bukkit = { module = "org.bstats:bstats-bukkit", version.ref = "bstats" }
+xseries = { module = "com.github.cryptomorin:XSeries", version.ref = "xseries" }
+hikarycp = { module = "com.zaxxer:HikariCP", version.ref = "hikarycp" }
+h2 = { module = "com.h2database:h2", version.ref = "h2" }
+universalScheduler = { module = "com.github.Anon8281:UniversalScheduler", version.ref = "universalScheduler" }
+okhttps = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttps" }
+boostedYaml = { module = "dev.dejvokep:boosted-yaml", version.ref = "boostedYaml" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+
+[plugins]
+## Plugins
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
+slimjar = { id = "artzstudio.dev.slimjar", version.ref = "slimjar" }

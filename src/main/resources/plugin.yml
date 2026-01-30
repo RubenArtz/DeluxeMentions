@@ -1,11 +1,11 @@
 #                                                           Developed by Ruben_Artz
 #
-#                                                     (PLAY.STN-STUDIOS.COM @ (C) 2018-2025)
+#                                                     (ARTZSTUDIO.DEV @ (C) 2018-2026)
 
 name: 'DeluxeMentions'
 version: '${version}'
-main: 'ruben_artz.mention.DeluxeMentions'
-authors: [ 'Ruben_Artz', 'STN Studios' ]
+main: 'artzstudio.dev.mentions.spigot.DeluxeMentions'
+authors: [ 'Ruben_Artz', 'Artz Studio' ]
 description: 'Amazing resource to mention your players.'
 website: 'https://www.spigotmc.org/resources/67248/'
 api-version: '1.16'
