@@ -10,12 +10,15 @@
 #    \:\__\        \::/  /       \:\__\          \:\__\       /:/  /     \::/  /       \:\__\         /:/  /
 #     \/__/         \/__/         \/__/           \/__/       \/__/       \/__/         \/__/         \/__/
 #
-# All sounds: https://announce.stn-studios.dev/en/minecraft-all-sounds
+# All sounds: https://announce.artzstudio.dev/en/minecraft-all-sounds
+# Colors: https://announce.artzstudio.dev/en/gradient-and-hex-colors
 
 # Mention players with '@'
 MENTION:
   GROUPS:
     ADMINISTRATOR:
+      # If true, players must use @Name to mention. If false, only the Name is needed.
+      REQUIRE_AT_SYMBOL: false
       TIME_UNIT: 'MINUTES' # SECONDS, MINUTES, HOURS, DAYS, YEARS
       COOLDOWN_TIME: 5
       USE_SOUND_NOTIFICATION: true
@@ -24,7 +27,7 @@ MENTION:
       COLOR_AFTER_MENTION: '&f,'
       USE_TITLES: true
       SEND_TITLE:
-        - '&e♕ &9&lＳＴＮ &f&lＳＴＵＤＩＯＳ&e™ &e♕::&b{Email} &fPlayer {Player} &fmentioned you &b{Email}'
+        - '&e♕ <gradient:#FF7272:#FFC976>ᴀʀᴛᴢ</gradient> <white><bold>sᴛᴜᴅɪᴏ</bold></white> &e♕::&b{Email} &fPlayer {Player} &fmentioned you &b{Email}'
       USE_ACTIONBAR_MENTION: true
       ACTIONBAR_MENTION: '&b{Email} &fPlayer {Player} &fmentioned you &b{Email}'
       USE_MESSAGE_IN_THE_CHAT: true
@@ -45,7 +48,7 @@ MENTION:
       USE_TITLES: true
       # - 'fade In;;stay;;fade Out;;Title;;Subtitle'
       SEND_TITLE:
-        - '&e♕ &9&lＳＴＮ &f&lＳＴＵＤＩＯＳ&e™ &e♕::&b{Email} &c{Player} &dhas mentione &beveryone! &b{Email}'
+        - '&e♕ <gradient:#FF7272:#FFC976>ᴀʀᴛᴢ</gradient> <white><bold>sᴛᴜᴅɪᴏ</bold></white> &e♕::&b{Email} &c{Player} &dhas mentione &beveryone! &b{Email}'
       USE_ACTIONBAR_MENTION: true
       ACTIONBAR_MENTION: '&b{Email} &c{Player} &dhas mentioned &beveryone! &b{Email}'
       USE_MESSAGE_IN_THE_CHAT: true
@@ -58,6 +61,8 @@ MENTION:
     PLAYERS:
       DEFAULT:
         PERMISSION: 'DeluxeMentions.Group.Default'
+        # If true, players must use @Name to mention. If false, only the Name is needed.
+        REQUIRE_AT_SYMBOL: false
         TIME_UNIT: 'MINUTES' # SECONDS, MINUTES, HOURS, DAYS, YEARS
         COOLDOWN_TIME: 1
         USE_SOUND_NOTIFICATION: true
@@ -67,7 +72,7 @@ MENTION:
         COLOR_AFTER_MENTION: '&7,'
         USE_TITLES: true
         SEND_TITLE:
-          - '&e♕ &9&lＳＴＮ &f&lＳＴＵＤＩＯＳ&e™ &e♕::<aqua>{Email}</aqua> <gradient:#ff006a:#82ff5c:#63b1ff>Player {Player} mentioned you</gradient> <aqua>{Email}</aqua>'
+          - '&e♕ <gradient:#FF7272:#FFC976>ᴀʀᴛᴢ</gradient> <white><bold>sᴛᴜᴅɪᴏ</bold></white> &e♕::<aqua>{Email}</aqua> <gradient:#ff006a:#82ff5c:#63b1ff>Player {Player} mentioned you</gradient> <aqua>{Email}</aqua>'
         USE_ACTIONBAR_MENTION: true
         ACTIONBAR_MENTION: '<aqua>{Email}</aqua> <gradient:#ff006a:#82ff5c:#63b1ff>Player {Player} mentioned you</gradient> <aqua>{Email}</aqua>'
         USE_MESSAGE_IN_THE_CHAT: true
@@ -79,6 +84,8 @@ MENTION:
           - '&m<#fb31d5>╶<#fb36d0>╶<#fb3cca>╶<#fb41c5>╶<#fb46c0>╶<#fb4bba>╶<#fb51b5>╶<#fc56b0>╶<#fc5baa>╶<#fc60a5>╶<#fc66a0>╶<#fc6b9a>╶<#fc7095>╶<#fc7590>╶<#fc7b8a>╶<#fc8085>╶<#fc8580>╶<#fc8a7a>╶<#fc9075>╶<#fd9570>╶<#fd9a6a>╶<#fd9f65>╶<#fda560>╶<#fdaa5a>╶<#fdaf55>╶<#fdb451>╶<#fdb751>╶<#fdba51>╶<#fdbd51>╶<#fdc051>╶<#fdc351>╶<#fec650>╶<#fec950>╶<#fecc50>╶<#fecf50>╶<#fed250>╶<#fed550>╶<#fed850>╶<#fedb50>╶<#fede50>╶<#fee150>╶<#fee450>╶<#fee750>╶<#feea50>╶<#ffed4f>╶<#fff04f>╶<#fff34f>╶<#fff64f>╶<#fff94f>╶<#fffc4f>╶<#fafd4e>╶<#f0fd4c>╶<#e6fd4a>╶<#dcfd47>╶<#d2fd45>╶<#c8fd43>╶<#befe41>╶<#b4fe3f>╶<#aafe3c>╶<#a0fe3a>╶<#96fe38>╶<#8cfe36>╶<#82fe34>╶<#78fe32>╶<#6efe2f>╶<#64fe2d>╶<#5afe2b>╶<#50fe29>╶<#46fe27>╶<#3cff24>╶<#32ff22>╶<#28ff20>╶<#1eff1e>╶<#14ff1c>╶<#0aff1a>╶<#09ff1e>╶<#0bff24>╶<#0cff2a>╶<#0eff30>╶<#0fff36>╶<#11ff3c>╶<#13ff42>╶<#14ff48>╶<#16ff4e>╶<#17ff54>╶<#19ff5a>╶<#1bff60>╶<#1cff66>╶<#1eff6c>╶<#1fff72>╶<#21ff78>╶<#22ff7e>╶<#24ff84>╶<#26ff8a>╶<#27ff90>╶<#29ff96>╶<#2aff9c>╶<#2cffa2>╶<#2dffa8>╶<#2fffae>╶'
       VIP:
         PERMISSION: 'DeluxeMentions.Group.VIP'
+        # If true, players must use @Name to mention. If false, only the Name is needed.
+        REQUIRE_AT_SYMBOL: false
         TIME_UNIT: 'MINUTES' # SECONDS, MINUTES, HOURS, DAYS, YEARS
         COOLDOWN_TIME: 1
         USE_SOUND_NOTIFICATION: true
@@ -88,7 +95,7 @@ MENTION:
         COLOR_AFTER_MENTION: '&f,'
         USE_TITLES: true
         SEND_TITLE:
-          - '&e♕ &9&lＳＴＮ &f&lＳＴＵＤＩＯＳ&e™ &e♕::<aqua>{Email}</aqua> <gradient:#ff006a:#82ff5c:#63b1ff>Player {Player} mentioned you</gradient> <aqua>{Email}</aqua>'
+          - '&e♕ <gradient:#FF7272:#FFC976>ᴀʀᴛᴢ</gradient> <white><bold>sᴛᴜᴅɪᴏ</bold></white> &e♕::<aqua>{Email}</aqua> <gradient:#ff006a:#82ff5c:#63b1ff>Player {Player} mentioned you</gradient> <aqua>{Email}</aqua>'
         USE_ACTIONBAR_MENTION: true
         ACTIONBAR_MENTION: '<aqua>{Email}</aqua> <gradient:#ff006a:#82ff5c:#63b1ff>Player {Player} mentioned you</gradient> <aqua>{Email}</aqua>'
         USE_MESSAGE_IN_THE_CHAT: true
@@ -100,7 +107,7 @@ MENTION:
           - '&m<#fb31d5>╶<#fb36d0>╶<#fb3cca>╶<#fb41c5>╶<#fb46c0>╶<#fb4bba>╶<#fb51b5>╶<#fc56b0>╶<#fc5baa>╶<#fc60a5>╶<#fc66a0>╶<#fc6b9a>╶<#fc7095>╶<#fc7590>╶<#fc7b8a>╶<#fc8085>╶<#fc8580>╶<#fc8a7a>╶<#fc9075>╶<#fd9570>╶<#fd9a6a>╶<#fd9f65>╶<#fda560>╶<#fdaa5a>╶<#fdaf55>╶<#fdb451>╶<#fdb751>╶<#fdba51>╶<#fdbd51>╶<#fdc051>╶<#fdc351>╶<#fec650>╶<#fec950>╶<#fecc50>╶<#fecf50>╶<#fed250>╶<#fed550>╶<#fed850>╶<#fedb50>╶<#fede50>╶<#fee150>╶<#fee450>╶<#fee750>╶<#feea50>╶<#ffed4f>╶<#fff04f>╶<#fff34f>╶<#fff64f>╶<#fff94f>╶<#fffc4f>╶<#fafd4e>╶<#f0fd4c>╶<#e6fd4a>╶<#dcfd47>╶<#d2fd45>╶<#c8fd43>╶<#befe41>╶<#b4fe3f>╶<#aafe3c>╶<#a0fe3a>╶<#96fe38>╶<#8cfe36>╶<#82fe34>╶<#78fe32>╶<#6efe2f>╶<#64fe2d>╶<#5afe2b>╶<#50fe29>╶<#46fe27>╶<#3cff24>╶<#32ff22>╶<#28ff20>╶<#1eff1e>╶<#14ff1c>╶<#0aff1a>╶<#09ff1e>╶<#0bff24>╶<#0cff2a>╶<#0eff30>╶<#0fff36>╶<#11ff3c>╶<#13ff42>╶<#14ff48>╶<#16ff4e>╶<#17ff54>╶<#19ff5a>╶<#1bff60>╶<#1cff66>╶<#1eff6c>╶<#1fff72>╶<#21ff78>╶<#22ff7e>╶<#24ff84>╶<#26ff8a>╶<#27ff90>╶<#29ff96>╶<#2aff9c>╶<#2cffa2>╶<#2dffa8>╶<#2fffae>╶'
 
 # DO NOT TOUCH!
-version: '1.3'
+version: "2"
 
 #      ___           ___
 #     /\__\         /\  \         _____

@@ -15,6 +15,8 @@
 # 翻译: Sevente =
 # ===================
 MESSAGES:
+  MESSAGE_IGNORE: '&7Manage your ignored players list.'
+  MESSAGE_IGNORE_BOX: '&f &8▪ &fClick to manage ignored players.'
   MESSAGE_NO_MENTION: "&c你不能提到你自己！"
   MESSAGE_COOLDOWN: '&cYou must wait {timeToWait} to mention again.'
   MESSAGE_RELOAD_SUCCESS: '&a重启配置文件成功。'
@@ -43,6 +45,19 @@ MESSAGES:
   MESSAGE_NOT_USE_CONSOLE: '&c你不能在控制台中使用这个命令!'
   MESSAGE_DISABLED_MENTION_TARGET: '&b现在 &a{Player} &b有以下配置 &f| &a已启用'
   MESSAGE_ENABLED_MENTION_TARGET: '&b现在 &a{Player} &b有以下配置 &f| &c失能'
+  IGNORE:
+    USAGE: '&cUsage: /mention ignore <add/remove/list> [player]'
+    LIST_EMPTY: '&eYou are not ignoring anyone.'
+    LIST_FORMAT: '&aIgnored players ({Current}/{Max}): &f{List}'
+    CANNOT_IGNORE_SELF: "&cYou can't ignore yourself."
+    LIMIT_REACHED: '&cYou have reached the limit of ignored players (&e{Limit}&c).'
+    UPGRADE_RANK: '&7Purchase a higher rank to ignore more people!'
+    ALREADY_IGNORED: '&cYou are already ignoring {Player}.'
+    ADDED: '&aYou are now ignoring mentions from &e{Player}.'
+    NOT_IGNORED: '&cYou are not ignoring {Player}.'
+    REMOVED: '&aYou are no longer ignoring &e{Player}.'
+    UNKNOWN_SUBCOMMAND: '&cUnknown subcommand. Use: add, remove, list'
+    INFINITE: 'Infinite'
 MESSAGE_DATABASE_CONNECTED: '&aThe {Database} data management has been successfully connected.'
 MESSAGE_DATABASE_NOT_CONNECTED: '&cError connecting to the database.'
 LANGUAGE:
@@ -145,9 +160,12 @@ HELP_TO_TRANSLATE:
   MESSAGE:
     - '&a&m---------------------------------------------------'
     - '&eClick the link below to find out how to help us translate STN Studios &8(&6Resources & Plugins&8)'
-    - '&6https://stn-studios.dev/discord'
+    - '&6https://artzstudio.dev/discord'
     - '&a&m----------------------------------------------------'
 MESSAGE_TYPE_TIME: 'hours;;minutes;;seconds'
+
+# DO NOT TOUCH!
+version: "2"
 
 #      ___           ___
 #     /\__\         /\  \         _____
