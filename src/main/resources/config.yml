@@ -33,6 +33,7 @@ MENTION:
     DATABASE: 'deluxementions'
     MIN_CONNECTIONS: 1
     MAX_CONNECTIONS: 10
+    MAX_LIFETIME_MS: 1800000
     PARAMETERS:
       - 'useSSL=true'
       - 'allowPublicKeyRetrieval=false'
@@ -57,7 +58,7 @@ PERMS:
     - '&f'
 
 # DO NOT TOUCH!
-version: "1.7"
+version: "2"
 
 #      ___           ___
 #     /\__\         /\  \         _____

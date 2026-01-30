@@ -1,94 +1,93 @@
+/*
+ *
+ * Copyright (c) 2026 Ruben_Artz and Artz Studio.
+ *
+ * This file is part of DeluxeMentions.
+ *
+ * DeluxeMentions is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * DeluxeMentions is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with DeluxeMentions.  If not, see https://www.gnu.org/licenses/.
+ *
+ */
+
 plugins {
     id("java")
-    id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("io.github.slimjar") version "1.3.0"
+    alias(libs.plugins.shadow)
+    alias(libs.plugins.slimjar)
 }
 
-group = "ruben_artz.mention"
-version = "7.1.21"
+version = "7.2.21"
 
-val slimJarBase = "ruben_artz.mention.slimjar."
-val libsBase = "ruben_artz.mention.relocated."
+val slimJarBase = "artzstudio.dev.mentions.spigot.slimjar."
+val libsBase = "artzstudio.dev.mentions.spigot.relocated."
 
-registerOutputTask("Ruben_Artz", "D:/Ruben_Artz/STN Studios/Development/plugins")
+registerOutputTask("Ruben_Artz", "F:/Ruben_Artz/Artz Studio/1.21.11/plugins")
 
 repositories {
     mavenCentral()
-    maven {
-        name = ("spigotmc-repo")
-        url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
-    }
-    maven {
-        name = ("sonatype")
-        url = uri("https://oss.sonatype.org/content/groups/public/")
-    }
-    maven {
-        name = ("minecraft-repo")
-        url = uri("https://libraries.minecraft.net/")
-    }
-    maven {
-        name = "rubenmatiasReleases"
-        url = uri("https://repo.stn-studios.dev/releases")
-    }
-
+    maven { url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/") }
+    maven { url = uri("https://oss.sonatype.org/content/groups/public/") }
+    maven { url = uri("https://libraries.minecraft.net/") }
+    maven { url = uri("https://repository.rubenmatias.com/releases") }
     maven { url = uri("https://jitpack.io") }
     maven { url = uri("https://repo.extendedclip.com/content/repositories/placeholderapi/") }
 }
 
 dependencies {
-    compileOnly("org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT")
+    compileOnly(libs.spigotmc)
 
-    compileOnly("org.projectlombok:lombok:1.18.42")
-    /*
-    Keep up to date
-    Url: https://www.spigotmc.org/resources/6245/
-     */
-    compileOnly("me.clip:placeholderapi:2.11.6")
-    compileOnly("org.jetbrains:annotations:23.0.0")
-    compileOnly("com.mojang:authlib:1.5.21")
+    compileOnly(libs.lombok)
+    annotationProcessor(libs.lombok)
 
-    implementation("io.github.slimjar:slimjar:1.0.0")
-    implementation("net.kyori:adventure-text-minimessage:4.25.0")
-    implementation("net.kyori:adventure-platform-bukkit:4.4.1")
-    implementation("org.bstats:bstats-bukkit:3.0.0")
+    compileOnly(libs.placeholderapi)
+    compileOnly(libs.authlib)
 
-    annotationProcessor("org.projectlombok:lombok:1.18.42")
     compileOnly(fileTree(mapOf("dir" to "libs", "includes" to listOf("*.jar"))))
 
-    /*
-    Keep up to date
-    Url: https://github.com/CryptoMorin/XSeries/releases
-     */
-    slim("com.github.cryptomorin:XSeries:13.5.1")
-    slim("org.slf4j:slf4j-simple:1.7.36")
-    slim("com.zaxxer:HikariCP:4.0.3")
-    slim("com.h2database:h2:2.1.214")
-    slim("com.github.Anon8281:UniversalScheduler:0.1.6")
-    slim("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation(libs.slimjarRuntime)
+    implementation(libs.slimjarHelperSpigot)
+    implementation(libs.minimessage)
+    implementation(libs.adventurePlatformBukkit)
+
+    slim(libs.xseries)
+    slim(libs.hikarycp)
+    slim(libs.h2)
+    slim(libs.universalScheduler)
+    slim(libs.okhttps)
+    slim(libs.bstats.bukkit)
+    slim(libs.boostedYaml)
+    slim(libs.gson)
 }
 
-tasks.shadowJar {
-    archiveFileName.set("Deluxe Mentions.jar")
 
-    relocate("io.github.slimjar", "${libsBase}slimjar")
-    relocate("net.kyori", "${libsBase}kyori")
-    relocate("org.bstats", "${libsBase}libs.bstats")
-}
-
-tasks.slimJar {
-    relocate("com.cryptomorin.xseries", "${slimJarBase}xseries")
-    relocate("com.zaxxer.hikari", "${slimJarBase}hikari")
-    relocate("org.h2", "${slimJarBase}h2")
-    relocate("com.github.Anon8281.universalScheduler", "${slimJarBase}universalScheduler")
-    relocate("okhttp3", "${slimJarBase}okhttp3")
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
 
 tasks {
+    shadowJar {
+        archiveFileName.set("Deluxe Mentions.jar")
+
+        relocate("io.github.slimjar", "${libsBase}slimjar")
+        relocate("net.kyori", "${libsBase}kyori")
+    }
+
+    slimJar {
+        relocate("com.cryptomorin.xseries", "${slimJarBase}xseries")
+        relocate("com.zaxxer.hikari", "${slimJarBase}hikari")
+        relocate("org.h2", "${slimJarBase}h2")
+        relocate("com.github.Anon8281.universalScheduler", "${slimJarBase}universalScheduler")
+        relocate("okhttp3", "${slimJarBase}okhttp3")
+        relocate("dev.dejvokep.boostedyaml", "${slimJarBase}boostedyaml")
+        relocate("org.bstats", "${libsBase}libs.bstats")
+    }
+
     withType<JavaCompile> {
         options.encoding = "UTF-8"
     }
@@ -114,4 +113,9 @@ fun registerOutputTask(name: String, path: String) {
         from(tasks.shadowJar.get().archiveFile)
         into(file(path))
     }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
