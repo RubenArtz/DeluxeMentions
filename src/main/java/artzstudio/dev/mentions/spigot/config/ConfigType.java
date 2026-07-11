@@ -43,7 +43,9 @@ public enum ConfigType {
 
     // --- GLOBAL SETTINGS ---
     CONFIG("config.yml", null, "version"),
-    GROUPS("groups.yml", null, "version");
+    GROUPS("groups.yml", null, "version"),
+
+    INVENTORY("players.yml", "inventory", "version");
 
     private final String fileName;
     private final String subFolder;

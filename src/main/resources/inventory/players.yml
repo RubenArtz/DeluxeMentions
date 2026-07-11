@@ -1,0 +1,84 @@
+#      ___           ___           ___                                     ___           ___           ___
+#     /\  \         /\__\         /\  \                                   /\  \         /\  \         /\__\
+#    |::\  \       /:/ _/_        \:\  \         ___         ___         /::\  \        \:\  \       /:/ _/_
+#    |:|:\  \     /:/ /\__\        \:\  \       /\__\       /\__\       /:/\:\  \        \:\  \     /:/ /\  \
+#  __|:|\:\  \   /:/ /:/ _/_   _____\:\  \     /:/  /      /:/__/      /:/  \:\  \   _____\:\  \   /:/ /::\  \
+# /::::|_\:\__\ /:/_/:/ /\__\ /::::::::\__\   /:/__/      /::\  \     /:/__/ \:\__\ /::::::::\__\ /:/_/:/\:\__\
+# \:\~~\  \/__/ \:\/:/ /:/  / \:\~~\~~\/__/  /::\  \      \/\:\  \__  \:\  \ /:/  / \:\~~\~~\/__/ \:\/:/ /:/  /
+#  \:\  \        \::/_/:/  /   \:\  \       /:/\:\  \      ~~\:\/\__\  \:\  /:/  /   \:\  \        \::/ /:/  /
+#   \:\  \        \:\/:/  /     \:\  \      \/__\:\  \        \::/  /   \:\/:/  /     \:\  \        \/_/:/  /
+#    \:\__\        \::/  /       \:\__\          \:\__\       /:/  /     \::/  /       \:\__\         /:/  /
+#     \/__/         \/__/         \/__/           \/__/       \/__/       \/__/         \/__/         \/__/
+
+# Blocked Players Inventory Configuration
+BLOCKED:
+  TITLE: '&8Blocked Players'
+  PLAYER_HEAD:
+    NAME: '&f{Player}'
+    LORE:
+      - ''
+      - '&7Click to &cremove &7this player'
+      - '&7from your blocked list'
+      - ''
+  SEARCH_BUTTON:
+    NAME: '&b&lSearch Players'
+    LORE:
+      - ''
+      - '&7Click to search for a'
+      - '&7specific player in your'
+      - '&7blocked list'
+      - ''
+      - '&eYou can type a partial name'
+      - '&eto filter the results'
+      - ''
+    SLOT: 48
+  ADD_BUTTON:
+    NAME: '&a&lAdd Player'
+    LORE:
+      - ''
+      - '&7Click to add a new player'
+      - '&7to your blocked list'
+      - '&7You will be prompted to'
+      - '&7enter a player name in chat'
+      - ''
+    SLOT: 50
+    TEXTURE: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTc3YmI2NmZjNzNhOTdjZWZjYjNhNGJmZGNjYjEyMjgxZjQ0ZGQzMjZjY2QwZmYzOWQ0N2U5ODViZmVmZjM0MyJ9fX0='
+  NEXT_PAGE:
+    NAME: '&aNext Page &7»'
+    LORE:
+      - ''
+      - '&7Click to go to the'
+      - '&7next page'
+      - ''
+    SLOT: 53
+  PREVIOUS_PAGE:
+    NAME: '&a« &7Previous Page'
+    LORE:
+      - ''
+      - '&7Click to go to the'
+      - '&7previous page'
+      - ''
+    SLOT: 45
+  CLOSE:
+    NAME: '&c&lClose'
+    LORE:
+      - ''
+      - '&7Click to close'
+      - '&7this inventory'
+      - ''
+    SLOT: 49
+
+# DO NOT TOUCH!
+version: '1'
+
+#      ___           ___
+#     /\__\         /\  \         _____
+#    /:/ _/_        \:\  \       /::\  \
+#   /:/ /\__\        \:\  \     /:/\:\  \
+#  /:/ /:/ _/_   _____\:\  \   /:/  \:\__\
+# /:/_/:/ /\__\ /::::::::\__\ /:/__/ \:|__|
+# \:\/:/ /:/  / \:\~~\~~\/__/ \:\  \ /:/  /
+#  \::/_/:/  /   \:\  \        \:\  /:/  /
+#   \:\/:/  /     \:\  \        \:\/:/  /
+#    \::/  /       \:\__\        \::/  /
+#     \/__/         \/__/         \/__/

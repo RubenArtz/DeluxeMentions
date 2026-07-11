@@ -1,19 +1,19 @@
 version: 47
 jobs:
-- name: GitHub
-  steps:
-  - type: PushRepository
-    name: GitHub
-    remoteUrl: https://github.com/RubenArtz/DeluxeMentions.git
-    userName: RubenArtz
-    passwordSecret: GitHub
-    force: true
-    condition: SUCCESSFUL
-    optional: false
-  triggers:
-  - type: BranchUpdateTrigger
-    userMatch: anyone
-  retryCondition: never
-  maxRetries: 3
-  retryDelay: 30
-  timeout: 14400
+  - name: GitHub
+    steps:
+      - type: PushRepository
+        name: GitHub
+        remoteUrl: https://github.com/RubenArtz/DeluxeMentions.git
+        userName: RubenArtz
+        passwordSecret: GitHub
+        force: true
+        condition: SUCCESSFUL
+        optional: false
+    triggers:
+      - type: BranchUpdateTrigger
+        userMatch: anyone
+    retryCondition: never
+    maxRetries: 3
+    retryDelay: 30
+    timeout: 14400

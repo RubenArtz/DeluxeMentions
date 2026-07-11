@@ -13,7 +13,7 @@ authlib = "1.5.25"
 minimessage = "4.26.1" # https://github.com/PaperMC/adventure/releases
 adventurePlatformBukkit = "4.4.1" # https://docs.papermc.io/adventure/platform/bukkit/
 bstats = "3.2.1" # https://bstats.org/add-plugin
-xseries = "13.6.0+26.1" # https://github.com/CryptoMorin/XSeries
+xseries = "13.7.1" # https://github.com/CryptoMorin/XSeries
 hikarycp = "7.0.1" # https://github.com/brettwooldridge/HikariCP
 h2 = "2.4.240" # https://github.com/h2database/h2database
 universalScheduler = "0.1.7" # https://github.com/Anon8281/UniversalScheduler/releases
@@ -35,7 +35,7 @@ authlib = { module = "com.mojang:authlib", version.ref = "authlib" }
 minimessage = { module = "net.kyori:adventure-text-minimessage", version.ref = "minimessage" }
 adventurePlatformBukkit = { module = "net.kyori:adventure-platform-bukkit", version.ref = "adventurePlatformBukkit" }
 bstats-bukkit = { module = "org.bstats:bstats-bukkit", version.ref = "bstats" }
-xseries = { module = "io.github.almighty-satan:XSeries", version.ref = "xseries" }
+xseries = { module = "com.github.cryptomorin:XSeries", version.ref = "xseries" }
 hikarycp = { module = "com.zaxxer:HikariCP", version.ref = "hikarycp" }
 h2 = { module = "com.h2database:h2", version.ref = "h2" }
 universalScheduler = { module = "com.github.Anon8281:UniversalScheduler", version.ref = "universalScheduler" }

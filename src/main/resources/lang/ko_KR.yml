@@ -58,6 +58,12 @@ MESSAGES:
     REMOVED: '&aYou are no longer ignoring &e{Player}.'
     UNKNOWN_SUBCOMMAND: '&cUnknown subcommand. Use: add, remove, list'
     INFINITE: 'Infinite'
+    PROMPT_ADD: '&e채팅에서 무시할 플레이어의 이름을 입력하세요.'
+    SEARCH_PROMPT: '&e차단 목록에서 검색할 플레이어 이름 또는 일부를 입력하세요. &c"cancel" &e을 입력하면 돌아갑니다.'
+    SEARCH_CANCELLED: '&c검색이 취소되었습니다.'
+    SEARCH_NO_RESULTS: '&c{Search}&e과(와) 일치하는 플레이어를 찾을 수 없습니다.'
+    UNKNOWN_PLAYER: '알 수 없음'
+    INVENTORY_TITLE: '&8차단된 플레이어'
 MESSAGE_DATABASE_CONNECTED: '&aThe {Database} data management has been successfully connected.'
 MESSAGE_DATABASE_NOT_CONNECTED: '&cError connecting to the database.'
 LANGUAGE:
@@ -164,7 +170,7 @@ HELP_TO_TRANSLATE:
 MESSAGE_TYPE_TIME: 'hours;;minutes;;seconds'
 
 # DO NOT TOUCH!
-version: "2"
+version: "3"
 
 #      ___           ___
 #     /\__\         /\  \         _____

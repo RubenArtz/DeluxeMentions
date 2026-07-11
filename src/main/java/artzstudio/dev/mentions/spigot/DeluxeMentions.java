@@ -104,6 +104,10 @@ public final class DeluxeMentions extends JavaPlugin {
         return configManager.get(ConfigType.GROUPS);
     }
 
+    public YamlDocument getInventory() {
+        return configManager.get(ConfigType.INVENTORY);
+    }
+
     public boolean isIgnoring(UUID uuid) {
         return ignoredPlayers.contains(uuid);
     }

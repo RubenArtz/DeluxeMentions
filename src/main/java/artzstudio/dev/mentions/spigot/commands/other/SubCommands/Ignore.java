@@ -23,6 +23,7 @@ package artzstudio.dev.mentions.spigot.commands.other.SubCommands;
 
 import artzstudio.dev.mentions.spigot.DeluxeMentions;
 import artzstudio.dev.mentions.spigot.commands.other.SubCommand;
+import artzstudio.dev.mentions.spigot.inventory.BlockedPlayersListener;
 import artzstudio.dev.mentions.spigot.launcher.Launcher;
 import artzstudio.dev.mentions.spigot.util.UtilityFunctions;
 import artzstudio.dev.mentions.spigot.util.addColor;
@@ -35,7 +36,6 @@ import org.bukkit.permissions.PermissionAttachmentInfo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 public class Ignore extends SubCommand {
 
@@ -60,34 +60,7 @@ public class Ignore extends SubCommand {
         String action = args[1].toLowerCase();
 
         if (action.equals("list")) {
-            UtilityFunctions.runTaskAsynchronously(() -> {
-                List<String> blockedUUIDs = Launcher.getInstance().getCache().getBlockedList(player.getUniqueId());
-
-                if (blockedUUIDs.isEmpty()) {
-                    player.sendMessage(addColor.addColors(plugin.getFileTranslations().getString("MESSAGES.IGNORE.LIST_EMPTY")));
-                    return;
-                }
-
-                List<String> names = new ArrayList<>();
-                for (String uuidStr : blockedUUIDs) {
-                    try {
-                        UUID uuid = UUID.fromString(uuidStr);
-                        OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
-                        String name = offlinePlayer.getName();
-                        names.add(Objects.requireNonNullElse(name, "Unknown"));
-                    } catch (IllegalArgumentException ignored) {
-                    }
-                }
-
-                String list = String.join("&7, &f", names);
-
-                String message = plugin.getFileTranslations().getString("MESSAGES.IGNORE.LIST_FORMAT")
-                        .replace("{Current}", String.valueOf(blockedUUIDs.size()))
-                        .replace("{Max}", getLimitDisplay(player))
-                        .replace("{List}", list);
-
-                player.sendMessage(addColor.addColors(message));
-            });
+            new BlockedPlayersListener().openInventory(player);
             return;
         }
 
@@ -218,10 +191,5 @@ public class Ignore extends SubCommand {
             }
         }
         return maxLimit;
-    }
-
-    private String getLimitDisplay(Player player) {
-        int limit = getMaxIgnoreLimit(player);
-        return limit == -1 ? plugin.getFileTranslations().getString("MESSAGES.IGNORE.INFINITE") : String.valueOf(limit);
     }
 }

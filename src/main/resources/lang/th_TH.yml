@@ -58,6 +58,12 @@ MESSAGES:
     REMOVED: '&aYou are no longer ignoring &e{Player}.'
     UNKNOWN_SUBCOMMAND: '&cUnknown subcommand. Use: add, remove, list'
     INFINITE: 'Infinite'
+    PROMPT_ADD: '&eพิมพ์ชื่อผู้เล่นที่คุณต้องการละเว้นในแชท'
+    SEARCH_PROMPT: '&eพิมพ์ชื่อหรือบางส่วนของชื่อเพื่อค้นหาในรายการของคุณ พิมพ์ &c"cancel" &eเพื่อกลับไป'
+    SEARCH_CANCELLED: '&cยกเลิกการค้นหา'
+    SEARCH_NO_RESULTS: '&cไม่พบผู้เล่นที่ตรงกับ &e{Search}&c.'
+    UNKNOWN_PLAYER: 'ไม่ทราบ'
+    INVENTORY_TITLE: '&8ผู้เล่นที่ถูกบล็อก'
 MESSAGE_DATABASE_CONNECTED: '&aThe {Database} data management has been successfully connected.'
 MESSAGE_DATABASE_NOT_CONNECTED: '&cError connecting to the database.'
 LANGUAGE:
@@ -164,7 +170,7 @@ HELP_TO_TRANSLATE:
 MESSAGE_TYPE_TIME: 'hours;;minutes;;seconds'
 
 # DO NOT TOUCH!
-version: "2"
+version: "3"
 
 #      ___           ___
 #     /\__\         /\  \         _____

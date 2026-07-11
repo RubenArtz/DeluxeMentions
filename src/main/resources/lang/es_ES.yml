@@ -58,6 +58,13 @@ MESSAGES:
     REMOVED: '&aYa no estás ignorando a &e{Player}.'
     UNKNOWN_SUBCOMMAND: '&cSubcomando desconocido. Uso: add, remove, list'
     INFINITE: 'Infinito'
+    PROMPT_ADD: '&eEscribe el nombre del jugador que quieres ignorar en el chat. Escribe &c"cancel" &epara cancelar.'
+    ADD_CANCELLED: '&cAdición cancelada.'
+    SEARCH_PROMPT: '&eEscribe el nombre o parte del nombre para buscar en tu lista de ignorados. Escribe &c"cancel" &epara volver.'
+    SEARCH_CANCELLED: '&cBúsqueda cancelada.'
+    SEARCH_NO_RESULTS: '&cNo se encontraron jugadores que coincidan con &e{Search}&c.'
+    UNKNOWN_PLAYER: 'Desconocido'
+    INVENTORY_TITLE: '&8Jugadores Bloqueados'
 MESSAGE_DATABASE_CONNECTED: '&aLa gestión de datos {Database} se ha conectado correctamente.'
 MESSAGE_DATABASE_NOT_CONNECTED: '&cError al conectar con la base de datos.'
 LANGUAGE:
@@ -165,7 +172,7 @@ HELP_TO_TRANSLATE:
 MESSAGE_TYPE_TIME: 'horas;;minutos;;segundos'
 
 # DO NOT TOUCH!
-version: "2"
+version: "3"
 
 #      ___           ___
 #     /\__\         /\  \         _____

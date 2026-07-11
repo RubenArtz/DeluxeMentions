@@ -25,7 +25,7 @@ plugins {
     alias(libs.plugins.slimjar)
 }
 
-version = "7.3.26"
+version = "7.4.26"
 
 val slimJarBase = "artzstudio.dev.mentions.spigot.slimjar."
 val libsBase = "artzstudio.dev.mentions.spigot.relocated."

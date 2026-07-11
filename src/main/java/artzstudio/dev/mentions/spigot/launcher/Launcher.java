@@ -29,6 +29,7 @@ import artzstudio.dev.mentions.spigot.events.mention.target;
 import artzstudio.dev.mentions.spigot.events.playerJoin;
 import artzstudio.dev.mentions.spigot.events.playerLeave;
 import artzstudio.dev.mentions.spigot.events.updateEvent;
+import artzstudio.dev.mentions.spigot.inventory.BlockedPlayersListener;
 import artzstudio.dev.mentions.spigot.inventory.Inventory;
 import artzstudio.dev.mentions.spigot.placeholder.Placeholder;
 import artzstudio.dev.mentions.spigot.util.NotificationManager;
@@ -126,6 +127,7 @@ public class Launcher implements Launch {
         Arrays.asList(
                 new updateEvent(),
                 new Inventory(),
+                new BlockedPlayersListener(),
                 new playerJoin(),
                 new playerLeave(),
                 new target(),
